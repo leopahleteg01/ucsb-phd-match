@@ -5,24 +5,42 @@
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
 .wrap{max-width:1100px;margin:0 auto;padding:20px}h1{font-size:28px;margin:0 0 8px}.sub{color:var(--muted);margin-bottom:18px}
 .panel,.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.18)} .panel{margin-bottom:16px}.grid{display:grid;gap:16px}
-textarea,input{width:100%;border-radius:12px;border:1px solid var(--border);background:#0f1630;color:var(--text);padding:12px;font:inherit;box-sizing:border-box} textarea{min-height:110px}
+textarea,input,select{width:100%;border-radius:12px;border:1px solid var(--border);background:#0f1630;color:var(--text);padding:12px;font:inherit;box-sizing:border-box} textarea{min-height:110px}
 button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#223266;color:var(--text);cursor:pointer}.name{font-size:22px;font-weight:700}.dept{color:var(--accent);font-weight:600}.muted{color:var(--muted)}
-.score{font-weight:800;color:#aaf0c4}.body{margin-top:12px;display:grid;gap:8px}.label{color:var(--muted);font-weight:600}
+.score{font-weight:800;color:#aaf0c4}.body{margin-top:12px;display:grid;gap:8px}.label{color:var(--muted);font-weight:600}.small{font-size:13px}
 </style></head><body><div class="wrap">
 <h1>UCSB PhD Match</h1>
-<div class="sub">Free-hosting-ready frontend. Paste CV text and notes, then rank professors against the current source-enriched dataset.</div>
-<div class="panel"><strong>CV / notes</strong><br><textarea id="notes" placeholder="Paste your CV, PhD goals, and notes here."></textarea><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div><div class="muted" style="margin-top:10px">This online version works entirely in the browser for now. No private server needed.</div></div>
+<div class="sub">Live browser version. You can add notes and attach local files for text extraction where supported. This is frontend-only for now, AI backend connection is the next step.</div>
+<div class="panel"><strong>What are you looking for?</strong><br><textarea id="notes" placeholder="Describe your PhD interests, your background, your wishes, and any notes."></textarea></div>
+<div class="panel"><strong>Attach files</strong><br><input id="files" type="file" multiple><div id="fileInfo" class="muted small" style="margin-top:10px">You can attach text-like files here. Plain text is the most reliable in this browser-only version. PDF/DOC/image files are not deeply parsed yet in GitHub Pages-only mode.</div></div>
+<div class="panel"><strong>Filter</strong><br><select id="dept"><option value="All">All departments</option><option value="CS">CS</option><option value="ECE">ECE</option><option value="ME">ME</option><option value="Other">Other</option></select><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div></div>
+<div id="resultsMeta" class="muted" style="margin-bottom:12px"></div>
 <div id="results" class="grid"></div>
 </div>
 <script>
 let professors = [];
-fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{professors=data; render(data.slice(0,20));});
+let attachedText = '';
+fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{professors=data; render(data.slice(0,30).map(p=>({...p, score:p._base_fit||20, why:'Initial default order'}))); updateMeta(data.length, data.length);});
+
+function deptGroup(p){
+  const d=(p.department||'').toLowerCase();
+  if(d.includes('ece / me') || d.startsWith('me') || d.includes('mechanical')) return 'ME';
+  if(d.includes('ece')) return 'ECE';
+  if(d.includes('cs')) return 'CS';
+  return 'Other';
+}
+
 function scoreProfessor(p, words){
   const blob=(p._blob||'').toLowerCase();
   let hits=[];
   words.forEach(w=>{if(w.length>2&&blob.includes(w)&&!hits.includes(w))hits.push(w)});
   return {score:(p._base_fit||20)+hits.length*3, hits};
 }
+
+function updateMeta(shown,total){
+  document.getElementById('resultsMeta').textContent = `Showing ${shown} of ${total} professors in current view.`;
+}
+
 function render(items){
   const results=document.getElementById('results');
   results.innerHTML='';
@@ -33,9 +51,26 @@ function render(items){
     results.appendChild(d);
   });
 }
+
+document.getElementById('files').addEventListener('change', async (e)=>{
+  const files=Array.from(e.target.files||[]);
+  const texts=[];
+  for(const f of files){
+    const name=(f.name||'').toLowerCase();
+    if(name.endsWith('.txt')||name.endsWith('.md')||name.endsWith('.csv')){
+      texts.push(await f.text());
+    }
+  }
+  attachedText=texts.join('\n\n');
+  document.getElementById('fileInfo').textContent = files.length ? (`Attached ${files.length} file(s). Parsed text from ${texts.length} supported text-like file(s).`) : 'No files attached.';
+});
+
 document.getElementById('runBtn').addEventListener('click',()=>{
-  const words=(document.getElementById('notes').value||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-  const ranked=professors.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Little direct overlap from your text.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
-  render(ranked.slice(0,50));
+  const dept=document.getElementById('dept').value;
+  const words=((document.getElementById('notes').value||'')+' '+attachedText).toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  const filtered=professors.filter(p=>dept==='All'||deptGroup(p)===dept);
+  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Little direct overlap from your text/files.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+  render(ranked);
+  updateMeta(ranked.length, professors.length);
 });
 </script></body></html>
