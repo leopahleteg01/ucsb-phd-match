@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UCSB PhD Match</title>
+<style>
+:root{--bg:#0b1020;--card:#121933;--text:#eef2ff;--muted:#b8c0e0;--accent:#7aa2ff;--border:#2a3566}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:20px}h1{font-size:28px;margin:0 0 8px}.sub{color:var(--muted);margin-bottom:18px}
+.panel,.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,.18)} .panel{margin-bottom:16px}.grid{display:grid;gap:16px}
+textarea,input{width:100%;border-radius:12px;border:1px solid var(--border);background:#0f1630;color:var(--text);padding:12px;font:inherit;box-sizing:border-box} textarea{min-height:110px}
+button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#223266;color:var(--text);cursor:pointer}.name{font-size:22px;font-weight:700}.dept{color:var(--accent);font-weight:600}.muted{color:var(--muted)}
+.score{font-weight:800;color:#aaf0c4}.body{margin-top:12px;display:grid;gap:8px}.label{color:var(--muted);font-weight:600}
+</style></head><body><div class="wrap">
+<h1>UCSB PhD Match</h1>
+<div class="sub">Free-hosting-ready frontend. Paste CV text and notes, then rank professors against the current source-enriched dataset.</div>
+<div class="panel"><strong>CV / notes</strong><br><textarea id="notes" placeholder="Paste your CV, PhD goals, and notes here."></textarea><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div><div class="muted" style="margin-top:10px">This online version works entirely in the browser for now. No private server needed.</div></div>
+<div id="results" class="grid"></div>
+</div>
+<script>
+let professors = [];
+fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{professors=data; render(data.slice(0,20));});
+function scoreProfessor(p, words){
+  const blob=(p._blob||'').toLowerCase();
+  let hits=[];
+  words.forEach(w=>{if(w.length>2&&blob.includes(w)&&!hits.includes(w))hits.push(w)});
+  return {score:(p._base_fit||20)+hits.length*3, hits};
+}
+function render(items){
+  const results=document.getElementById('results');
+  results.innerHTML='';
+  items.forEach(item=>{
+    const d=document.createElement('div');
+    d.className='card';
+    d.innerHTML=`<div class="name">${item.name}</div><div class="dept">${item.department}</div><div class="score">Score: ${item.score}</div><div class="body"><div><span class="label">Why:</span> ${item.why}</div><div><span class="label">Professor does:</span> ${item.primary_areas||''}</div><div><span class="label">PhD could look like:</span> ${item.comparison_summary||''}</div><div><span class="label">Fit to your path:</span> ${item.notes||''}</div><div><span class="label">UCSB profile:</span> ${item.ucsb_profile_url||'n/a'}</div><div><span class="label">Website:</span> ${item.website_guess||'n/a'}</div></div>`;
+    results.appendChild(d);
+  });
+}
+document.getElementById('runBtn').addEventListener('click',()=>{
+  const words=(document.getElementById('notes').value||'').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  const ranked=professors.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Little direct overlap from your text.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+  render(ranked.slice(0,50));
+});
+</script></body></html>
