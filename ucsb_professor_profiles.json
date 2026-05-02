@@ -35,6 +35,14 @@
         "autonomous systems",
         "dynamics and control"
       ],
+      "methods_keywords": [
+        "control",
+        "modeling"
+      ],
+      "application_keywords": [
+        "robotics",
+        "autonomy"
+      ],
       "topic_clusters": [
         "robot locomotion",
         "manipulation",
@@ -44,8 +52,24 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Center for Control, Dynamical Systems and Computation (CCDC) , Room 5115 Email Dynamic Systems, Control & Robotics Research Description My research interests are robot dynamics and control: particularly, locomotion and manipulation."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "modeling"
+        ],
+        "applications": [
+          "robotics",
+          "autonomy"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "present",
@@ -90,6 +114,18 @@
         "robot learning",
         "autonomy"
       ],
+      "methods_keywords": [
+        "control",
+        "optimization",
+        "learning",
+        "reinforcement learning",
+        "machine learning",
+        "planning"
+      ],
+      "application_keywords": [
+        "robotics",
+        "autonomy"
+      ],
       "topic_clusters": [
         "robotics and autonomy",
         "planning",
@@ -100,11 +136,31 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Before joining UCSB, he was a postdoctoral scholar in Computing + Mathematical Sciences at the California Institute of Technology."
+      ],
       "selected_publication_mentions": [
         "Preiss Assistant Professor 5109 Ph.D Computer Science, University of Southern California Google Scholar Algorithms and Theory Machine Learning and Data Mining Robotics and Autonomy Bio James A.",
         "Before joining UCSB, he was a postdoctoral scholar in Computing + Mathematical Sciences at the California Institute of Technology."
       ],
       "publication_signal_notes": "Preiss Assistant Professor 5109 Ph.D Computer Science, University of Southern California Google Scholar Algorithms and Theory Machine Learning and Data Mining Robotics and Autonomy Bio James A. | Before joining UCSB, he was a postdoctoral scholar in Computing + Mathematical Sciences at the California Institute of Technology.",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "optimization",
+          "learning",
+          "reinforcement learning",
+          "machine learning",
+          "planning"
+        ],
+        "applications": [
+          "robotics",
+          "autonomy"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 2
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "present",
@@ -142,6 +198,14 @@
         "vision",
         "robotics"
       ],
+      "methods_keywords": [
+        "learning",
+        "vision"
+      ],
+      "application_keywords": [
+        "robotics",
+        "sensing"
+      ],
       "topic_clusters": [
         "rf sensing and learning",
         "communication-aware robotics",
@@ -150,8 +214,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "vision"
+        ],
+        "applications": [
+          "robotics",
+          "sensing"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "more_applied",
       "source_quality": "high",
       "website_status": "missing",
@@ -195,6 +273,8 @@
         "networked systems",
         "estimation"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "hybrid systems",
         "networked control",
@@ -205,8 +285,11 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {},
       "theory_to_application_spectrum": "more_theoretical",
       "source_quality": "medium_high",
       "website_status": "present",
@@ -244,6 +327,15 @@
         "optimal control",
         "optimization"
       ],
+      "methods_keywords": [
+        "control",
+        "optimization",
+        "vision",
+        "planning"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "robotics",
         "motion planning",
@@ -252,8 +344,29 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "He is also affiliated with the UCSB Center for Control, Dynamical Systems, and Computation (CCDC).",
+        "He received a PhD in Computer Science from the Massachusetts Institute of Technology (MIT), under the supervision of Russ Tedrake and Pablo Parrilo."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "His PhD thesis was awarded the MIT EECS George M.",
+        "Sprowls Thesis Award in Artificial Intelligence and Decision Making."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "optimization",
+          "vision",
+          "planning"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 2,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -294,6 +407,13 @@
         "control",
         "robotics-related systems"
       ],
+      "methods_keywords": [
+        "control",
+        "planning"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "dynamical systems",
         "control",
@@ -301,8 +421,23 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Francesco Bullo Francesco Bullo Headshot Professor Distinguished Professor Engineering II, Room 2325 Email Dynamic Systems, Control & Robotics Research Description His main research interest is multi-agent networks with application to robotic coordination, distributed computing and power networks."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "planning"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "more_theoretical",
       "source_quality": "high",
       "website_status": "present",
@@ -346,6 +481,8 @@
         "multimedia",
         "visual data analysis"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "image informatics",
         "computer vision",
@@ -356,8 +493,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "present",
@@ -395,6 +540,11 @@
         "imaging",
         "computer vision"
       ],
+      "methods_keywords": [
+        "vision",
+        "graphics"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "computer graphics",
         "imaging",
@@ -402,8 +552,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "vision",
+          "graphics"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -442,6 +603,16 @@
         "computer vision",
         "multimodal tracking"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "vision",
+        "simulation"
+      ],
+      "application_keywords": [
+        "human-computer interaction",
+        "medical"
+      ],
       "topic_clusters": [
         "bionic vision",
         "machine learning",
@@ -450,8 +621,36 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Michael Beyeler Associate Professor He/Him/His BioEngineering 3201B Lab Website Ph.D in Computer Science, 2016, University of California, Irvine MSc in Biomedical Engineering, 2011, ETH Zurich, Switzerland BSc in Electrical Engineering, 2009, ETH Zurich, Switzerland Associate Professor, Psychological & Brain Sciences (PBS) Associate Director, Research Center for Virtual Environments and Behavior (ReCVEB) Dynamical Neuroscience (DYNS) Institute for Collaborative Biotechnologies (ICB) Neuroscience Research Institute (NRI) 2024 Harold J.",
+        "Plous Memorial Award (UC Santa Barbara) 2022 DP2 New Innovator Award (National Institutes of Health) 2018 K99/R00 Pathway to Independence Award (National Institutes of Health) Computational Science and Engineering Human Centered and Social Computing Machine Learning and Data Mining Visual Computing and Interaction Bio Dr.",
+        "Michael Beyeler is Associate Professor of Computer Science and Psychological & Brain Sciences at UC Santa Barbara, where he directs the Bionic Vision Lab.",
+        "Beyeler serves as Associate Director of UC Santa Barbara’s Center for Virtual Environments and Behavior (ReCVEB).",
+        "His work has been recognized by the National Institutes of Health (K99/R00 and DP2 New Innovator Award) and by UC Santa Barbara with the 2024-2025 Harold J.",
+        "Research The Bionic Vision Lab builds intelligent vision systems to advance the future of extended reality (XR) and neurotechnology."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Plous Memorial Award (UC Santa Barbara) 2022 DP2 New Innovator Award (National Institutes of Health) 2018 K99/R00 Pathway to Independence Award (National Institutes of Health) Computational Science and Engineering Human Centered and Social Computing Machine Learning and Data Mining Visual Computing and Interaction Bio Dr.",
+        "Prior to joining UCSB in 2019, he completed a postdoctoral fellowship at the University of Washington and earned his PhD in Computer Science from UC Irvine.",
+        "His work has been recognized by the National Institutes of Health (K99/R00 and DP2 New Innovator Award) and by UC Santa Barbara with the 2024-2025 Harold J.",
+        "Plous Memorial Award for exceptional contributions to research, teaching, and service."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "vision",
+          "simulation"
+        ],
+        "applications": [
+          "human-computer interaction",
+          "medical"
+        ],
+        "honors_count": 4,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -495,6 +694,16 @@
         "human-computer interaction",
         "spatial computing"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "hci"
+      ],
+      "application_keywords": [
+        "virtual reality",
+        "augmented reality",
+        "human-computer interaction"
+      ],
       "topic_clusters": [
         "visualization",
         "multimodal interfaces",
@@ -505,6 +714,13 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Tobias Höllerer Distinguished Professor He/Him/His 2155 Ph.D., Computer Science, Columbia University, 2003 M.S., Computer Science, Columbia University, 1997 Diplom, Informatik, Technische Universität Berlin, 1995 Professor, Media Arts and Technology Program UCSB Allosphere Project NSF Faculty Early Career Development (CAREER) Award, 2008 Best Paper Award (with S.",
+        "For “GroundCam: A Tracking Modality for Mobile Mixed Reality” 2003 Naval Research Laboratory Alan Berman Research Publication Award (with M.",
+        "For: “View Management for Virtual and Augmented Reality” Stipendium, Studienstiftung des deutschen Volkes: German National Study Foundation scholarship, based on academic achievement, 1990–1995 Human Centered and Social Computing Machine Learning and Data Mining Visual Computing and Interaction Bio Tobias Höllerer is a Professor for the UCSB Computer Science Department.",
+        "At UCSB, he co-directs the Four Eyes Laboratory conducting research in the four I’s of Imaging, Interaction, and Innovative Interfaces.",
+        "The group’s Virtual Reality and 3D display research includes work on the UCSB Allosphere project, designing and utilizing display, visualization, and multimodal interaction technologies for a three-story surround-view immersive situation room."
+      ],
       "selected_publication_mentions": [
         "Tobias Höllerer Distinguished Professor He/Him/His 2155 Ph.D., Computer Science, Columbia University, 2003 M.S., Computer Science, Columbia University, 1997 Diplom, Informatik, Technische Universität Berlin, 1995 Professor, Media Arts and Technology Program UCSB Allosphere Project NSF Faculty Early Career Development (CAREER) Award, 2008 Best Paper Award (with S.",
         "For “Live Tracking and Mapping from Both General and Rotation-Only Camera Motion” Best Paper Honorable Mention (with Steffen Gauglitz, Cha Lee, and Matthew Turk) at ACM MobileHCI 2012 (ACM SIGCHI's International Conference on Human-Computer Interaction with Mobile Devices and Services).",
@@ -513,6 +729,27 @@
         "For “Envisor: Online Environment Map Construction for Mixed Reality” Best Student Paper (with Cha Lee and Stephen DiVerdi) at ACM VRST 2007 (14th International ACM Symposium on Virtual Reality Software and Technology)."
       ],
       "publication_signal_notes": "Tobias Höllerer Distinguished Professor He/Him/His 2155 Ph.D., Computer Science, Columbia University, 2003 M.S., Computer Science, Columbia University, 1997 Diplom, Informatik, Technische Universität Berlin, 1995 Professor, Media Arts and Technology Program UCSB Allosphere Project NSF Faculty Early Career Development (CAREER) Award, 2008 Best Paper Award (with S. | For “Live Tracking and Mapping from Both General and Rotation-Only Camera Motion” Best Paper Honorable Mention (with Steffen Gauglitz, Cha Lee, and Matthew Turk) at ACM MobileHCI 2012 (ACM SIGCHI's International Conference on Human-Computer Interaction with Mobile Devices and Services). | For “Integrating the Physical Environment into Mo Best Paper Honorable Mention (with Sehwan Kim and Chris Coffin) at ACM VRST 2009 (16th International ACM Symposium on Virtual Reality Software and Technology). | For “Relocalization Using Virtual Keyframes For Online Environment Map Construction” Best Paper Honorable Mention (with Stephen DiVerdi and Jason Wither) at IEEE VR 2008 (10th International Conference on Virtual Reality). | For “Envisor: Online Environment Map Construction for Mixed Reality” Best Student Paper (with Cha Lee and Stephen DiVerdi) at ACM VRST 2007 (14th International ACM Symposium on Virtual Reality Software and Technology).",
+      "honors_highlights": [
+        "Tobias Höllerer Distinguished Professor He/Him/His 2155 Ph.D., Computer Science, Columbia University, 2003 M.S., Computer Science, Columbia University, 1997 Diplom, Informatik, Technische Universität Berlin, 1995 Professor, Media Arts and Technology Program UCSB Allosphere Project NSF Faculty Early Career Development (CAREER) Award, 2008 Best Paper Award (with S.",
+        "For “Live Tracking and Mapping from Both General and Rotation-Only Camera Motion” Best Paper Honorable Mention (with Steffen Gauglitz, Cha Lee, and Matthew Turk) at ACM MobileHCI 2012 (ACM SIGCHI's International Conference on Human-Computer Interaction with Mobile Devices and Services).",
+        "For “Integrating the Physical Environment into Mo Best Paper Honorable Mention (with Sehwan Kim and Chris Coffin) at ACM VRST 2009 (16th International ACM Symposium on Virtual Reality Software and Technology).",
+        "For “Relocalization Using Virtual Keyframes For Online Environment Map Construction” Best Paper Honorable Mention (with Stephen DiVerdi and Jason Wither) at IEEE VR 2008 (10th International Conference on Virtual Reality).",
+        "For “An Immaterial Depth-Fused 3D Display” Best Paper Honorable Mention (with Stephen DiVerdi) at IEEE Virtual Reality 2007 (9th International Conference on Virtual Reality)."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "hci"
+        ],
+        "applications": [
+          "virtual reality",
+          "augmented reality",
+          "human-computer interaction"
+        ],
+        "honors_count": 5,
+        "publication_signal_count": 5
+      },
       "theory_to_application_spectrum": "more_applied",
       "source_quality": "high",
       "website_status": "present",
@@ -550,6 +787,12 @@
         "reasoning",
         "knowledge graphs"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "vision"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "machine learning",
         "nlp",
@@ -558,11 +801,32 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "He is the founding Director of UCSB's Center for Responsible Machine Learning.",
+        "Labs, Microsoft Research Redmond, and University of Southern California.",
+        "More specifically, I am interested in designing scalable inference and learning algorithms to analyze massive datasets with complex structures.",
+        "The central focus of my PhD dissertation research is to bring together all areas above and design scalable algorithms for large scale inference problems on knowledge graphs.",
+        "Meanwhile, I enjoy collaborating with scientists and domain experts of different backgrounds for interdisciplinary research in data science."
+      ],
       "selected_publication_mentions": [
         "William Wang Professor Mellichamp Endowed Chair in Mind and Machine Intelligence He/Him/His 2005 Henley Hall William Wang homepage PhD, Carnegie Mellon University William Wang Publications CVPR Best Student Paper Award, 2019 IBM Faculty Award, 2019 Facebook Research Award, 2019 DARPA Young Faculty Award, 2018 IBM Faculty Award, 2018 Facebook Research Award, 2018 Google Faculty Research Award 2018 Adobe Research Award, 2018 IBM Faculty Award, 2017 Inaugural Notable Data Set Award, EMNLP 2015 Best Reviewer Award, NAACL 2015 Best Paper Honorable Mention Award, CIKM 2013 Best Student Paper Award, ASRU 2013 Richard King Mellon Presidential Fellowship, Carnegie Mellon University 2011-2012 Machine Learning and Data Mining Bio William Wang is the Director of UC Santa Barbara's Natural Language Processing group and a Professor in the Department of Computer Science at the University of California, Santa Barbara.",
         "He has published more than 80 papers at leading NLP/AI/ML conferences and journals, and received best paper (or nominations) at ASRU 2013, CIKM 2013, EMNLP 2015, and CVPR 2019, a DARPA Young Faculty Award (Class of 2018), three IBM Faculty in 2017-2019, a Google Faculty Research Award in 2018, two Facebook Research in 2018 and 2019, an Adobe Research Award in 2018, and the Richard King Mellon Presidential Fellowship in 2011."
       ],
       "publication_signal_notes": "William Wang Professor Mellichamp Endowed Chair in Mind and Machine Intelligence He/Him/His 2005 Henley Hall William Wang homepage PhD, Carnegie Mellon University William Wang Publications CVPR Best Student Paper Award, 2019 IBM Faculty Award, 2019 Facebook Research Award, 2019 DARPA Young Faculty Award, 2018 IBM Faculty Award, 2018 Facebook Research Award, 2018 Google Faculty Research Award 2018 Adobe Research Award, 2018 IBM Faculty Award, 2017 Inaugural Notable Data Set Award, EMNLP 2015 Best Reviewer Award, NAACL 2015 Best Paper Honorable Mention Award, CIKM 2013 Best Student Paper Award, ASRU 2013 Richard King Mellon Presidential Fellowship, Carnegie Mellon University 2011-2012 Machine Learning and Data Mining Bio William Wang is the Director of UC Santa Barbara's Natural Language Processing group and a Professor in the Department of Computer Science at the University of California, Santa Barbara. | He has published more than 80 papers at leading NLP/AI/ML conferences and journals, and received best paper (or nominations) at ASRU 2013, CIKM 2013, EMNLP 2015, and CVPR 2019, a DARPA Young Faculty Award (Class of 2018), three IBM Faculty in 2017-2019, a Google Faculty Research Award in 2018, two Facebook Research in 2018 and 2019, an Adobe Research Award in 2018, and the Richard King Mellon Presidential Fellowship in 2011.",
+      "honors_highlights": [
+        "William Wang Professor Mellichamp Endowed Chair in Mind and Machine Intelligence He/Him/His 2005 Henley Hall William Wang homepage PhD, Carnegie Mellon University William Wang Publications CVPR Best Student Paper Award, 2019 IBM Faculty Award, 2019 Facebook Research Award, 2019 DARPA Young Faculty Award, 2018 IBM Faculty Award, 2018 Facebook Research Award, 2018 Google Faculty Research Award 2018 Adobe Research Award, 2018 IBM Faculty Award, 2017 Inaugural Notable Data Set Award, EMNLP 2015 Best Reviewer Award, NAACL 2015 Best Paper Honorable Mention Award, CIKM 2013 Best Student Paper Award, ASRU 2013 Richard King Mellon Presidential Fellowship, Carnegie Mellon University 2011-2012 Machine Learning and Data Mining Bio William Wang is the Director of UC Santa Barbara's Natural Language Processing group and a Professor in the Department of Computer Science at the University of California, Santa Barbara.",
+        "He has published more than 80 papers at leading NLP/AI/ML conferences and journals, and received best paper (or nominations) at ASRU 2013, CIKM 2013, EMNLP 2015, and CVPR 2019, a DARPA Young Faculty Award (Class of 2018), three IBM Faculty in 2017-2019, a Google Faculty Research Award in 2018, two Facebook Research in 2018 and 2019, an Adobe Research Award in 2018, and the Richard King Mellon Presidential Fellowship in 2011."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "vision"
+        ],
+        "applications": [],
+        "honors_count": 2,
+        "publication_signal_count": 2
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -600,6 +864,11 @@
         "optimization",
         "signal processing"
       ],
+      "methods_keywords": [
+        "optimization",
+        "learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "cyber-physical systems",
         "learning",
@@ -608,8 +877,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "optimization",
+          "learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -645,14 +925,28 @@
         "feedback control algorithms",
         "nonlinear and hybrid dynamical systems"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "feedback control algorithms",
         "nonlinear and hybrid dynamical systems"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -688,14 +982,24 @@
         "coordination of large scale distributed systems",
         "game theoretic methods"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "coordination of large scale distributed systems",
         "game theoretic methods"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -733,6 +1037,11 @@
         "human-cyber-physical systems",
         "stochastic networks"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "machine learning",
         "information theory",
@@ -741,8 +1050,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -780,6 +1100,13 @@
         "optimization",
         "signal processing"
       ],
+      "methods_keywords": [
+        "optimization",
+        "learning",
+        "machine learning",
+        "networking"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "pattern recognition",
         "machine learning",
@@ -788,8 +1115,21 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "optimization",
+          "learning",
+          "machine learning",
+          "networking"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -826,6 +1166,11 @@
         "machine learning theory",
         "distributed computing"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "information theory",
         "machine learning theory",
@@ -833,8 +1178,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -871,6 +1227,11 @@
         "applied machine learning",
         "hardware ml systems"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "brain-inspired computing",
         "applied machine learning",
@@ -878,8 +1239,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -916,6 +1288,11 @@
         "data analysis",
         "machine learning"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "ai for design and test",
         "data analysis",
@@ -923,8 +1300,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -961,6 +1349,11 @@
         "mathematical data science",
         "tensor-based machine learning"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "design automation",
         "mathematical data science",
@@ -968,8 +1361,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1006,6 +1410,8 @@
         "photonics",
         "optoelectronic interfaces"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "mixed-signal circuits",
         "photonics",
@@ -1013,8 +1419,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1052,6 +1466,11 @@
         "responsible computing",
         "distributed computing"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "machine learning",
         "ethical ai",
@@ -1060,8 +1479,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1099,6 +1529,13 @@
         "multi-modality",
         "robustness in healthcare"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "vision",
+        "modeling"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "machine learning",
         "computer vision",
@@ -1107,8 +1544,21 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "vision",
+          "modeling"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1144,17 +1594,43 @@
         "unknown from quick scrape",
         "cs faculty"
       ],
+      "methods_keywords": [
+        "control",
+        "optimization",
+        "learning",
+        "reinforcement learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "unknown from quick scrape",
         "cs faculty"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Murphy Niu Assistant Professor Stansbury Chair in Computer Science 2013 Henley Hall Google Scholar Ph.D., Physics, MIT B.A., Physics, Peking University Off- Adjunct Assistant Professor in the University of Maryland, College Park, and the University of Maryland Institute for Advanced Computer Studies Algorithms and Theory Computer Architecture Machine Learning and Data Mining Quantum Computing Bio Murphy Yuezhen Niu is an Assistant Professor and Stansbury Chair in Computer Science at the University of California, Santa Barbara since 2024.",
+        "Research Professor Niu's long-term research goal is to develop quantum computing paradigms in regard to how we program, control, characterize, measure, and error correct a large-scale quantum computer without paying the steep price of digitization towards real-world impacts.",
+        "Her recent research focus on developing scalable analog quantum control and algorithms for emerging quantum architectures with superconducting, ion trap, photonic, and neutral atom qubits."
+      ],
       "selected_publication_mentions": [
         "Murphy Niu Assistant Professor Stansbury Chair in Computer Science 2013 Henley Hall Google Scholar Ph.D., Physics, MIT B.A., Physics, Peking University Off- Adjunct Assistant Professor in the University of Maryland, College Park, and the University of Maryland Institute for Advanced Computer Studies Algorithms and Theory Computer Architecture Machine Learning and Data Mining Quantum Computing Bio Murphy Yuezhen Niu is an Assistant Professor and Stansbury Chair in Computer Science at the University of California, Santa Barbara since 2024.",
         "Visit Niu’s academic publications on Google Scholar here"
       ],
       "publication_signal_notes": "Murphy Niu Assistant Professor Stansbury Chair in Computer Science 2013 Henley Hall Google Scholar Ph.D., Physics, MIT B.A., Physics, Peking University Off- Adjunct Assistant Professor in the University of Maryland, College Park, and the University of Maryland Institute for Advanced Computer Studies Algorithms and Theory Computer Architecture Machine Learning and Data Mining Quantum Computing Bio Murphy Yuezhen Niu is an Assistant Professor and Stansbury Chair in Computer Science at the University of California, Santa Barbara since 2024. | Visit Niu’s academic publications on Google Scholar here",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "optimization",
+          "learning",
+          "reinforcement learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 2
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1196,6 +1672,14 @@
         "multimodal learning",
         "embodied or grounded ai related vision-language topics"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "vision"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "unknown from quick scrape",
         "cs faculty",
@@ -1205,12 +1689,32 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Wang’s research aims to build intelligent multimodal AI agents that can understand the world, collaborate with humans, and perform real-world tasks—from everyday activities to high-stakes missions.",
+        "His work spans multimodal representation learning, embodied AI for human-agent collaboration, and the ethical design of trustworthy AI systems."
+      ],
       "selected_publication_mentions": [
         "in Computer Science, Zhejiang University Off- Head of Research, Simular AI Google Scholar Best Paper Award, ICLR Agentic AI for Science, 2025 eBay Faculty Award, 2024 Cisco Research Award, 2024 eBay Faculty Award, 2023 UCSC Innovator of the Year Award, Finalist, 2023 Amazon Alexa Prize Award, TaskBot Finalist (Top 5), 2023 Amazon Alexa Prize Award, SocialBot Second Place, 2023 Amazon Alexa Prize Award, SimBot Third Place, 2022 Google Faculty Research Award, 2022 AAII Interdisciplinary Award, 2022 CVPR Best Student Paper Award, 2019 Machine Learning and Data Mining Visual Computing and Interaction Bio Xin (Eric) Wang is an Assistant Professor in The Computer Science Department at UC Santa Barbara and the Head of Research at Simular .",
         "Eric has served as (Senior) Area Chair for conferences such as ACL, NAACL, EMNLP, ICLR, and NeurIPS, and organized workshops and tutorials at those venues.",
         "He has received several and recognitions for his work, including Best Paper from CVPR and ICLRW, Google Research Faculty Award, Amazon Alexa Prize , Cisco Research Award, eBay Research , and various gift from Adobe, Snap, Microsoft, Cybever, etc."
       ],
       "publication_signal_notes": "in Computer Science, Zhejiang University Off- Head of Research, Simular AI Google Scholar Best Paper Award, ICLR Agentic AI for Science, 2025 eBay Faculty Award, 2024 Cisco Research Award, 2024 eBay Faculty Award, 2023 UCSC Innovator of the Year Award, Finalist, 2023 Amazon Alexa Prize Award, TaskBot Finalist (Top 5), 2023 Amazon Alexa Prize Award, SocialBot Second Place, 2023 Amazon Alexa Prize Award, SimBot Third Place, 2022 Google Faculty Research Award, 2022 AAII Interdisciplinary Award, 2022 CVPR Best Student Paper Award, 2019 Machine Learning and Data Mining Visual Computing and Interaction Bio Xin (Eric) Wang is an Assistant Professor in The Computer Science Department at UC Santa Barbara and the Head of Research at Simular . | Eric has served as (Senior) Area Chair for conferences such as ACL, NAACL, EMNLP, ICLR, and NeurIPS, and organized workshops and tutorials at those venues. | He has received several and recognitions for his work, including Best Paper from CVPR and ICLRW, Google Research Faculty Award, Amazon Alexa Prize , Cisco Research Award, eBay Research , and various gift from Adobe, Snap, Microsoft, Cybever, etc.",
+      "honors_highlights": [
+        "in Computer Science, Zhejiang University Off- Head of Research, Simular AI Google Scholar Best Paper Award, ICLR Agentic AI for Science, 2025 eBay Faculty Award, 2024 Cisco Research Award, 2024 eBay Faculty Award, 2023 UCSC Innovator of the Year Award, Finalist, 2023 Amazon Alexa Prize Award, TaskBot Finalist (Top 5), 2023 Amazon Alexa Prize Award, SocialBot Second Place, 2023 Amazon Alexa Prize Award, SimBot Third Place, 2022 Google Faculty Research Award, 2022 AAII Interdisciplinary Award, 2022 CVPR Best Student Paper Award, 2019 Machine Learning and Data Mining Visual Computing and Interaction Bio Xin (Eric) Wang is an Assistant Professor in The Computer Science Department at UC Santa Barbara and the Head of Research at Simular .",
+        "He has received several and recognitions for his work, including Best Paper from CVPR and ICLRW, Google Research Faculty Award, Amazon Alexa Prize , Cisco Research Award, eBay Research , and various gift from Adobe, Snap, Microsoft, Cybever, etc."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "vision"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 2,
+        "publication_signal_count": 3
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "present",
@@ -1246,16 +1750,43 @@
         "human-ai experience",
         "interfaces"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "hci"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "human-ai experience",
         "interfaces"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Misha Sra Associate Professor She/Her/Hers 2151 Human-AI Experience Lab PhD, MIT Media Lab 2018 SM, MIT Media Lab 2013 Human Centered and Social Computing Machine Learning and Data Mining Visual Computing and Interaction Bio Misha Sra is the John and Eileen Gerngross Assistant Professor of Computer Science at the University of California, Santa Barbara where she directs the Human-AI Experience Lab in the Computer Science department at UCSB.",
+        "Misha received her PhD from the MIT Media Lab in 2018, advised by Prof.",
+        "This shift presents unprecedented opportunities to rethink human-AI collaboration.",
+        "What new collaboration paradigms emerge when AI becomes an active participant in creative, analytical, and decision-making processes?",
+        "By shaping human-AI systems that empower, augment, and co-create with people, we can unlock new possibilities in work, learning, and creativity—redefining what is possible in human-machine collaboration"
+      ],
       "selected_publication_mentions": [
         "She has published at the most selective HCI, VR, and machine learning venues such as CHI, UIST, VR, EMNLP and CVPR where she received four best paper and honorable mentions."
       ],
       "publication_signal_notes": "She has published at the most selective HCI, VR, and machine learning venues such as CHI, UIST, VR, EMNLP and CVPR where she received four best paper and honorable mentions.",
+      "honors_highlights": [
+        "She has published at the most selective HCI, VR, and machine learning venues such as CHI, UIST, VR, EMNLP and CVPR where she received four best paper and honorable mentions.",
+        "In 2023, she was awarded an NSF CAREER Award for her work in Human-AI Interaction design."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "hci"
+        ],
+        "applications": [],
+        "honors_count": 2,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1290,17 +1821,44 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Computer Science, SUNY at Stony Brook BE (Hons) Electrical Engineering, BITS, India 1995-1996 Vice-chair, Graduate Council 2009- Director of Engineering Computing Infrastructure, College of Engineering 2011-2012 Vice-chair, Graduate Council 2012-2013 Chair, Graduate Council 2023 - Chair, Computer Science Off- 1993 Visiting Scientist, IBM Almaden Research Center 1997-2009 Senior Visiting Research Scientist, NEC Research Laboratories of America 2006-2007 VP, Data Solutions and Advertising Systems, ASK.com 2013-2014 Visiting Scientist, Advertising Infrastructure Group, Google GoogleScholar 1980 Gold Medal, BITS, Pilani (India) 2002 Best Paper, IEEE International Conference on Data Engineering 2010 ACM Distinguished Scientist 2011 Outstanding Graduate Mentor, Academic Senate, UCSB 2011 Best Paper (runner-up), IEEE International Conference on Mobile Data Management 2012 IEEE Fellow 2012 ACM Fellow 2012 William Mong Fellow, Hong Kong University Database and Information Systems Operating Systems and Distributed Systems Bio Divyakant Agrawal is a Distinguished Professor, the Chair of the Department of Computer Science, and the Director of Engineering Computing Infrastructure at the University of California at Santa Barbara.",
+        "During his professional career, Professor Agrawal has served on numerous Program Committees of International Conferences, Symposia, and Workshops and served as an editor of the journal of Distributed and Parallel Databases (1993-2008), and the VLDB journal (2003-2008).",
+        "His current interests are in the area of scalable data management and data analysis in Cloud Computing environments, security and privacy of data in the cloud, and scalable analytics over social networks data and social media.",
+        "Research Professor Agrawal’s research focus is on: design and development of large-scale distributed, scalable, and reliable data management platforms for storing, managing, and analyzing big data.",
+        "In the context of big data analytics, Professor Agrawal and his collaborators have focused on social networks and social media data and have proposed algorithms to limit misinformation campaigns in social networks, to model user adoption behavior in social networks, and for reporting dominant information trends in structural and geographical contexts.",
+        "His current research activities are focused in developing new approaches for managing geo-replicated data over multiple data-centers and for security and privacy of data in the cloud"
+      ],
       "selected_publication_mentions": [
         "Computer Science, SUNY at Stony Brook BE (Hons) Electrical Engineering, BITS, India 1995-1996 Vice-chair, Graduate Council 2009- Director of Engineering Computing Infrastructure, College of Engineering 2011-2012 Vice-chair, Graduate Council 2012-2013 Chair, Graduate Council 2023 - Chair, Computer Science Off- 1993 Visiting Scientist, IBM Almaden Research Center 1997-2009 Senior Visiting Research Scientist, NEC Research Laboratories of America 2006-2007 VP, Data Solutions and Advertising Systems, ASK.com 2013-2014 Visiting Scientist, Advertising Infrastructure Group, Google GoogleScholar 1980 Gold Medal, BITS, Pilani (India) 2002 Best Paper, IEEE International Conference on Data Engineering 2010 ACM Distinguished Scientist 2011 Outstanding Graduate Mentor, Academic Senate, UCSB 2011 Best Paper (runner-up), IEEE International Conference on Mobile Data Management 2012 IEEE Fellow 2012 ACM Fellow 2012 William Mong Fellow, Hong Kong University Database and Information Systems Operating Systems and Distributed Systems Bio Divyakant Agrawal is a Distinguished Professor, the Chair of the Department of Computer Science, and the Director of Engineering Computing Infrastructure at the University of California at Santa Barbara.",
         "During his professional career, Professor Agrawal has served on numerous Program Committees of International Conferences, Symposia, and Workshops and served as an editor of the journal of Distributed and Parallel Databases (1993-2008), and the VLDB journal (2003-2008).",
         "He has published more than 350 research manuscripts in prestigious forums (journals, conferences, symposia, and workshops) on wide range of topics related to data management and distributed systems and has advised more than 35 Doctoral students during his academic career."
       ],
       "publication_signal_notes": "Computer Science, SUNY at Stony Brook BE (Hons) Electrical Engineering, BITS, India 1995-1996 Vice-chair, Graduate Council 2009- Director of Engineering Computing Infrastructure, College of Engineering 2011-2012 Vice-chair, Graduate Council 2012-2013 Chair, Graduate Council 2023 - Chair, Computer Science Off- 1993 Visiting Scientist, IBM Almaden Research Center 1997-2009 Senior Visiting Research Scientist, NEC Research Laboratories of America 2006-2007 VP, Data Solutions and Advertising Systems, ASK.com 2013-2014 Visiting Scientist, Advertising Infrastructure Group, Google GoogleScholar 1980 Gold Medal, BITS, Pilani (India) 2002 Best Paper, IEEE International Conference on Data Engineering 2010 ACM Distinguished Scientist 2011 Outstanding Graduate Mentor, Academic Senate, UCSB 2011 Best Paper (runner-up), IEEE International Conference on Mobile Data Management 2012 IEEE Fellow 2012 ACM Fellow 2012 William Mong Fellow, Hong Kong University Database and Information Systems Operating Systems and Distributed Systems Bio Divyakant Agrawal is a Distinguished Professor, the Chair of the Department of Computer Science, and the Director of Engineering Computing Infrastructure at the University of California at Santa Barbara. | During his professional career, Professor Agrawal has served on numerous Program Committees of International Conferences, Symposia, and Workshops and served as an editor of the journal of Distributed and Parallel Databases (1993-2008), and the VLDB journal (2003-2008). | He has published more than 350 research manuscripts in prestigious forums (journals, conferences, symposia, and workshops) on wide range of topics related to data management and distributed systems and has advised more than 35 Doctoral students during his academic career.",
+      "honors_highlights": [
+        "Divyakant Agrawal Distinguished Professor & Chair The Leadership Endowed Chair in CS He/Him/His 3117 Ph.D.",
+        "Computer Science, SUNY at Stony Brook BE (Hons) Electrical Engineering, BITS, India 1995-1996 Vice-chair, Graduate Council 2009- Director of Engineering Computing Infrastructure, College of Engineering 2011-2012 Vice-chair, Graduate Council 2012-2013 Chair, Graduate Council 2023 - Chair, Computer Science Off- 1993 Visiting Scientist, IBM Almaden Research Center 1997-2009 Senior Visiting Research Scientist, NEC Research Laboratories of America 2006-2007 VP, Data Solutions and Advertising Systems, ASK.com 2013-2014 Visiting Scientist, Advertising Infrastructure Group, Google GoogleScholar 1980 Gold Medal, BITS, Pilani (India) 2002 Best Paper, IEEE International Conference on Data Engineering 2010 ACM Distinguished Scientist 2011 Outstanding Graduate Mentor, Academic Senate, UCSB 2011 Best Paper (runner-up), IEEE International Conference on Mobile Data Management 2012 IEEE Fellow 2012 ACM Fellow 2012 William Mong Fellow, Hong Kong University Database and Information Systems Operating Systems and Distributed Systems Bio Divyakant Agrawal is a Distinguished Professor, the Chair of the Department of Computer Science, and the Director of Engineering Computing Infrastructure at the University of California at Santa Barbara.",
+        "During his professional career, Professor Agrawal has served on numerous Program Committees of International Conferences, Symposia, and Workshops and served as an editor of the journal of Distributed and Parallel Databases (1993-2008), and the VLDB journal (2003-2008).",
+        "He has published more than 350 research manuscripts in prestigious forums (journals, conferences, symposia, and workshops) on wide range of topics related to data management and distributed systems and has advised more than 35 Doctoral students during his academic career.",
+        "He received the 2011 Outstanding Graduate Mentor Award from the Academic Senate at UC Santa Barbara."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 5,
+        "publication_signal_count": 3
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1335,13 +1893,27 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1376,13 +1948,28 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Jonathan Balkind Assistant Professor He/Him/His 2007 Henley Hall Ph.D in Computer Science, Princeton University (2022) M.A., Computer Science, Princeton University (2015) M.Sci., Computing Science, University of Glasgow, Scotland (2013) Exchange Student, Department of Computer Science, UCSB (2009-10) Computer Architecture Operating Systems and Distributed Systems Programming Languages and Software Engineering Bio Jonathan Balkind is an Assistant Professor of Computer Science at UCSB.",
+        "His research interests lie at the intersection of Computer Architecture, Programming Languages, and Operating Systems."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Jonathan was an Open Hardware Trailblazer Fellow and recipient of the NSF CAREER Award."
+      ],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1417,16 +2004,50 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "networking"
+      ],
+      "application_keywords": [
+        "communications",
+        "wireless",
+        "mobility"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Belding Professor She/Her/Hers 5107 Ph.D., Electrical and Computer Engineering, UC Santa Barbara, 2000 M.S., Electrical and Computer Engineering, UC Santa Barbara, 1997 Center for Information Technology and Society (CITS), Associate Director Institute for Energy Efficiency, Member NCWIT Harrold and Notkin Research and Graduate Mentoring Award, 2015 IEEE Fellow, 2014 UCSB Outstanding Graduate Mentor Award, 2012 ACM Distinguished Scientist, 2011 MIT Technology Review TR100, 2002 ACM Fellow, 2018 Networking Bio Elizabeth M.",
+        "Her ICTD projects have included work in Zambia, South Africa, Mongolia, and refugee camps.",
+        "She is the founder and director of the Mobility Management and Networking (MOMENT) Laboratory.",
+        "Belding is the author of over 150 technical papers on wireless networking and has served on over 80 conference technical program committees.",
+        "Her current work includes a number of projects in sub-Saharan Africa.",
+        "Her work is highly interdisciplinary, including collaborators from electrical engineering, film and media studies, and communications."
+      ],
       "selected_publication_mentions": [
         "The original AODV paper published in WMCSA'99 received the 2018 ACM SIGMOBILE Test of Time Award.",
         "Belding is the author of over 150 technical papers on wireless networking and has served on over 80 conference technical program committees."
       ],
       "publication_signal_notes": "The original AODV paper published in WMCSA'99 received the 2018 ACM SIGMOBILE Test of Time Award. | Belding is the author of over 150 technical papers on wireless networking and has served on over 80 conference technical program committees.",
+      "honors_highlights": [
+        "Belding Professor She/Her/Hers 5107 Ph.D., Electrical and Computer Engineering, UC Santa Barbara, 2000 M.S., Electrical and Computer Engineering, UC Santa Barbara, 1997 Center for Information Technology and Society (CITS), Associate Director Institute for Energy Efficiency, Member NCWIT Harrold and Notkin Research and Graduate Mentoring Award, 2015 IEEE Fellow, 2014 UCSB Outstanding Graduate Mentor Award, 2012 ACM Distinguished Scientist, 2011 MIT Technology Review TR100, 2002 ACM Fellow, 2018 Networking Bio Elizabeth M.",
+        "The original AODV paper published in WMCSA'99 received the 2018 ACM SIGMOBILE Test of Time Award.",
+        "Belding is an ACM Fellow and an IEEE Fellow.",
+        "She is particularly proud of receiving the UCSB Outstanding Graduate Mentor Award in 2012 and the NCWIT Harrold and Notkin Research and Graduate Mentoring Award in 2015 for her mentorship of graduate students."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "networking"
+        ],
+        "applications": [
+          "communications",
+          "wireless",
+          "mobility"
+        ],
+        "honors_count": 4,
+        "publication_signal_count": 2
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1461,15 +2082,36 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Before joining UCSB, he was an assistant professor in the Department of Electrical and Computer Engineering at the University of Florida and a postdoctoral research associate at the Research Laboratory of Electronics (RLE) and Institute for Data, Systems, and Society (IDSS), Massachusetts Institute of Technology (MIT)."
+      ],
       "selected_publication_mentions": [
         "from the Department of Electronic Engineering at Tsinghua University Google Scholar 16th Abraham Wald Prize, Sequential Analysis 2023 MLSP 2022 Best Student Paper Award 2022 Yi-Min Wang and Pi-Yu Chung Research Award, UIUC 2019 Machine Learning and Data Mining Bio Yuheng Bu is an assistant professor in the Department of Computer Science (CS) at the University of California, Santa Barbara (UCSB)."
       ],
       "publication_signal_notes": "from the Department of Electronic Engineering at Tsinghua University Google Scholar 16th Abraham Wald Prize, Sequential Analysis 2023 MLSP 2022 Best Student Paper Award 2022 Yi-Min Wang and Pi-Yu Chung Research Award, UIUC 2019 Machine Learning and Data Mining Bio Yuheng Bu is an assistant professor in the Department of Computer Science (CS) at the University of California, Santa Barbara (UCSB).",
+      "honors_highlights": [
+        "from the Department of Electronic Engineering at Tsinghua University Google Scholar 16th Abraham Wald Prize, Sequential Analysis 2023 MLSP 2022 Best Student Paper Award 2022 Yi-Min Wang and Pi-Yu Chung Research Award, UIUC 2019 Machine Learning and Data Mining Bio Yuheng Bu is an assistant professor in the Department of Computer Science (CS) at the University of California, Santa Barbara (UCSB).",
+        "(with honors) from the Department of Electronic Engineering at Tsinghua University in 2014."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 2,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1504,11 +2146,23 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "formal methods",
+        "security"
+      ],
+      "application_keywords": [
+        "cybersecurity"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Electrical and Electronics Engineering, Middle East Technical University, 1989 Verification Laboratory Computer Engineering Program Center for CyberSecurity UCSB Computer Science Verification Lab Keynote speaker, 2013 IFIP Joint International Conference on Formal Techniques for Distributed Systems (33rd FORTE / 15th FMOODS), Florence, Italy, 2013 ACM Recognition of Service Award, 2012 Keynote speaker, 9th International Symposium on Formal Aspects of Component Software (FACS 2012), Mountain View, CA, 2012 Keynote speaker, 13th International Workshop on Veriﬁcation of Inﬁnite-State Systems (Inﬁnity 2011), Taipei, Taiwan, 2011 Keynote speaker, 8th ACM SIGPLAN-SIGSOFT Workshop on Program Analysis for Software Tools and Engineering (PASTE 2008), Atlanta, GA, 2008 Keynote speaker, 19th International Conference on Concurrency Theory (CONCUR 2008), Toronto, Canada, 2008 Keynote speaker, 6th ACM-IEEE International Conference on Formal Methods and Models for Codesign (MEMOCODE 2008), Anaheim, CA, 2008 Best paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) ACM SIGSOFT distinguished paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) National Science Foundation Faculty Early Career Development (CAREER) Award, 2000 Regents’ Junior Faculty Fellowship, University of California, Santa Barbara, 1999 NATO Science Fellowship, 1993 Programming Languages and Software Engineering Security and Cryptography Bio Tevfik Bultan is a Professor in the Department of Computer Science at the University of California, Santa Barbara (UCSB).",
+        "He has more than 100 refereed research publications and has served on more than 50 technical program committees of international conferences and workshops.",
+        "He co-chaired the program committees of the 9th International Symposium on Automated Technology for Verification and Analysis (ATVA 2011), the 20th International Symposium on the Foundations of Software Engineering (FSE 2012) which is the flagship conference of ACM SIGSOFT, the 28th IEEE/ACM International Conference on Automated Software Engineering (ASE 2013) and the 41st ACM/IEEE International Conference on Software Engineering (ICSE 2019) which is the premier software engineering conference in the world."
+      ],
       "selected_publication_mentions": [
         "Electrical and Electronics Engineering, Middle East Technical University, 1989 Verification Laboratory Computer Engineering Program Center for CyberSecurity UCSB Computer Science Verification Lab Keynote speaker, 2013 IFIP Joint International Conference on Formal Techniques for Distributed Systems (33rd FORTE / 15th FMOODS), Florence, Italy, 2013 ACM Recognition of Service Award, 2012 Keynote speaker, 9th International Symposium on Formal Aspects of Component Software (FACS 2012), Mountain View, CA, 2012 Keynote speaker, 13th International Workshop on Veriﬁcation of Inﬁnite-State Systems (Inﬁnity 2011), Taipei, Taiwan, 2011 Keynote speaker, 8th ACM SIGPLAN-SIGSOFT Workshop on Program Analysis for Software Tools and Engineering (PASTE 2008), Atlanta, GA, 2008 Keynote speaker, 19th International Conference on Concurrency Theory (CONCUR 2008), Toronto, Canada, 2008 Keynote speaker, 6th ACM-IEEE International Conference on Formal Methods and Models for Codesign (MEMOCODE 2008), Anaheim, CA, 2008 Best paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) ACM SIGSOFT distinguished paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) National Science Foundation Faculty Early Career Development (CAREER) Award, 2000 Regents’ Junior Faculty Fellowship, University of California, Santa Barbara, 1999 NATO Science Fellowship, 1993 Programming Languages and Software Engineering Security and Cryptography Bio Tevfik Bultan is a Professor in the Department of Computer Science at the University of California, Santa Barbara (UCSB).",
         "He has more than 100 refereed research publications and has served on more than 50 technical program committees of international conferences and workshops.",
@@ -1516,6 +2170,20 @@
         "He is currently serving on the steering committees of ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA), IEEE/ACM International Conference on Automated Software Engineering (ASE), and ACM/IEEE International Conference on Software Engineering (ICSE)."
       ],
       "publication_signal_notes": "Electrical and Electronics Engineering, Middle East Technical University, 1989 Verification Laboratory Computer Engineering Program Center for CyberSecurity UCSB Computer Science Verification Lab Keynote speaker, 2013 IFIP Joint International Conference on Formal Techniques for Distributed Systems (33rd FORTE / 15th FMOODS), Florence, Italy, 2013 ACM Recognition of Service Award, 2012 Keynote speaker, 9th International Symposium on Formal Aspects of Component Software (FACS 2012), Mountain View, CA, 2012 Keynote speaker, 13th International Workshop on Veriﬁcation of Inﬁnite-State Systems (Inﬁnity 2011), Taipei, Taiwan, 2011 Keynote speaker, 8th ACM SIGPLAN-SIGSOFT Workshop on Program Analysis for Software Tools and Engineering (PASTE 2008), Atlanta, GA, 2008 Keynote speaker, 19th International Conference on Concurrency Theory (CONCUR 2008), Toronto, Canada, 2008 Keynote speaker, 6th ACM-IEEE International Conference on Formal Methods and Models for Codesign (MEMOCODE 2008), Anaheim, CA, 2008 Best paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) ACM SIGSOFT distinguished paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) National Science Foundation Faculty Early Career Development (CAREER) Award, 2000 Regents’ Junior Faculty Fellowship, University of California, Santa Barbara, 1999 NATO Science Fellowship, 1993 Programming Languages and Software Engineering Security and Cryptography Bio Tevfik Bultan is a Professor in the Department of Computer Science at the University of California, Santa Barbara (UCSB). | He has more than 100 refereed research publications and has served on more than 50 technical program committees of international conferences and workshops. | He co-chaired the program committees of the 9th International Symposium on Automated Technology for Verification and Analysis (ATVA 2011), the 20th International Symposium on the Foundations of Software Engineering (FSE 2012) which is the flagship conference of ACM SIGSOFT, the 28th IEEE/ACM International Conference on Automated Software Engineering (ASE 2013) and the 41st ACM/IEEE International Conference on Software Engineering (ICSE 2019) which is the premier software engineering conference in the world. | He is currently serving on the steering committees of ACM SIGSOFT International Symposium on Software Testing and Analysis (ISSTA), IEEE/ACM International Conference on Automated Software Engineering (ASE), and ACM/IEEE International Conference on Software Engineering (ICSE).",
+      "honors_highlights": [
+        "Electrical and Electronics Engineering, Middle East Technical University, 1989 Verification Laboratory Computer Engineering Program Center for CyberSecurity UCSB Computer Science Verification Lab Keynote speaker, 2013 IFIP Joint International Conference on Formal Techniques for Distributed Systems (33rd FORTE / 15th FMOODS), Florence, Italy, 2013 ACM Recognition of Service Award, 2012 Keynote speaker, 9th International Symposium on Formal Aspects of Component Software (FACS 2012), Mountain View, CA, 2012 Keynote speaker, 13th International Workshop on Veriﬁcation of Inﬁnite-State Systems (Inﬁnity 2011), Taipei, Taiwan, 2011 Keynote speaker, 8th ACM SIGPLAN-SIGSOFT Workshop on Program Analysis for Software Tools and Engineering (PASTE 2008), Atlanta, GA, 2008 Keynote speaker, 19th International Conference on Concurrency Theory (CONCUR 2008), Toronto, Canada, 2008 Keynote speaker, 6th ACM-IEEE International Conference on Formal Methods and Models for Codesign (MEMOCODE 2008), Anaheim, CA, 2008 Best paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) ACM SIGSOFT distinguished paper award, 20th IEEE/ACM International Conference on Automated Software Engineering (ASE 2005) National Science Foundation Faculty Early Career Development (CAREER) Award, 2000 Regents’ Junior Faculty Fellowship, University of California, Santa Barbara, 1999 NATO Science Fellowship, 1993 Programming Languages and Software Engineering Security and Cryptography Bio Tevfik Bultan is a Professor in the Department of Computer Science at the University of California, Santa Barbara (UCSB)."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "formal methods",
+          "security"
+        ],
+        "applications": [
+          "cybersecurity"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 4
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1550,13 +2218,33 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "vision"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Prior to his current position, Shiyu was a research scientist at the MIT-IBM Watson AI Lab, where he worked closely with Prof."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "vision"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1591,16 +2279,37 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "He has been Program Chair for multiple database and distributed systems conferences.",
+        "The issue of scalability of data is encountered in a wide variety of applications, including astronomy, biology, physics, as well as network analysis and data mining.",
+        "El Abbadi's research is to explore novel methods to solve these scalability problems in a reliable, efficient and privacy preserving manner."
+      ],
       "selected_publication_mentions": [
         "He has served as a journal editor for several database journals, including, currently, The VLDB Journal and IEEE Transactions on Computers.",
         "He has been Program Chair for multiple database and distributed systems conferences."
       ],
       "publication_signal_notes": "He has served as a journal editor for several database journals, including, currently, The VLDB Journal and IEEE Transactions on Computers. | He has been Program Chair for multiple database and distributed systems conferences.",
+      "honors_highlights": [
+        "Amr El Abbadi Distinguished Professor He/Him/His 3115 Ph.D.",
+        "Computer Science, Alexandria University, Egypt ACM Fellow AAAS Fellow UCSB Senate Outstanding Mentorship Award for his excellence in mentoring graduate students Database and Information Systems Operating Systems and Distributed Systems Bio Amr El Abbadi is a Distinguished Professor of the Computer Science Department at the University of California, Santa Barbara."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 2,
+        "publication_signal_count": 2
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1635,15 +2344,39 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Fellowship, finalist Programming Languages and Software Engineering Bio Yu Feng is an Assistant Professor for the Department of Computer Science at the University of California, Santa Barbara.",
+        "His research to date focuses on developing automated programming techniques that combine program synthesis and program analysis to improve software usability, reliability, and security.",
+        "For instance, Yu has developed systems for tackling security vulnerabilities (FSE'14, NDSS'17, CCS'17), automating complex programming tasks (PLDI'17, POPL'17, PLDI'18), and challenging the limits of existing program analysis (OOPSLA'15, APLAS'15).",
+        "Research My interests include programming languages, static program analysis/verification, program synthesis, and security.",
+        "More specifically, I want to build automated tools to guarantee the desired behavior of a system in a sound, precise and scalable way."
+      ],
       "selected_publication_mentions": [
         "Computer Science, Belhang University, Beijing, China B.S Civil Engineering, Central South University, Changsha, China GoogleScholar 2017 UT Austin Graduate School Dissertation Writing Fellowship 2017 ACM SIGPLAN PAC award 2016 Symantec Graduate Fellowship, finalist 2016 IBM Ph.D."
       ],
       "publication_signal_notes": "Computer Science, Belhang University, Beijing, China B.S Civil Engineering, Central South University, Changsha, China GoogleScholar 2017 UT Austin Graduate School Dissertation Writing Fellowship 2017 ACM SIGPLAN PAC award 2016 Symantec Graduate Fellowship, finalist 2016 IBM Ph.D.",
+      "honors_highlights": [
+        "Computer Science, Belhang University, Beijing, China B.S Civil Engineering, Central South University, Changsha, China GoogleScholar 2017 UT Austin Graduate School Dissertation Writing Fellowship 2017 ACM SIGPLAN PAC award 2016 Symantec Graduate Fellowship, finalist 2016 IBM Ph.D.",
+        "Fellowship, finalist 2015 MSR Ph.D.",
+        "Fellowship, finalist Programming Languages and Software Engineering Bio Yu Feng is an Assistant Professor for the Department of Computer Science at the University of California, Santa Barbara."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 3,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1678,13 +2411,31 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "vision",
+        "graphics"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Sloan Fellowship in Mathematics Computational Science and Engineering Bio Professor Gibou received his PhD from the Applied Mathematics Department at UCLA, and did his post-doctoral research in the Departments of Mathematics and Computer Science at Stanford University."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "vision",
+          "graphics"
+        ],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1719,15 +2470,44 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "reinforcement learning",
+        "machine learning",
+        "planning",
+        "security"
+      ],
+      "application_keywords": [
+        "cybersecurity"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [
         "Fellowship Finalist (2020), and ACM CCS Outstanding Paper Award (2018)."
       ],
       "publication_signal_notes": "Fellowship Finalist (2020), and ACM CCS Outstanding Paper Award (2018).",
+      "honors_highlights": [
+        "Fellowship (2020-2022), Facebook/Baidu Ph.D.",
+        "Fellowship Finalist (2020), and ACM CCS Outstanding Paper Award (2018)."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "reinforcement learning",
+          "machine learning",
+          "planning",
+          "security"
+        ],
+        "applications": [
+          "cybersecurity"
+        ],
+        "honors_count": 2,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1762,17 +2542,59 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "control",
+        "optimization",
+        "learning",
+        "machine learning",
+        "security",
+        "networking"
+      ],
+      "application_keywords": [
+        "cybersecurity",
+        "virtual reality",
+        "communications"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Arpit Gupta Associate Professor He/Him/His 5163 PhD, Computer Science, Princeton University MS, Computer Science, NC State University BTech, Electronics and Communications Engineering, Indian Institute of Technology, Roorkee Publications Honorable Mention, SIGCOMM Doctoral Dissertation Award, 2019 Best Paper Award, ACM SOSR, 2017 Community Award, USENI NSDI, 2016 Juniper/Comcast Throwdown Winner, 2016 Internet2 Innovation Award, 2013 College of Engineering Fellowship, NC State University 2010 Machine Learning and Data Mining Networking Security and Cryptography Bio Arpit Gupta joined the Department of Computer Science as an Assistant Professor in 2019.",
+        "His research involves the design and implementation of systems that solve real-world network operations problems at the intersection of networking, cybersecurity, and machine learning, with a specific focus on flexible and scalable systems for managing production networks.",
+        "in ECE from Indian Institute of Technology, Roorkee.",
+        "Research As a systems researcher, I design and build easy-to-use, scalable, and deployable systems that solve real-world problems at the intersection of networking, cybersecurity, and machine learning .",
+        "I then design innovative and provable solutions to these problems using various theoretical techniques (e.g., optimization, graph theory, machine learning) and emerging technologies (e.g., programmable data plane, scalable stream processors).",
+        "To satisfy the increased security, availability, and performance requirements of modern networks, my goal is to design and build self-driving networks that automatically (with no or little humans intervention) make holistic (not protocol-specific) control decisions in real time"
+      ],
       "selected_publication_mentions": [
         "Arpit Gupta Associate Professor He/Him/His 5163 PhD, Computer Science, Princeton University MS, Computer Science, NC State University BTech, Electronics and Communications Engineering, Indian Institute of Technology, Roorkee Publications Honorable Mention, SIGCOMM Doctoral Dissertation Award, 2019 Best Paper Award, ACM SOSR, 2017 Community Award, USENI NSDI, 2016 Juniper/Comcast Throwdown Winner, 2016 Internet2 Innovation Award, 2013 College of Engineering Fellowship, NC State University 2010 Machine Learning and Data Mining Networking Security and Cryptography Bio Arpit Gupta joined the Department of Computer Science as an Assistant Professor in 2019.",
         "Arpit’s work appears at top-tier networking and systems conferences, including ACM SIGCOMM and USENIX NSDI.",
         "His work on SDX received the Internet2 Innovation Award, the USENIX NSDI Community Contribution Award, and the ACM SOSR Best Paper Award."
       ],
       "publication_signal_notes": "Arpit Gupta Associate Professor He/Him/His 5163 PhD, Computer Science, Princeton University MS, Computer Science, NC State University BTech, Electronics and Communications Engineering, Indian Institute of Technology, Roorkee Publications Honorable Mention, SIGCOMM Doctoral Dissertation Award, 2019 Best Paper Award, ACM SOSR, 2017 Community Award, USENI NSDI, 2016 Juniper/Comcast Throwdown Winner, 2016 Internet2 Innovation Award, 2013 College of Engineering Fellowship, NC State University 2010 Machine Learning and Data Mining Networking Security and Cryptography Bio Arpit Gupta joined the Department of Computer Science as an Assistant Professor in 2019. | Arpit’s work appears at top-tier networking and systems conferences, including ACM SIGCOMM and USENIX NSDI. | His work on SDX received the Internet2 Innovation Award, the USENIX NSDI Community Contribution Award, and the ACM SOSR Best Paper Award.",
+      "honors_highlights": [
+        "Arpit Gupta Associate Professor He/Him/His 5163 PhD, Computer Science, Princeton University MS, Computer Science, NC State University BTech, Electronics and Communications Engineering, Indian Institute of Technology, Roorkee Publications Honorable Mention, SIGCOMM Doctoral Dissertation Award, 2019 Best Paper Award, ACM SOSR, 2017 Community Award, USENI NSDI, 2016 Juniper/Comcast Throwdown Winner, 2016 Internet2 Innovation Award, 2013 College of Engineering Fellowship, NC State University 2010 Machine Learning and Data Mining Networking Security and Cryptography Bio Arpit Gupta joined the Department of Computer Science as an Assistant Professor in 2019.",
+        "His work on SDX received the Internet2 Innovation Award, the USENIX NSDI Community Contribution Award, and the ACM SOSR Best Paper Award."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "optimization",
+          "learning",
+          "machine learning",
+          "security",
+          "networking"
+        ],
+        "applications": [
+          "cybersecurity",
+          "virtual reality",
+          "communications"
+        ],
+        "honors_count": 2,
+        "publication_signal_count": 3
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1807,13 +2629,29 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Trinabh Gupta Associate Professor He/Him/His 1121 PhD, Computer Science, The University of Texas at Austin, 2017 BTech, Computer Science and Engineering, Indian Institute of Technology Delhi, 2009 Operating Systems and Distributed Systems Security and Cryptography Bio Trinabh Gupta is an Associate Professor for the Computer Science Department at the University of California, Santa Barbara (UCSB)."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1848,15 +2686,38 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "optimization",
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Ben Hardekopf Professor He/Him/His 1109 Ph.D., University of Texas at Austin, 2009 M.S., Computer Science, SUNY at Utica/Rome, 2001 B.S., Electrical Engineering and Computer Science, Duke University, 1997 NSF CAREER Award, 2014 Northrop Grumman Excellence in Teaching Award, 2013 Best Paper Award, ACM Conference on Virtual Execution Environments (VEE), 2014 Best Paper Award, Symposium on Code Generation and Optimization (CGO), 2011 Best Paper Award and Best Presentation Award, ACM Conference on Programming Language Design and Implementation (PLDI), 2007 Programming Languages and Software Engineering Bio Ben Hardekopf is a Professor of Computer Science at the University of California, Santa Barbara, where he leads the Programming Languages Research Laboratory.",
+        "Research Professor Hardekopf's main research area is Programming Languages, investigating programming language design, analysis, and implementation.",
+        "His main focus in this area is using program analysis and abstract interpretation to verify interesting properties of software, such as correctness and security.",
+        "He also investigates applying programming language techniques to other areas of Computer Science, such as Computer Architecture and verifying properties of hardware designs"
+      ],
       "selected_publication_mentions": [
         "Ben Hardekopf Professor He/Him/His 1109 Ph.D., University of Texas at Austin, 2009 M.S., Computer Science, SUNY at Utica/Rome, 2001 B.S., Electrical Engineering and Computer Science, Duke University, 1997 NSF CAREER Award, 2014 Northrop Grumman Excellence in Teaching Award, 2013 Best Paper Award, ACM Conference on Virtual Execution Environments (VEE), 2014 Best Paper Award, Symposium on Code Generation and Optimization (CGO), 2011 Best Paper Award and Best Presentation Award, ACM Conference on Programming Language Design and Implementation (PLDI), 2007 Programming Languages and Software Engineering Bio Ben Hardekopf is a Professor of Computer Science at the University of California, Santa Barbara, where he leads the Programming Languages Research Laboratory."
       ],
       "publication_signal_notes": "Ben Hardekopf Professor He/Him/His 1109 Ph.D., University of Texas at Austin, 2009 M.S., Computer Science, SUNY at Utica/Rome, 2001 B.S., Electrical Engineering and Computer Science, Duke University, 1997 NSF CAREER Award, 2014 Northrop Grumman Excellence in Teaching Award, 2013 Best Paper Award, ACM Conference on Virtual Execution Environments (VEE), 2014 Best Paper Award, Symposium on Code Generation and Optimization (CGO), 2011 Best Paper Award and Best Presentation Award, ACM Conference on Programming Language Design and Implementation (PLDI), 2007 Programming Languages and Software Engineering Bio Ben Hardekopf is a Professor of Computer Science at the University of California, Santa Barbara, where he leads the Programming Languages Research Laboratory.",
+      "honors_highlights": [
+        "Ben Hardekopf Professor He/Him/His 1109 Ph.D., University of Texas at Austin, 2009 M.S., Computer Science, SUNY at Utica/Rome, 2001 B.S., Electrical Engineering and Computer Science, Duke University, 1997 NSF CAREER Award, 2014 Northrop Grumman Excellence in Teaching Award, 2013 Best Paper Award, ACM Conference on Virtual Execution Environments (VEE), 2014 Best Paper Award, Symposium on Code Generation and Optimization (CGO), 2011 Best Paper Award and Best Presentation Award, ACM Conference on Programming Language Design and Implementation (PLDI), 2007 Programming Languages and Software Engineering Bio Ben Hardekopf is a Professor of Computer Science at the University of California, Santa Barbara, where he leads the Programming Languages Research Laboratory."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "optimization",
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1891,15 +2752,35 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "optimization",
+        "vision"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Computer Science, California State Univ., Northridge, 1996 Co-Lead of the IEE Food-Energy-Water Initiative Associate Dean of Graduate Division RACElab Publications UCSB Academic Senate Distinguished Teaching Award CRA-W Anita Borg Early Career (BECA) Award for Outstanding Research and Outreach Contributions College of Engineering Outstanding Faculty in Computer Science for Teaching Excellence NSF CAREER Award Operating Systems and Distributed Systems Programming Systems Internet of Things (IoT) Bio https://sites.cs.ucsb.edu/~ ckrintz/bio.html Research My research interests include programming and optimization advances for edge computing systems, distributed IoT devices, and AI applications that span the edge-cloud continuum."
+      ],
       "selected_publication_mentions": [
         "Computer Science, California State Univ., Northridge, 1996 Co-Lead of the IEE Food-Energy-Water Initiative Associate Dean of Graduate Division RACElab Publications UCSB Academic Senate Distinguished Teaching Award CRA-W Anita Borg Early Career (BECA) Award for Outstanding Research and Outreach Contributions College of Engineering Outstanding Faculty in Computer Science for Teaching Excellence NSF CAREER Award Operating Systems and Distributed Systems Programming Systems Internet of Things (IoT) Bio https://sites.cs.ucsb.edu/~ ckrintz/bio.html Research My research interests include programming and optimization advances for edge computing systems, distributed IoT devices, and AI applications that span the edge-cloud continuum."
       ],
       "publication_signal_notes": "Computer Science, California State Univ., Northridge, 1996 Co-Lead of the IEE Food-Energy-Water Initiative Associate Dean of Graduate Division RACElab Publications UCSB Academic Senate Distinguished Teaching Award CRA-W Anita Borg Early Career (BECA) Award for Outstanding Research and Outreach Contributions College of Engineering Outstanding Faculty in Computer Science for Teaching Excellence NSF CAREER Award Operating Systems and Distributed Systems Programming Systems Internet of Things (IoT) Bio https://sites.cs.ucsb.edu/~ ckrintz/bio.html Research My research interests include programming and optimization advances for edge computing systems, distributed IoT devices, and AI applications that span the edge-cloud continuum.",
+      "honors_highlights": [
+        "Computer Science, California State Univ., Northridge, 1996 Co-Lead of the IEE Food-Energy-Water Initiative Associate Dean of Graduate Division RACElab Publications UCSB Academic Senate Distinguished Teaching Award CRA-W Anita Borg Early Career (BECA) Award for Outstanding Research and Outreach Contributions College of Engineering Outstanding Faculty in Computer Science for Teaching Excellence NSF CAREER Award Operating Systems and Distributed Systems Programming Systems Internet of Things (IoT) Bio https://sites.cs.ucsb.edu/~ ckrintz/bio.html Research My research interests include programming and optimization advances for edge computing systems, distributed IoT devices, and AI applications that span the edge-cloud continuum."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "optimization",
+          "vision"
+        ],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1934,13 +2815,33 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "modeling"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Sanjukta Krishnagopal Assistant Professor 2123 Networks Lab Ph.D Physics, University of Maryland, College Park Off- UCLA Applied Math Algorithms and Theory Computational Science and Engineering Human Centered and Social Computing Machine Learning and Data Mining Bio Sanjukta's research interests are multidisciplinary, with the goal of developing computational and mathematical tools to answer questions about real world physical, social, and biological systems."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "modeling"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -1975,15 +2876,38 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [
+        "communications"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "I enjoy to build systems and to make security tools available to the public.",
+        "As part of my research, I have contributed to systems that analyze programs to determine whether they are malicious or not (both for x86 binaries and mobile application)."
+      ],
       "selected_publication_mentions": [
         "I have published more than 100 conference and journal papers, and I am a recent recipient of the NSF CAREER Award, the MIT Technology Review TR35 Award for young innovators, an IBM Faculty Award, and several best paper ."
       ],
       "publication_signal_notes": "I have published more than 100 conference and journal papers, and I am a recent recipient of the NSF CAREER Award, the MIT Technology Review TR35 Award for young innovators, an IBM Faculty Award, and several best paper .",
+      "honors_highlights": [
+        "I have published more than 100 conference and journal papers, and I am a recent recipient of the NSF CAREER Award, the MIT Technology Review TR35 Award for young innovators, an IBM Faculty Award, and several best paper ."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [
+          "communications"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2018,15 +2942,28 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [
         "Mathematics, University of Bergen, Norway Outstanding Young Researcher Meltzer Award, 2009 EATCS European Symposium on Algorithms (ESA 2015) Best Paper Algorithms and Theory Bio Daniel Lokshtanov is a Professor and Vice Chair of Computer Science at UCSB, and a Visiting Professor at the University of Bergen."
       ],
       "publication_signal_notes": "Mathematics, University of Bergen, Norway Outstanding Young Researcher Meltzer Award, 2009 EATCS European Symposium on Algorithms (ESA 2015) Best Paper Algorithms and Theory Bio Daniel Lokshtanov is a Professor and Vice Chair of Computer Science at UCSB, and a Visiting Professor at the University of Bergen.",
+      "honors_highlights": [
+        "Mathematics, University of Bergen, Norway Outstanding Young Researcher Meltzer Award, 2009 EATCS European Symposium on Algorithms (ESA 2015) Best Paper Algorithms and Theory Bio Daniel Lokshtanov is a Professor and Vice Chair of Computer Science at UCSB, and a Visiting Professor at the University of Bergen.",
+        "Lokshtanov spent two years (2010-2012) as a Simons Postdoctoral Fellow at University of California at San Diego."
+      ],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 2,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2061,17 +2998,46 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "control",
+        "security"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Co-chair of the Simons Institute Advisory Board, 2019-2022.",
+        "Program chair for Usenix ATC 2019, LADIS 2012, Locality 2007, PODC 2006, Locality 2005, and DISC 2002.",
+        "She heads the Foundations of Financial Technology lab .",
+        "Malkhi is sought-after industrial consultant, currently advising various projects, including Space Computer , Lyquor Labs , Nubit|Bitcoin Thunderbolt , Espresso Systems , and Chainlink Labs .",
+        "Formerly, she served as Distinguished Scientist of Chainlink Labs (2022-2025).",
+        "Prior to that, Malkhi was a partner principal researcher at Microsoft Research, 2004-2014; an Associate Professor of the Hebrew University of Jerusalem, and a senior researcher at AT&T Labs."
+      ],
       "selected_publication_mentions": [
         "The Hebrew University of Jerusalem Google Scholar IEEE TCDP Outstanding Technical Achievement Award, 2021.",
         "Associate editor of the Distributed Computing Journal, 2002-2018.",
         "Her work resulted in over 200 publications as well as a strong impact on computing technology."
       ],
       "publication_signal_notes": "The Hebrew University of Jerusalem Google Scholar IEEE TCDP Outstanding Technical Achievement Award, 2021. | Associate editor of the Distributed Computing Journal, 2002-2018. | Her work resulted in over 200 publications as well as a strong impact on computing technology.",
+      "honors_highlights": [
+        "The Hebrew University of Jerusalem Google Scholar IEEE TCDP Outstanding Technical Achievement Award, 2021.",
+        "\"Chuck\" Thacker Breakthrough in Computing Award, 2020-present.",
+        "IBM Faculty award recipient, 2003 and 2004.",
+        "German-Israeli Foundation (G.I.F.) Young Scientist career award, 2002.",
+        "Formerly, she served as Distinguished Scientist of Chainlink Labs (2022-2025)."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "security"
+        ],
+        "applications": [],
+        "honors_count": 5,
+        "publication_signal_count": 3
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2107,13 +3073,43 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "simulation",
+        "modeling"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Mathematics/Computer Science, University of Illinois (UIUC), 1974 Department of Mechanical Engineering Institute for Collaborative Biotechnologies Member of the US National Academy of Engineering and Fellow of ACM, ASME, SIAM and AAAS UCSB Faculty Research Lecturer 2011 Wilkinson Prize for Numerical Software 1991 Dahlquist Prize 1999 SIAM/ACM Prize for Computational Science and Engineering 2013.",
+        "Computational Science and Engineering Human Centered and Social Computing Machine Learning and Data Mining Bio Distinguished Professor, Department of Computer Science and Department of Mechanical Engineering.",
+        "Director, Summer Applied Biotechnologies Research Experience (SABRE) of the Institute for Collaborative Biotechnologies.",
+        "Current collaborations range from biology(circadian rhythm (jet lag), and cell polarization), to medicine (coagulopathy and post-traumatic stress disorder), to ecology (chytrid disease in frogs), to social networks (sentiment analysis and opinion dynamics).",
+        "We are collaborating with Prof."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Linda Petzold Distinguished Professor Mehrabian Engineering Chair She/Her/Hers 3106 BioEngineering Ph.D.",
+        "Mathematics/Computer Science, University of Illinois (UIUC), 1974 Department of Mechanical Engineering Institute for Collaborative Biotechnologies Member of the US National Academy of Engineering and Fellow of ACM, ASME, SIAM and AAAS UCSB Faculty Research Lecturer 2011 Wilkinson Prize for Numerical Software 1991 Dahlquist Prize 1999 SIAM/ACM Prize for Computational Science and Engineering 2013.",
+        "Computational Science and Engineering Human Centered and Social Computing Machine Learning and Data Mining Bio Distinguished Professor, Department of Computer Science and Department of Mechanical Engineering."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "simulation",
+          "modeling"
+        ],
+        "applications": [],
+        "honors_count": 3,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2148,17 +3144,48 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "modeling"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Singh Distinguished Professor He/Him/His 3119 Lab Website PhD, University of Texas at Austin, 1989 M.S., Iowa State University, 1984 B.Tech, Indian Institute of Technology, Kharagpur, 1982 Biomolecular Science and Engineering Program Center for Bio-Image Informatics Information Network Academic Research Center IGERT on Network Science Off- Acelot, Inc.",
+        "Member Editorial Board: IEEE Transactions on Knowledge & Data Engineering, BMC Journal of Clinical Bioinformatics, Journal of Coupled Systems and Multiscale Dynamics Founder, Acelot, Inc., an in silico drug discovery company based on graph and geometric analysis of Big Data Merit Scholarship, Government of India MCD Fellowship, University of Texas at Austin Database and Information Systems Human Centered and Social Computing Machine Learning and Data Mining Operating Systems and Distributed Systems Bio Ambuj K.",
+        "Singh is a Distinguished Professor of Computer Science at the University of California, Santa Barbara, with a part-time appointment in the Biomolecular Science and Engineering Program.",
+        "degree from the Indian Institute of Technology, Kharagpur, and a PhD degree from the University of Texas at Austin.",
+        "He has led a number of multidisciplinary projects including UCSB’s Information Network Academic Research Center funded by the Army, Interdisciplinary Graduate Research and Training (IGERT) program on Network Science funded by the NSF, and the Multidisciplinary University Research Initiative (MURI) on Network Science of Teams funded by the US Army.",
+        "He enjoys interdisciplinary research and has led numerous such projects including an IGERT on Network Science (funded by the NSF 2013-2018) and UCSB’s Information Networks Academic Research Center (funded by ARL 2009-2014)."
+      ],
       "selected_publication_mentions": [
         "Member Editorial Board: IEEE Transactions on Knowledge & Data Engineering, BMC Journal of Clinical Bioinformatics, Journal of Coupled Systems and Multiscale Dynamics Founder, Acelot, Inc., an in silico drug discovery company based on graph and geometric analysis of Big Data Merit Scholarship, Government of India MCD Fellowship, University of Texas at Austin Database and Information Systems Human Centered and Social Computing Machine Learning and Data Mining Operating Systems and Distributed Systems Bio Ambuj K.",
         "He has published 250 technical papers over his career.",
         "He has served on the editorial boards of a number of journals and program committees of several conferences."
       ],
       "publication_signal_notes": "Member Editorial Board: IEEE Transactions on Knowledge & Data Engineering, BMC Journal of Clinical Bioinformatics, Journal of Coupled Systems and Multiscale Dynamics Founder, Acelot, Inc., an in silico drug discovery company based on graph and geometric analysis of Big Data Merit Scholarship, Government of India MCD Fellowship, University of Texas at Austin Database and Information Systems Human Centered and Social Computing Machine Learning and Data Mining Operating Systems and Distributed Systems Bio Ambuj K. | He has published 250 technical papers over his career. | He has served on the editorial boards of a number of journals and program committees of several conferences.",
+      "honors_highlights": [
+        "Singh Distinguished Professor He/Him/His 3119 Lab Website PhD, University of Texas at Austin, 1989 M.S., Iowa State University, 1984 B.Tech, Indian Institute of Technology, Kharagpur, 1982 Biomolecular Science and Engineering Program Center for Bio-Image Informatics Information Network Academic Research Center IGERT on Network Science Off- Acelot, Inc.",
+        "Member Editorial Board: IEEE Transactions on Knowledge & Data Engineering, BMC Journal of Clinical Bioinformatics, Journal of Coupled Systems and Multiscale Dynamics Founder, Acelot, Inc., an in silico drug discovery company based on graph and geometric analysis of Big Data Merit Scholarship, Government of India MCD Fellowship, University of Texas at Austin Database and Information Systems Human Centered and Social Computing Machine Learning and Data Mining Operating Systems and Distributed Systems Bio Ambuj K.",
+        "Singh is a Distinguished Professor of Computer Science at the University of California, Santa Barbara, with a part-time appointment in the Biomolecular Science and Engineering Program.",
+        "He has published 250 technical papers over his career.",
+        "He has worked with over 50 graduate and postdoctoral students over his career, including over 30 PhD students."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "modeling"
+        ],
+        "applications": [],
+        "honors_count": 5,
+        "publication_signal_count": 3
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2193,17 +3220,38 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "modeling"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Computer Science, Fudan University Off- California Center for Service Science GoogleScholar Outstanding Faculty Award, College of Engineering, UCSB, 2000 IBM Faculty Award 2007 IBM Faculty Award 2008 Database and Information Systems Programming Languages and Software Engineering Bio Professor Su has published in a wide range of topics (databases, verification, services, and workflow).",
+        "Su served on program committees of many conferences in the databases (PODS, ICDT, VLDB, ICDE) and services computing/BPM (ICSOC, BPM).",
+        "He also held visiting positions at INRIA and Bell Labs, was/is an adjunct professor at Peking, Fudan, Donghua Universities in China.",
+        "He has studied/is studying data manipulation languages for relational databases, complex objects or nested relations, and object-oriented databases; incremental query evaluation and view maintenance; database models for spatial and scientific databases; complexity and expressive power of constraint query languages; automata-based verification techniques for software systems; web service modeling, composition, and verification; choreography for collaborative processes; formal models for business processes based on business artifacts; workflow system applications in government agencies, in healthcare, and in businesses."
+      ],
       "selected_publication_mentions": [
         "Computer Science, Fudan University Off- California Center for Service Science GoogleScholar Outstanding Faculty Award, College of Engineering, UCSB, 2000 IBM Faculty Award 2007 IBM Faculty Award 2008 Database and Information Systems Programming Languages and Software Engineering Bio Professor Su has published in a wide range of topics (databases, verification, services, and workflow).",
         "Su served on program committees of many conferences in the databases (PODS, ICDT, VLDB, ICDE) and services computing/BPM (ICSOC, BPM).",
         "Su was a keynote speaker at several international conferences/workshops including ICSOC 2012 and WS-FM 2013."
       ],
       "publication_signal_notes": "Computer Science, Fudan University Off- California Center for Service Science GoogleScholar Outstanding Faculty Award, College of Engineering, UCSB, 2000 IBM Faculty Award 2007 IBM Faculty Award 2008 Database and Information Systems Programming Languages and Software Engineering Bio Professor Su has published in a wide range of topics (databases, verification, services, and workflow). | Su served on program committees of many conferences in the databases (PODS, ICDT, VLDB, ICDE) and services computing/BPM (ICSOC, BPM). | Su was a keynote speaker at several international conferences/workshops including ICSOC 2012 and WS-FM 2013.",
+      "honors_highlights": [
+        "Computer Science, Fudan University Off- California Center for Service Science GoogleScholar Outstanding Faculty Award, College of Engineering, UCSB, 2000 IBM Faculty Award 2007 IBM Faculty Award 2008 Database and Information Systems Programming Languages and Software Engineering Bio Professor Su has published in a wide range of topics (databases, verification, services, and workflow)."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "modeling"
+        ],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 3
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2238,15 +3286,41 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "networking"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "He is a Fellow of the Association of Computing Machinery (ACM), the American Association for the Advancement of Science (AAAS), and the Institute of Electrical and Electronics Engineering (IEEE).",
+        "Suri directs the Applied Algorithms Lab and the Center for Geometric Computing, with the mission to develop fundamental geometric and network algorithms of broad applicability."
+      ],
       "selected_publication_mentions": [
         "Electronics and Communication, IIT Roorkee, India, 1981 GoogleScholar Fellow of ACM, Fellow of AAAS, Fellow of IEEE, ACM Distinguished Scientist."
       ],
       "publication_signal_notes": "Electronics and Communication, IIT Roorkee, India, 1981 GoogleScholar Fellow of ACM, Fellow of AAAS, Fellow of IEEE, ACM Distinguished Scientist.",
+      "honors_highlights": [
+        "Subhash Suri Distinguished Professor He/Him/His 2111 Ph.D.",
+        "Electronics and Communication, IIT Roorkee, India, 1981 GoogleScholar Fellow of ACM, Fellow of AAAS, Fellow of IEEE, ACM Distinguished Scientist.",
+        "Algorithms and Theory Networking Bio Subhash Suri is a Distinguished Professor and past Department Chair of Computer Science at the University of California, Santa Barbara.",
+        "He is a Fellow of the Association of Computing Machinery (ACM), the American Association for the Advancement of Science (AAAS), and the Institute of Electrical and Electronics Engineering (IEEE)."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "networking"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 4,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2281,15 +3355,41 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "security"
+      ],
+      "application_keywords": [
+        "cybersecurity",
+        "medical"
+      ],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "with honors, Electronic Engineering, Politecnico di Milano, Italy, 1994 Director of the Center for CyberSecurity Off- CTO at Lastline, Inc.",
+        "He has been the Program Chair of the International Symposium on Recent Advances in Intrusion Detection (RAID 2003), of the ISOC Symposium on Network and Distributed Systems Security (NDSS 2009), and of the IEEE Symposium on Security and Privacy in 2011."
+      ],
       "selected_publication_mentions": [
         "GoogleScholar Security and Cryptography Bio Giovanni Vigna is a Professor in the Department of Computer Science at the University of California in Santa Barbara."
       ],
       "publication_signal_notes": "GoogleScholar Security and Cryptography Bio Giovanni Vigna is a Professor in the Department of Computer Science at the University of California in Santa Barbara.",
+      "honors_highlights": [
+        "Giovanni Vigna Distinguished Professor He/Him/His 2165 Ph.D.",
+        "with honors, Electronic Engineering, Politecnico di Milano, Italy, 1994 Director of the Center for CyberSecurity Off- CTO at Lastline, Inc."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "security"
+        ],
+        "applications": [
+          "cybersecurity",
+          "medical"
+        ],
+        "honors_count": 2,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2324,13 +3424,26 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Previously, he was an Associate Professor (2004-2008) and Professor (2009-2021) at the Georgia Institute of Technology, where he served as the Director of the Algorithms and Randomness Center (ARC) (2016-2019).",
+        "He had postdoc stints at the University of Edinburgh and the Weizmann Institute, and was an Assistant Professor at the University of Chicago (2002-2004)."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2365,13 +3478,30 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Computer Science, Cal Poly San Luis Obispo, 1986 Named to Top-10 Cloud Pioneers List by Information Week, November, 2012 Winner of the Cloud Camp Cloud Hero Award, March, 2012 Winner of Best Cloud Innovation Award, Cloudies , December 2008 Outstanding Faculty Member of the Year (co-winner), University of California, Santa Barbara, Computer Science Program, June, 2008 Outstanding Faculty Member of the Year, University of California, Santa Barbara, Computer Engineering Program, June, 2006 Academic Senate University Distinguished Teaching Award, University of California, Santa Barbara, May 2005 ACM Teacher of the Year award, Computer Science Department, University of Tennessee, Knoxville, TN., May 2000 Best Acceleration for ``Where do you want to Compute Today?'' at the High-performance Computing Challenge, SC98, Orlando FL, November 1998 Operating Systems and Distributed Systems Internet of Things (IoT) Bio Dr.",
+        "degrees from the University of California at Davis (while a research scientist at Lawrence Livermore National Laboratory) he has also held positions at the University of California, San Diego, and the University of Tennessee, the San Diego Supercomputer Center and Lawrence Berkeley National Laboratory.",
+        "Rich has led several national scale research efforts in the area of distributed systems and is the progenitor of the Eucalyptus open source cloud project.",
+        "Such resource-aware services and applications are keystones of cloud computing -- A web services based approach to building seamless, highly-scalable distributed systems."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Computer Science, Cal Poly San Luis Obispo, 1986 Named to Top-10 Cloud Pioneers List by Information Week, November, 2012 Winner of the Cloud Camp Cloud Hero Award, March, 2012 Winner of Best Cloud Innovation Award, Cloudies , December 2008 Outstanding Faculty Member of the Year (co-winner), University of California, Santa Barbara, Computer Science Program, June, 2008 Outstanding Faculty Member of the Year, University of California, Santa Barbara, Computer Engineering Program, June, 2006 Academic Senate University Distinguished Teaching Award, University of California, Santa Barbara, May 2005 ACM Teacher of the Year award, Computer Science Department, University of Tennessee, Knoxville, TN., May 2000 Best Acceleration for ``Where do you want to Compute Today?'' at the High-performance Computing Challenge, SC98, Orlando FL, November 1998 Operating Systems and Distributed Systems Internet of Things (IoT) Bio Dr."
+      ],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2406,16 +3536,39 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "learning",
+        "machine learning",
+        "modeling"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Computer Engineering, Zhejiang University, 1997 Computational Science and Engineering Database and Information Systems Human Centered and Social Computing Machine Learning and Data Mining Bio Xifeng Yan is a Professor at the University of California at Santa Barbara.",
+        "Watson Research Center between 2006 and 2008."
+      ],
       "selected_publication_mentions": [
         "His works were extensively referenced, with over 9,000 citations per Google Scholar and thousands of software downloads.",
         "He received NSF CAREER Award, IBM Invention Achievement Award, ACM-SIGMOD Dissertation Runner-Up Award, and IEEE ICDM 10-year Highest Impact Paper Award"
       ],
       "publication_signal_notes": "His works were extensively referenced, with over 9,000 citations per Google Scholar and thousands of software downloads. | He received NSF CAREER Award, IBM Invention Achievement Award, ACM-SIGMOD Dissertation Runner-Up Award, and IEEE ICDM 10-year Highest Impact Paper Award",
+      "honors_highlights": [
+        "He received NSF CAREER Award, IBM Invention Achievement Award, ACM-SIGMOD Dissertation Runner-Up Award, and IEEE ICDM 10-year Highest Impact Paper Award"
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "learning",
+          "machine learning",
+          "modeling"
+        ],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 2
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2450,15 +3603,32 @@
       "research_keywords": [
         "needs full topic scrape later"
       ],
+      "methods_keywords": [
+        "vision"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "needs full topic scrape later"
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "His past research includes search engines, scalable web services and middleware, scheduling and runtime support for parallel irregular computation, and parallel sparse matrix algorithms.",
+        "At Ask.com and Teoma, he has co-developed scalable search algorithms and systems for page indexing, retrieval, ranking, classification, and anti-spamming."
+      ],
       "selected_publication_mentions": [
         "His research has been in the areas of parallel and distributed systems, web search/mining, and high performance computing with over 100 refereed papers and patents."
       ],
       "publication_signal_notes": "His research has been in the areas of parallel and distributed systems, web search/mining, and high performance computing with over 100 refereed papers and patents.",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "vision"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -2500,6 +3670,12 @@
         "me.ucsb.edu",
         "paul-atzberger"
       ],
+      "methods_keywords": [
+        "control",
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2509,8 +3685,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Paul Atzberger Paul Atzberger Headshot Professor California NanoSystems Institute Center for Control, Dynamical Systems, and Computation Computational Science and Engineering South Hall, Room 6712 Email Bioengineering & Systems Biology Computational Science & Engineering Research Description Dr."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "learning",
+          "machine learning"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -2552,6 +3742,8 @@
         "me.ucsb.edu",
         "hector-ceniceros"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2561,8 +3753,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -2601,6 +3801,14 @@
         "me.ucsb.edu",
         "joao-hespanha"
       ],
+      "methods_keywords": [
+        "control",
+        "vision",
+        "modeling"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2610,8 +3818,27 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Joao Hespanha Joao Hespanha Headshot Dynamic Systems and Control, Bio-Networks Professor IEEE Distinguished Lecturer IEEE Fellow Center for Control, Dynamical-systems, and Computation (Associate Director) Electrical & Computer Engineering Dept.",
+        "(Vice Chair) Institute for Collaborative Biotechnologies (ICB) , Room 5157 Email Bioengineering & Systems Biology Dynamic Systems, Control & Robotics Research Description His current research interests include hybrid and switched systems; the modeling and control of communication networks; distributed control over communication networks (also known as networked control systems); the use of vision in feedback control; and stochastic modeling in biology"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Joao Hespanha Joao Hespanha Headshot Dynamic Systems and Control, Bio-Networks Professor IEEE Distinguished Lecturer IEEE Fellow Center for Control, Dynamical-systems, and Computation (Associate Director) Electrical & Computer Engineering Dept."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "vision",
+          "modeling"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -2653,6 +3880,8 @@
         "me.ucsb.edu",
         "patricia-holden"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2662,8 +3891,21 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Two main environmental problems are currently being studied in the Holden lab: 1) bioavailability constraints on the biodegradation of non-aqueous phase liquid (NAPL) hydrocarbon pollutants in soil, and 2) distribution of pathogenic bacteria in coastal environments.",
+        "Part of the Holden lab interest includes gaining a fundamental understanding of bacterial growth habits in unsaturated porous media such as soil and sand.",
+        "Thus, Professor Holden and her students also study bacterial biofilms in unsaturated environments with an objective of knowing when and where they form in soil and how the extracellular polymers associated with biofilms affect pollutant bioavailability and biodegradation.",
+        "External websites: Other External Website https://holdenlab.eri.ucsb.edu"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -2702,6 +3944,8 @@
         "me.ucsb.edu",
         "arturo-keller"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2711,8 +3955,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Current projects involve (1) developing remediation techniques/strategies for DNAPLs and MTBE; (2) the detection and movement of chlorinated organic pollutants through soil and groundwater; (3) understanding at the pore scale the fate and transport of viruses in saturated and unsaturated soils; (4) bioavailability in the vadose zone; and (5) the loading of chemicals from various land-uses to the receiving water bodies.",
+        "Keller has fifteen years of experience in developing management strategies in the private sector which he brings to the program"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -2754,6 +4009,10 @@
         "me.ucsb.edu",
         "eric-masanet"
       ],
+      "methods_keywords": [],
+      "application_keywords": [
+        "manufacturing"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2763,8 +4022,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [
+          "manufacturing"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -2803,6 +4072,8 @@
         "me.ucsb.edu",
         "kevin-plaxco"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2812,8 +4083,19 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Kevin Plaxco Kevin Plaxco Headshot Folding-based sensors, Principles of protein folding, Terahertz absorption spectroscopy and the collective dynamics of water and biomolecules Professor Bioengineering, Room 3002 Email Bioengineering & Systems Biology Research Description The aim of the Plaxco lab’s applied research is to harness the speed and specificity of biopolymer folding as a signal transduction mechanism in a novel and highly general class of real-time, “real-world” optical and electronic biosensors.",
+        "Related theoretical and experimental projects include intensive studies of the structure and dynamics of the unfolded state and the collective dynamics of the native state"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -2855,6 +4137,8 @@
         "me.ucsb.edu",
         "beth-pruitt"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2864,8 +4148,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Beth Pruitt Beth Pruitt Headshot Professor Professor Bioengineering, Room 3108 Email Bioengineering & Systems Biology Research Description Professor Beth Pruitt interests lie at the intersection of mechanobiology, microfabrication, engineering and science and her lab specializes in engineering microsystems and biointerfaces for quantitative mechanobiology.",
+        "Pruitt’s research group collaborates across science and engineering to develop and apply fundamental technologies for high-throughput single-cell assays, mechanobiology assays, microfabrication of cell culture devices, and biomaterials characterization.",
+        "Research in the Pruitt lab seeks to understand the role of mechanics in biology and force sensitive pathways in cell-cell adhesion and subcellular organization, the role of mechanical environment on the structure and function of stem cell derived cardiomyocytes as biophysical models of health and disease, and to develop models of mechanical signaling underlying the sense of touch and hearing.",
+        "Leveraging microscale tools, researchers in the Pruitt lab seek to answer open questions in the areas of physiology, biology, stem cells, neuroscience and cardiology with an eye toward quantitative and fundamental biophysics.",
+        "External websites: Other External Website http://pruittlab.engineering.ucsb.edu/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -2907,6 +4205,8 @@
         "me.ucsb.edu",
         "alban-sauret"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: research associate",
@@ -2916,8 +4216,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "External websites: Other External Website https://sauretlab.me.ucsb.edu/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -2959,6 +4269,12 @@
         "me.ucsb.edu",
         "bassam-bamieh"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -2968,8 +4284,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Bassam Bamieh Bassam Bamieh Headshot Dynamic Systems and Control, Fluid Mechanics and Thermal Sciences, Micro- and Nanoscale Engineering, Operating Systems and Distributed Systems Professor Professor Center for Control, Dynamical Systems and Computation Engineering II, Room 2333 Email Dynamic Systems, Control & Robotics Research Description Professor Bamieh's research interests are in the general area of Control and Dynamical Systems, as well as the applications of systems and feedback techniques in several physical and engineering systems."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3011,6 +4341,8 @@
         "me.ucsb.edu",
         "matthew-begley"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: distinguished professor",
@@ -3020,8 +4352,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Matthew Begley Matthew Begley Headshot Distinguished Professor Engineering II, Room 2361B Email Bioengineering & Systems Biology Computational Science & Engineering Micro & Nano Technology Solid Mechanics, Materials & Structures Research Description Mechanics of materials; chemo-mechanical behavior in microfluidic devices for bioanalysis External websites: Other External Website https://sites.engineering.ucsb.edu/~begley/home.html"
+      ],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3064,6 +4406,8 @@
         "me.ucsb.edu",
         "glenn-beltz"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor &amp",
@@ -3074,8 +4418,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3114,6 +4466,8 @@
         "me.ucsb.edu",
         "ted-bennett"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor",
@@ -3123,8 +4477,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -3166,6 +4528,13 @@
         "me.ucsb.edu",
         "irene-j-beyerlein"
       ],
+      "methods_keywords": [
+        "modeling"
+      ],
+      "application_keywords": [
+        "manufacturing",
+        "medical"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: distinguished professor",
@@ -3175,8 +4544,27 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Commercially available materials typically have strength or toughness limitations and trade-offs and the overarching research goals will seek to understand and predict how to design and make novel lightweight materials that attain strengths nearer to their theoretical limits.",
+        "New innovative research thrusts will be initiated on (i) new lightweight Mg and Ti alloys that meet the high engineering performance metrics that are needed for gaining marketplace acceptance, (ii) nanolayered multi-phase materials with an unusually high density of interfaces that significantly impact structural properties; (iii) advanced 3D, full-field spatially resolved mechanical modeling techniques with experimentally informed microstructures and (iv) use of probability modeling and dislocation theory to help bridge from the atomic scale, span the mesoscale length and time scales, and connect to the macroscale where materials are tested in the laboratory.",
+        "External websites: Other External Website https://labs.me.ucsb.edu/beyerlein/irene/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Beyerlein Headshot Professor Distinguished Professor Engineering II, Room 2339 Email Computational Science & Engineering Micro & Nano Technology Solid Mechanics, Materials & Structures Research Description Research will focus on the creation and design of advanced materials with unprecedented structural performance under extremes of strains, stress, and temperature."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "modeling"
+        ],
+        "applications": [
+          "manufacturing",
+          "medical"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3218,6 +4606,8 @@
         "me.ucsb.edu",
         "samantha-daly"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -3227,8 +4617,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Samantha Daly Samantha Daly Headshot Professor Professor Engineering II, Room 2347 Email Solid Mechanics, Materials & Structures External websites: Other External Website https://labs.me.ucsb.edu/daly/samantha/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3270,6 +4670,10 @@
         "me.ucsb.edu",
         "emilie-dressaire"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: assistant professor",
@@ -3279,8 +4683,21 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Ongoing projects involve the development of smart surfaces that can control and sense the fluid flow, the study of the clogging of microchannels and transport of floating particles.",
+        "External websites: Other External Website http://www.dressairelab.com"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3326,6 +4743,13 @@
         "scientific computing",
         "multiphase flow"
       ],
+      "methods_keywords": [
+        "vision",
+        "graphics"
+      ],
+      "application_keywords": [
+        "medical"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -3336,8 +4760,21 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "vision",
+          "graphics"
+        ],
+        "applications": [
+          "medical"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3379,6 +4816,13 @@
         "me.ucsb.edu",
         "elliot-hawkes"
       ],
+      "methods_keywords": [
+        "control",
+        "vision"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor",
@@ -3388,8 +4832,24 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Elliot Hawkes Elliot Hawkes Headshot Associate Professor Engineering II, Room 2332 | Lab:Engineering II, Room 2234 Email Dynamic Systems, Control & Robotics Micro & Nano Technology Solid Mechanics, Materials & Structures Research Description Elliot Hawkes’s research focuses on bringing together design, mechanics, and non-traditional materials to advance the vision of robust, adaptable, human-safe robots that can thrive in the uncertain, unstructured world.",
+        "Current projects involve bio-inspired microstructured adhesive materials, non-linear compliant mechanisms, high-power soft actuators, soft exoskeletons, and growing robots."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "vision"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3431,6 +4891,13 @@
         "me.ucsb.edu",
         "ousmane-kodio"
       ],
+      "methods_keywords": [
+        "control",
+        "simulation"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: assistant professor",
@@ -3440,8 +4907,24 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "His group uses Theory, Experiment, Simulation To (TEST) ideas in both canonical and complex systems of active matter and living systems, hence his Lab is called the TEST Lab.",
+        "External websites: Other External Website https://kodiolab.me.ucsb.edu/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "simulation"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3483,6 +4966,10 @@
         "me.ucsb.edu",
         "bolin-liao"
       ],
+      "methods_keywords": [
+        "simulation"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor and vice-chair",
@@ -3492,8 +4979,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Bolin Liao Bolin Liao Headshot Associate Professor Associate Professor and Vice-Chair Engineering Science Building, Room 3231E | Lab: ESB, Room 2323 Email Thermal Science & Fluid Mechanics Research Description Bolin Liao's main research interest is in nanoscale energy transport and its application to sustainable energy technologies.",
+        "Current projects include first-principles and multiscale simulation of energy carrier transport, visualization of photophysics in space and time with scanning ultrafast electron microscopy, ultrafast optical techniques for thermal and thermoelectric characterization, and applied clean energy devices and systems.",
+        "External websites: Other External Website https://www.tealab-liao.com/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "simulation"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3535,6 +5036,8 @@
         "me.ucsb.edu",
         "paolo-luzzatto-fegiz"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor",
@@ -3544,8 +5047,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Paolo Luzzatto-Fegiz Paolo Luzzatto-Fegiz Headshot Associate Professor Associate Professor Engineering II, Room 2328 Email Thermal Science & Fluid Mechanics External websites: Other External Website https://feslab.me.ucsb.edu"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3584,6 +5097,12 @@
         "me.ucsb.edu",
         "eric-matthys"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [
+        "manufacturing"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -3593,8 +5112,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Studies on implementation of drag-reducing fluids in industrial applications such as HVAC or fluid transport are conducted through laboratory and large-scale field tests."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [
+          "manufacturing"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -3633,6 +5166,8 @@
         "me.ucsb.edu",
         "robert-mcmeeking"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: distinguished professor",
@@ -3642,8 +5177,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Robert McMeeking Robert McMeeking Headshot Bioengineering, Computational Science and Engineering, Micro- and Nanoscale Engineering, Structural Materials and Solid Mechanics Professor Distinguished Professor Department of Mechanical Engineering Department of Materials Engineering II, Room 2361A Email Bioengineering & Systems Biology Computational Science & Engineering Micro & Nano Technology Solid Mechanics, Materials & Structures Research Description Solid Mechanics, Materials, and Structures: mechanics of materials, fracture, plasticity, composite materials, materials processing, materials durability, multifunctional materials and structures, thermal barrier coatings, blast and fragment resistant structures, biomechanics, cell mechanics"
+      ],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -3682,6 +5227,10 @@
         "me.ucsb.edu",
         "eckart-meiburg"
       ],
+      "methods_keywords": [
+        "simulation"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: distinguished professor",
@@ -3691,8 +5240,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Frequently, they collaborate closely with corresponding experimental investigations."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Eckart Meiburg Eckart Meiburg Headshot Distinguished Professor Distinguished Professor Engineering II, Room 2351 Email Computational Science & Engineering Thermal Science & Fluid Mechanics Research Description Computational Science and Engineering Environmental Engineering Fluid Mechanics and Thermal Sciences Micro- and Nanoscale Engineering Professor Meiburg's research interests lie in the general area of fluid dynamics and transport phenomena."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "simulation"
+        ],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -3734,6 +5297,10 @@
         "me.ucsb.edu",
         "carl-meinhart"
       ],
+      "methods_keywords": [
+        "simulation"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -3743,8 +5310,20 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Carl Meinhart Carl Meinhart Headshot Professor Professor Institute for Collaborative Biotechnologies Engineering Science Building, Room 3231F Email Bioengineering & Systems Biology Micro & Nano Technology Thermal Science & Fluid Mechanics Research Description Professor Meinhart's research group investigates fundamental fluid mechanics problems at the micro-scale and nano-scale, with special emphasis on transport issues in MEMS-based sensors for highly sensitive and specific detection of trace chemicals."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "simulation"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3786,6 +5365,12 @@
         "me.ucsb.edu",
         "igor-mezic"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: distinguished professor",
@@ -3795,10 +5380,26 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Igor Mezic Igor Mezic Headshot Professor Distinguished Professor Journal of Applied Mechanics, Associate Editor Institute for Collaborative Biotechnologies California Nanoscience Institute Engineering II, Room 2323 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Micro & Nano Technology Research Description Our current research is centered around operator-theoretic approach to analysis of nonlinear dynamical systems, applications in microfluidics and (bio)-nanotechnology."
+      ],
       "selected_publication_mentions": [
         "Igor Mezic Igor Mezic Headshot Professor Distinguished Professor Journal of Applied Mechanics, Associate Editor Institute for Collaborative Biotechnologies California Nanoscience Institute Engineering II, Room 2323 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Micro & Nano Technology Research Description Our current research is centered around operator-theoretic approach to analysis of nonlinear dynamical systems, applications in microfluidics and (bio)-nanotechnology."
       ],
       "publication_signal_notes": "Igor Mezic Igor Mezic Headshot Professor Distinguished Professor Journal of Applied Mechanics, Associate Editor Institute for Collaborative Biotechnologies California Nanoscience Institute Engineering II, Room 2323 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Micro & Nano Technology Research Description Our current research is centered around operator-theoretic approach to analysis of nonlinear dynamical systems, applications in microfluidics and (bio)-nanotechnology.",
+      "honors_highlights": [
+        "Igor Mezic Igor Mezic Headshot Professor Distinguished Professor Journal of Applied Mechanics, Associate Editor Institute for Collaborative Biotechnologies California Nanoscience Institute Engineering II, Room 2323 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Micro & Nano Technology Research Description Our current research is centered around operator-theoretic approach to analysis of nonlinear dynamical systems, applications in microfluidics and (bio)-nanotechnology."
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 1
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3840,6 +5441,12 @@
         "me.ucsb.edu",
         "jeff-moehlis"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor and chair",
@@ -3849,8 +5456,22 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Jeff Moehlis Jeff Moehlis Headshot Professor and Chair Professor and Chair Department of Mathematics Center for Control, Dynamical Systems, and Computation Institute for Collaborative Biotechnologies Engineering II, Room 2341 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Micro & Nano Technology Thermal Science & Fluid Mechanics Research Description Biological Dynamics; control of neural populations; natural and artificial swarms: schooling fish, flocking birds, etc- territorial behavior- coupled oscillators."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3889,6 +5510,8 @@
         "me.ucsb.edu",
         "sumita-pennathur"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -3898,8 +5521,21 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Sumita Pennathur Sumita Pennathur Headshot Professor Professor American Society of Mechanical Engineers Sigma Gamma Tau National Honor Society American Society of Mechanical Engineers Sigma Gamma Tau National Honor Society Engineering Science Building, Room 3231C Email Bioengineering & Systems Biology Micro & Nano Technology Thermal Science & Fluid Mechanics Research Description The research in the Pennathur Laboratory is focused on novel studies of chemical and biological species using fabricated micro- and nanoscale devices.",
+        "The scope of the research program is broad, spanning the fields of Physics, Biology, Chemistry, and Engineering."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Sumita Pennathur Sumita Pennathur Headshot Professor Professor American Society of Mechanical Engineers Sigma Gamma Tau National Honor Society American Society of Mechanical Engineers Sigma Gamma Tau National Honor Society Engineering Science Building, Room 3231C Email Bioengineering & Systems Biology Micro & Nano Technology Thermal Science & Fluid Mechanics Research Description The research in the Pennathur Laboratory is focused on novel studies of chemical and biological species using fabricated micro- and nanoscale devices."
+      ],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "missing",
@@ -3941,6 +5577,8 @@
         "me.ucsb.edu",
         "jeff-sakamoto"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -3950,8 +5588,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -3993,6 +5639,10 @@
         "me.ucsb.edu",
         "ryan-stowers"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: assistant professor",
@@ -4002,8 +5652,20 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "External websites: Other External Website https://stowerslab.me.ucsb.edu/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -4045,6 +5707,8 @@
         "me.ucsb.edu",
         "tyler-susko"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: teaching professor",
@@ -4054,8 +5718,18 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Tyler Susko Tyler Susko Headshot Teaching Professor and Undergraduate Vice Chair Teaching Professor Engineering II, Room 2330 Email External websites: Other External Website http://designlab.me.ucsb.edu"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -4094,6 +5768,8 @@
         "me.ucsb.edu",
         "geoff-tsai"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: assistant teaching professor",
@@ -4103,8 +5779,11 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {},
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -4146,6 +5825,10 @@
         "me.ucsb.edu",
         "megan-valentine"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: professor",
@@ -4155,8 +5838,20 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Megan Valentine Megan Valentine Headshot Professor Professor Neuroscience Research Institute Center for Stem Cell Biology and Engineering California NanoSystems Institute Center for BioEngineering Materials Research Laboratory Engineering II, Room 2361C Email Bioengineering & Systems Biology Micro & Nano Technology Solid Mechanics, Materials & Structures Thermal Science & Fluid Mechanics Research Description The Valentine Research Group focuses on understanding how forces are generated and transmitted in living materials, how these forces control cellular outcomes, and how we can capture the extraordinary features of living systems in manmade materials."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -4195,6 +5890,8 @@
         "me.ucsb.edu",
         "charlott-vallon"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: assistant teaching professor",
@@ -4204,8 +5901,11 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {},
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -4247,6 +5947,15 @@
         "me.ucsb.edu",
         "yon-visell"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [
+        "robotics",
+        "virtual reality",
+        "communications",
+        "human-computer interaction"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor",
@@ -4256,8 +5965,26 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Yon Visell Yon Visell Headshot Communications & Signal Processing Associate Professor Associate Professor EII, Room 2326 Email Computational Science & Engineering Dynamic Systems, Control & Robotics Research Description Communications & Signal Processing, Dynamic Systems and Control, Robotics, Computational Science and Engineering Visell directs the RE Touch Lab , where they pursue fundamental and applied research on the future of interactive technologies, with emphasis on haptics, robotics, and electronics, including emerging opportunities in human-computer interaction, sensorimotor augmentation, soft robotics, and interaction in virtual reality.",
+        "External websites: Other External Website http://re-touch-lab.com/"
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [
+          "robotics",
+          "virtual reality",
+          "communications",
+          "human-computer interaction"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "present",
@@ -4296,6 +6023,13 @@
         "me.ucsb.edu",
         "henry-t-yang"
       ],
+      "methods_keywords": [
+        "control"
+      ],
+      "application_keywords": [
+        "robotics",
+        "manufacturing"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: distinguished professor and chancellor emeritus",
@@ -4305,8 +6039,23 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [
+        "Yang Headshot Dynamic Systems and Control, Micro- and Nanoscale Engineering, Structural Materials and Solid Mechanics Distinguished Professor and Chancellor Emeritus Distinguished Professor and Chancellor Emeritus National Academy of Engineering; Fellow of AIAA, ASEE, and ASME Email Dynamic Systems, Control & Robotics Micro & Nano Technology Solid Mechanics, Materials & Structures Research Description Dynamic Systems, Control, and Robotics and Solid Mechanics, Materials, and Structures: Aircraft structures, structural dynamics and control, transonic aeroelasticity, finite elements, composite materials, seismic- and wind-structural control, intelligent manufacturing systems"
+      ],
+      "fit_signal_summary": {
+        "methods": [
+          "control"
+        ],
+        "applications": [
+          "robotics",
+          "manufacturing"
+        ],
+        "honors_count": 1,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "missing",
@@ -4348,6 +6097,14 @@
         "me.ucsb.edu",
         "enoch-yeung"
       ],
+      "methods_keywords": [
+        "control",
+        "learning",
+        "machine learning"
+      ],
+      "application_keywords": [
+        "robotics"
+      ],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor",
@@ -4357,8 +6114,26 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [
+        "Enoch Yeung Enoch Yeung Headshot Biological Control, Biological Computing, Nonlinear Control, System Identification, Machine Learning Associate Professor Associate Professor Bioengineering, Room 3104 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Research Description Our lab studies how life enacts mechanisms of control, computation, and learning to engineer robust biological edge computing systems.",
+        "We seek to understand the fundamental laws by which bacteria make decisions and enact computational programs, especially in times of stress or environmental transition.",
+        "We conduct our research in the Biological Control, Computing, and Learning Laboratory, which is an interdisciplinary group of researchers and students with backgrounds in control theory, synthetic biology, machine learning, dynamical systems, mechanical, electrical and biological engineering."
+      ],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [
+          "control",
+          "learning",
+          "machine learning"
+        ],
+        "applications": [
+          "robotics"
+        ],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "medium",
       "website_status": "present",
@@ -4400,6 +6175,8 @@
         "me.ucsb.edu",
         "yangying-zhu"
       ],
+      "methods_keywords": [],
+      "application_keywords": [],
       "topic_clusters": [
         "official ucsb me faculty page",
         "title: associate professor",
@@ -4409,8 +6186,16 @@
       ],
       "affiliated_centers": [],
       "affiliated_labs": [],
+      "affiliation_signal_sentences": [],
       "selected_publication_mentions": [],
       "publication_signal_notes": "",
+      "honors_highlights": [],
+      "fit_signal_summary": {
+        "methods": [],
+        "applications": [],
+        "honors_count": 0,
+        "publication_signal_count": 0
+      },
       "theory_to_application_spectrum": "mixed",
       "source_quality": "high",
       "website_status": "present",

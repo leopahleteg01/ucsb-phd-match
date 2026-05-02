@@ -101,6 +101,11 @@ def _merge_scored(pool, parsed):
             'why': ai_why,
             'detailed_fit': s.get('detailed_fit', ai_why),
             'professor_focus': s.get('professor_focus', p.get('professor_focus_detailed','') or p.get('research_summary_long','') or p.get('research_summary_short','')),
+            'methods_match': s.get('methods_match', ''),
+            'application_match': s.get('application_match', ''),
+            'strengths_for_you': s.get('strengths_for_you', ''),
+            'possible_gaps': s.get('possible_gaps', ''),
+            'why_not_higher': s.get('why_not_higher', ''),
             'primary_areas': p.get('research_summary_short',''),
             'comparison_summary': p.get('research_summary_long',''),
             'notes': ', '.join(p.get('research_keywords', [])[:12]),
@@ -209,12 +214,17 @@ def _prompt_for_notes(notes, payload_rows):
         'Do not use any hidden prior ranking or base score. Generate scores fresh for this run. '
         'Compare all provided professors for this run and rank them relative to the user input. '
         'Return strict JSON only with this schema: '
-        '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string}]}. '
+        '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string,"methods_match":string,"application_match":string,"strengths_for_you":string,"possible_gaps":string,"why_not_higher":string}]}. '
         'You must return one result entry for every professor provided, not just the top matches. '
         'Scores should be 0-100, relative to the current user input only. '
         'Be willing to give low scores when fit is weak. '
         'The field professor_focus should explain clearly what the professor actually works on. '
         'The field detailed_fit should explain in more detail why that professor could fit or not fit the user. '
+        'The field methods_match should describe method-level overlap, such as control, optimization, learning, simulation, or systems work. '
+        'The field application_match should describe domain overlap, such as robotics, autonomy, VR/AR, cybersecurity, communications, or other application areas. '
+        'The field strengths_for_you should say what makes the match compelling. '
+        'The field possible_gaps should say what may be missing or less aligned. '
+        'The field why_not_higher should explain the main reason the score is not even higher when relevant. '
         'User input:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
 

@@ -15,6 +15,10 @@ BAD_CONTENT_BITS = [
     'me research areas', 'research areas', 'people faculty'
 ]
 PUBLICATION_WORDS = ['publication', 'publications', 'paper', 'papers', 'journal', 'conference', 'proceedings', 'scholar']
+METHOD_TERMS = ['control', 'optimization', 'learning', 'reinforcement learning', 'machine learning', 'vision', 'simulation', 'modeling', 'planning', 'estimation', 'formal methods', 'graphics', 'hci', 'security', 'networking']
+APPLICATION_TERMS = ['robotics', 'autonomy', 'digital twins', 'cybersecurity', 'virtual reality', 'augmented reality', 'communications', 'power systems', 'manufacturing', 'human-computer interaction', 'medical', 'wireless', 'sensing', 'mobility']
+HONOR_WORDS = ['award', 'honor', 'fellow', 'career', 'best paper', 'distinguished']
+CENTER_WORDS = ['center', 'institute', 'laboratory', 'lab', 'program', 'project']
 
 
 def fetch(url):
@@ -74,6 +78,21 @@ def extract_focus_sentences(text):
     if not focus:
         focus = parts[:3]
     return focus[:4]
+
+
+def extract_term_hits(text, terms):
+    tl = text.lower()
+    return [t for t in terms if t in tl]
+
+
+def extract_honor_sentences(text):
+    parts = sentence_chunks(text)
+    return [p for p in parts if any(w in p.lower() for w in HONOR_WORDS)][:5]
+
+
+def extract_affiliation_signals(text):
+    parts = sentence_chunks(text)
+    return [p for p in parts if any(w in p.lower() for w in CENTER_WORDS)][:6]
 
 
 def load_master():
@@ -149,8 +168,22 @@ def enrich(master):
             elif sentences:
                 rec['research_summary_long'] = ' '.join(sentences[:3])[:900]
                 rec['professor_focus_detailed'] = ' '.join(sentences[:4])[:1400]
+            method_hits = extract_term_hits(text, METHOD_TERMS)
+            application_hits = extract_term_hits(text, APPLICATION_TERMS)
+            honor_signals = extract_honor_sentences(text)
+            affiliation_signals = extract_affiliation_signals(text)
             rec['publication_signal_notes'] = ' | '.join(pub_signals)
             rec['selected_publication_mentions'] = pub_signals
+            rec['methods_keywords'] = method_hits[:12]
+            rec['application_keywords'] = application_hits[:12]
+            rec['honors_highlights'] = honor_signals
+            rec['affiliation_signal_sentences'] = affiliation_signals
+            rec['fit_signal_summary'] = {
+                'methods': method_hits[:12],
+                'applications': application_hits[:12],
+                'honors_count': len(honor_signals),
+                'publication_signal_count': len(pub_signals)
+            }
             rec['extraction_notes'] = 'Deep-enriched from individual UCSB profile page plus prior neutral master data.'
             rec['source_quality'] = 'high' if rec.get('email') and rec.get('ucsb_profile_url') and rec.get('research_summary_long') else rec.get('source_quality','medium_high')
         except Exception as e:
