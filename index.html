@@ -100,19 +100,18 @@ document.getElementById('runBtn').addEventListener('click', async ()=>{
       if(!res.ok) throw new Error('HTTP '+res.status);
       const data=await res.json();
       const allowed=new Set(filtered.map(p=>p.name));
-      const ranked=(data.results||[]).filter(x=>allowed.has(x.name));
+      const ranked=(data.results||[]).filter(x=>allowed.has(x.name) && x.analysis_stage === 'deep');
       render(ranked);
       const notices = (data.file_notices||[]).length ? (' File notes: ' + data.file_notices.join(' | ')) : '';
-      const deepCount = ranked.filter(x => x.analysis_stage === 'deep').length;
-      updateMeta(`Showing ${ranked.length} ranked results out of ${professors.length} loaded. Deep AI analysis was applied to ${deepCount}. Mode: ${data.mode || 'unknown'}.${notices}`);
+      updateMeta(`Showing ${ranked.length} deeply analyzed professors out of ${professors.length} loaded. Mode: ${data.mode || 'unknown'}.${notices}`);
       return;
     }catch(err){
       updateMeta('Live AI backend failed, falling back to lightweight browser keyword view.');
     }
   }
   const words=userText.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); const why=s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Lightweight browser fallback only.'; return {...p, score:s.score, why, detailed_fit: why + ' This browser fallback is simpler than live AI mode.', professor_focus: p.comparison_summary||p.primary_areas||'', google_scholar_url_guess: p.google_scholar_url_guess||''};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); const why=s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Lightweight browser fallback only.'; return {...p, score:s.score, why, detailed_fit: why + ' This browser fallback is simpler than live AI mode.', professor_focus: p.comparison_summary||p.primary_areas||'', google_scholar_url_guess: p.google_scholar_url_guess||'', analysis_stage:'coarse'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name)).slice(0,20);
   render(ranked);
-  updateMeta(`Showing ${ranked.length} browser fallback results out of ${professors.length} loaded.`);
+  updateMeta(`Showing ${ranked.length} coarse fallback results out of ${professors.length} loaded.`);
 });
 </script></body></html>

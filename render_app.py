@@ -58,33 +58,56 @@ def _candidate_pool(notes=''):
 
 def _coarse_rank_all(notes):
     words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
+    phrases = []
+    lowered = notes.lower()
+    for phrase in ['robotics', 'autonomy', 'control', 'planning', 'optimization', 'learning', 'machine learning', 'reinforcement learning', 'simulation', 'modeling', 'digital twins', 'matlab', 'simulink', 'systems engineering', 'physical ai', 'vision', 'virtual reality', 'augmented reality', 'security', 'cybersecurity', 'communications']:
+        if phrase in lowered:
+            phrases.append(phrase)
     ranked = []
     for p in professors:
+        blob = p.get('_blob','')
         hits = []
         for w in words:
-            if w in p['_blob'] and w not in hits:
+            if w in blob and w not in hits:
                 hits.append(w)
-        coarse_score = len(hits) * 10
+        methods = p.get('methods_keywords', []) or []
+        applications = p.get('application_keywords', []) or []
+        research_keywords = p.get('research_keywords', []) or []
+        phrase_hits = [ph for ph in phrases if ph in blob]
+        method_overlap = [w for w in words if any(w in m for m in methods)]
+        application_overlap = [w for w in words if any(w in a for a in applications)]
+        keyword_overlap = [w for w in words if any(w in k for k in research_keywords)]
+        coarse_score = (
+            len(hits) * 4
+            + len(set(phrase_hits)) * 8
+            + len(set(method_overlap)) * 7
+            + len(set(application_overlap)) * 7
+            + len(set(keyword_overlap)) * 5
+        )
         ranked.append({
             'name': p.get('name',''),
             'department': p.get('department',''),
             'score': coarse_score,
-            'why': ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Low-signal coarse ranking only.',
+            'why': ('Coarse signals: ' + ', '.join((phrase_hits + hits)[:10])) if (phrase_hits or hits) else 'Low-signal coarse ranking only.',
             'detailed_fit': 'Coarse pass only before deep analysis.',
             'professor_focus': p.get('professor_focus_detailed','') or p.get('research_summary_long','') or p.get('research_summary_short',''),
-            'methods_match': ', '.join(p.get('methods_keywords', [])[:8]),
-            'application_match': ', '.join(p.get('application_keywords', [])[:8]),
+            'methods_match': ', '.join(methods[:8]),
+            'application_match': ', '.join(applications[:8]),
             'strengths_for_you': '',
             'possible_gaps': '',
             'why_not_higher': '',
             'primary_areas': p.get('research_summary_short',''),
             'comparison_summary': p.get('research_summary_long',''),
-            'notes': ', '.join(p.get('research_keywords', [])[:12]),
+            'notes': ', '.join(research_keywords[:12]),
             'email': p.get('email',''),
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
             'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
             'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
             '_coarse_hits': hits,
+            '_phrase_hits': phrase_hits,
+            '_method_overlap': method_overlap,
+            '_application_overlap': application_overlap,
+            '_keyword_overlap': keyword_overlap,
         })
     ranked.sort(key=lambda x: (-x['score'], x['name']))
     return ranked
@@ -153,11 +176,6 @@ def _merge_scored(pool, parsed, coarse_ranked):
     for item in coarse_ranked:
         if item['name'] in deep_map:
             merged.append(deep_map[item['name']])
-        else:
-            fallback = dict(item)
-            fallback['analysis_stage'] = 'coarse'
-            fallback['why_not_higher'] = fallback.get('why_not_higher','') or 'This professor stayed in the full ranking but was not selected for deep AI analysis in this run.'
-            merged.append(fallback)
     merged.sort(key=lambda x: (-float(x.get('score', 0) or 0), x['name']))
     return merged
 
@@ -225,7 +243,7 @@ def _collect_uploaded_text(payload):
 
 
 def heuristic_rank(notes):
-    ranked = _coarse_rank_all(notes)
+    ranked = _coarse_rank_all(notes)[:AI_CANDIDATE_COUNT]
     for item in ranked:
         item['detailed_fit'] = item.get('why','') + ' This fallback mode uses only a coarse structured ranking, not deep AI analysis.'
         item['analysis_stage'] = 'coarse'
