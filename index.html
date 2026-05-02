@@ -65,7 +65,7 @@ async function fileToBase64(file){
   return btoa(binary);
 }
 
-fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{ professors=data; updateMeta(`Loaded ${data.length} professors. No ranking is shown until you run a fresh evaluation.`); }).catch(err=>{ updateMeta('Failed to load professor dataset: '+err); });
+fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{ professors=data; updateMeta(`Loaded ${data.length} professors from the neutral master dataset. No ranking is shown until you run a fresh evaluation.`); }).catch(err=>{ updateMeta('Failed to load professor dataset: '+err); });
 
 document.getElementById('files').addEventListener('change', async (e)=>{
   const files=Array.from(e.target.files||[]);
