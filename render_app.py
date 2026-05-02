@@ -12,6 +12,7 @@ from pypdf import PdfReader
 
 BASE = Path(__file__).resolve().parent
 MASTER_JSON_PATH = BASE / 'ucsb_professors_master.json'
+PROFILES_JSON_PATH = BASE / 'ucsb_professor_profiles.json'
 HOST = '0.0.0.0'
 PORT = int(os.environ.get('PORT', '10000'))
 OPENCLAW_API_URL = os.environ.get('OPENCLAW_API_URL', '').strip()
@@ -26,6 +27,8 @@ MAX_TOTAL_FILE_CHARS = 50000
 AI_CANDIDATE_COUNT = 50
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
+professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
+profiles_by_name = {p.get('name',''): p for p in professor_profiles}
 for p in professors:
     parts = [
         p.get('name',''), p.get('department',''), p.get('title',''),
@@ -73,22 +76,28 @@ def _candidate_payload(notes=''):
     pool = _candidate_pool(notes)
     payload_rows = []
     for p in pool:
+        prof = profiles_by_name.get(p.get('name',''), {})
         payload_rows.append({
             'name': p.get('name',''),
             'department': p.get('department',''),
             'affiliations': p.get('affiliations', []),
             'title': p.get('title',''),
+            'email': p.get('email',''),
             'research_summary_short': p.get('research_summary_short',''),
             'research_summary_long': p.get('research_summary_long',''),
             'research_areas_raw': p.get('research_areas_raw',''),
             'research_keywords': p.get('research_keywords', []),
             'topic_clusters': p.get('topic_clusters', []),
+            'deep_profile_text': p.get('deep_profile_text',''),
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
             'personal_website_url': p.get('personal_website_url',''),
             'lab_website_url': p.get('lab_website_url',''),
             'google_scholar_query': p.get('google_scholar_query',''),
+            'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
             'google_query_official': p.get('google_query_official',''),
             'google_query_personal': p.get('google_query_personal',''),
+            'google_query_lab': p.get('google_query_lab',''),
+            'canonical_profile': prof,
         })
     return pool, payload_rows
 
@@ -105,11 +114,15 @@ def _merge_scored(pool, parsed):
             'department': p.get('department',''),
             'score': s.get('score', 0),
             'why': s.get('why', 'AI did not return an explanation.'),
+            'detailed_fit': s.get('detailed_fit', s.get('why', 'AI did not return a detailed fit explanation.')),
+            'professor_focus': s.get('professor_focus', p.get('research_summary_long','')),
             'primary_areas': p.get('research_summary_short',''),
             'comparison_summary': p.get('research_summary_long',''),
             'notes': ', '.join(p.get('research_keywords', [])[:12]),
+            'email': p.get('email',''),
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
             'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
+            'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
         })
     merged.sort(key=lambda x: (-float(x.get('score', 0) or 0), x['name']))
     return merged
@@ -204,10 +217,13 @@ def _prompt_for_notes(notes, payload_rows):
     return (
         'You are evaluating UCSB professors for a user based only on the current user input and the professor information provided. '
         'Do not use any hidden prior ranking or base score. Generate scores fresh for this run. '
+        'Compare all provided professors for this run and rank them relative to the user input. '
         'Return strict JSON only with this schema: '
-        '{"results":[{"name":string,"score":number,"why":string}]}. '
+        '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string}]}. '
         'Scores should be 0-100, relative to the current user input only. '
         'Be willing to give low scores when fit is weak. '
+        'The field professor_focus should explain clearly what the professor actually works on. '
+        'The field detailed_fit should explain in more detail why that professor could fit or not fit the user. '
         'User input:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
 
