@@ -12,7 +12,7 @@ button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);backg
 <h1>UCSB PhD Match</h1>
 <div class="sub">No ranking is shown by default. First upload or paste your own information, then run the evaluation.</div>
 <div class="panel"><strong>What are you looking for?</strong><br><textarea id="notes" placeholder="Describe your PhD interests, your background, your wishes, and any notes."></textarea></div>
-<div class="panel"><strong>Attach files</strong><br><input id="files" type="file" multiple><div id="fileInfo" class="muted small" style="margin-top:10px">Current browser-only support: text-like files such as TXT, MD, CSV. PDF, DOC, DOCX, and image CVs still need backend support.</div></div>
+<div class="panel"><strong>Attach files</strong><br><input id="files" type="file" multiple accept=".txt,.md,.csv,.pdf,.doc,.docx"><div id="fileInfo" class="muted small" style="margin-top:10px">Backend-supported uploads: TXT, MD, CSV, PDF, DOCX. Legacy DOC is not supported yet. Image OCR is not wired yet.</div></div>
 <div class="panel"><strong>Filter</strong><br><select id="dept"><option value="All">All departments</option><option value="CS">CS</option><option value="ECE">ECE</option><option value="ME">ME</option><option value="Other">Other</option></select></div>
 <div class="panel"><strong>AI backend URL</strong><br><input id="backendUrl" value="https://ucsb-phd-match.onrender.com" placeholder="https://your-public-backend.example.com"><div class="muted small" style="margin-top:10px">The app will try the live backend at /evaluate first. If that fails, it falls back to browser-only ranking.</div><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div></div>
 <div id="resultsMeta" class="muted" style="margin-bottom:12px">Loaded 92 professors. Ranking will start only after you provide your own input.</div>
@@ -21,6 +21,7 @@ button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);backg
 <script>
 let professors = [];
 let attachedText = '';
+let attachedFiles = [];
 
 function deptGroup(p){
   const d=(p.department||'').toLowerCase();
@@ -52,39 +53,56 @@ function render(items){
   });
 }
 
+async function fileToBase64(file){
+  const buf = await file.arrayBuffer();
+  let binary = '';
+  const bytes = new Uint8Array(buf);
+  const chunkSize = 0x8000;
+  for(let i=0;i<bytes.length;i+=chunkSize){
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+}
+
 fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{ professors=data; updateMeta(`Loaded ${data.length} professors. Ranking will start only after you provide your own input.`); }).catch(err=>{ updateMeta('Failed to load professor dataset: '+err); });
 
 document.getElementById('files').addEventListener('change', async (e)=>{
   const files=Array.from(e.target.files||[]);
   const texts=[];
   let parsedCount=0;
+  attachedFiles = [];
   for(const f of files){
     const name=(f.name||'').toLowerCase();
     if(name.endsWith('.txt')||name.endsWith('.md')||name.endsWith('.csv')){
       texts.push(await f.text());
       parsedCount += 1;
     }
+    attachedFiles.push({
+      name: f.name,
+      content_base64: await fileToBase64(f)
+    });
   }
   attachedText=texts.join('\n\n');
-  document.getElementById('fileInfo').textContent = files.length ? (`Attached ${files.length} file(s). Parsed ${parsedCount} supported text-like file(s). PDF/image/doc parsing is not wired yet in this browser-only version.`) : 'No files attached.';
+  document.getElementById('fileInfo').textContent = files.length ? (`Attached ${files.length} file(s). Browser parsed ${parsedCount} text-like file(s). Backend can also process PDF and DOCX.`) : 'No files attached.';
 });
 
 document.getElementById('runBtn').addEventListener('click', async ()=>{
   const dept=document.getElementById('dept').value;
   const backendUrl=(document.getElementById('backendUrl').value||'').trim().replace(/\/$/,'');
   const userText=((document.getElementById('notes').value||'')+' '+attachedText).trim();
-  if(!userText){ updateMeta('Please add notes or files first, then evaluate.'); return; }
+  if(!userText && attachedFiles.length===0){ updateMeta('Please add notes or files first, then evaluate.'); return; }
   const filtered=professors.filter(p=>dept==='All'||deptGroup(p)===dept);
   if(backendUrl){
     try{
       updateMeta('Trying live AI backend...');
-      const res=await fetch(backendUrl + '/evaluate', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:userText})});
+      const res=await fetch(backendUrl + '/evaluate', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:userText, files: attachedFiles})});
       if(!res.ok) throw new Error('HTTP '+res.status);
       const data=await res.json();
       const allowed=new Set(filtered.map(p=>p.name));
       const ranked=(data.results||[]).filter(x=>allowed.has(x.name));
       render(ranked);
-      updateMeta(`Showing ${ranked.length} AI-ranked professors out of ${professors.length} loaded.`);
+      const notices = (data.file_notices||[]).length ? (' File notes: ' + data.file_notices.join(' | ')) : '';
+      updateMeta(`Showing ${ranked.length} AI-ranked professors out of ${professors.length} loaded. Mode: ${data.mode || 'unknown'}.${notices}`);
       return;
     }catch(err){
       updateMeta('Live AI backend failed, falling back to browser-only ranking.');

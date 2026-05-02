@@ -1,11 +1,16 @@
 import base64
 import csv
+import io
 import json
 import os
 import re
+import zipfile
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.request import Request, urlopen
+
+from docx import Document
+from pypdf import PdfReader
 
 BASE = Path(__file__).resolve().parent
 CSV_PATH = BASE / 'ucsb_professor_screening.csv'
@@ -18,6 +23,8 @@ PUBLIC_BACKEND_MODE = os.environ.get('PUBLIC_BACKEND_MODE', 'heuristic').strip()
 CODEX_ACCESS_TOKEN = os.environ.get('CODEX_ACCESS_TOKEN', '').strip()
 CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
+MAX_FILE_CHARS = 20000
+MAX_TOTAL_FILE_CHARS = 50000
 
 rows = list(csv.DictReader(CSV_PATH.open()))
 for r in rows:
@@ -107,6 +114,68 @@ def _merge_scored(shortlist, parsed):
         })
     merged.sort(key=lambda x: (-x['score'], x['name']))
     return merged
+
+
+def _extract_docx_text(raw_bytes):
+    doc = Document(io.BytesIO(raw_bytes))
+    return '\n'.join(p.text for p in doc.paragraphs if p.text).strip()
+
+
+def _extract_pdf_text(raw_bytes):
+    reader = PdfReader(io.BytesIO(raw_bytes))
+    chunks = []
+    for page in reader.pages:
+        try:
+            chunks.append(page.extract_text() or '')
+        except Exception:
+            continue
+    return '\n'.join(chunks).strip()
+
+
+def _extract_text_file(name, raw_bytes):
+    lower = (name or '').lower()
+    if lower.endswith(('.txt', '.md', '.csv')):
+        return raw_bytes.decode('utf-8', 'ignore').strip()
+    if lower.endswith('.pdf'):
+        return _extract_pdf_text(raw_bytes)
+    if lower.endswith('.docx'):
+        return _extract_docx_text(raw_bytes)
+    if lower.endswith('.doc'):
+        raise RuntimeError('legacy .doc is not supported yet, please export as .docx or PDF')
+    raise RuntimeError('unsupported file type')
+
+
+def _collect_uploaded_text(payload):
+    files = payload.get('files') or []
+    if not isinstance(files, list):
+        return '', []
+    texts = []
+    notices = []
+    total = 0
+    for f in files:
+        if not isinstance(f, dict):
+            continue
+        name = f.get('name') or 'file'
+        content_b64 = f.get('content_base64') or ''
+        if not content_b64:
+            continue
+        try:
+            raw_bytes = base64.b64decode(content_b64)
+            text = _extract_text_file(name, raw_bytes)
+            if not text:
+                notices.append(f'{name}: no extractable text found')
+                continue
+            text = text[:MAX_FILE_CHARS]
+            remaining = MAX_TOTAL_FILE_CHARS - total
+            if remaining <= 0:
+                notices.append(f'{name}: skipped because total upload text limit was reached')
+                continue
+            text = text[:remaining]
+            total += len(text)
+            texts.append(f'\n\n[File: {name}]\n{text}')
+        except Exception as e:
+            notices.append(f'{name}: {e}')
+    return ''.join(texts).strip(), notices
 
 
 def ai_rank_openclaw(notes):
@@ -236,23 +305,27 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             payload = {}
         notes = payload.get('notes', '') or ''
-        if not notes.strip():
-            self._send(400, body=b'{"error":"notes required"}')
+        file_text, file_notices = _collect_uploaded_text(payload)
+        combined_notes = notes.strip()
+        if file_text:
+            combined_notes = (combined_notes + '\n\n' + file_text).strip()
+        if not combined_notes.strip():
+            self._send(400, body=b'{"error":"notes or supported files required"}')
             return
         mode = 'heuristic'
-        results = heuristic_rank(notes)
+        results = heuristic_rank(combined_notes)
         if PUBLIC_BACKEND_MODE == 'ai':
             try:
                 if CODEX_ACCESS_TOKEN:
-                    results = ai_rank_direct_codex(notes)
+                    results = ai_rank_direct_codex(combined_notes)
                     mode = 'ai-direct-codex'
                 elif OPENCLAW_API_URL and OPENCLAW_GATEWAY_TOKEN:
-                    results = ai_rank_openclaw(notes)
+                    results = ai_rank_openclaw(combined_notes)
                     mode = 'ai-openclaw'
             except Exception:
                 mode = 'heuristic'
-                results = heuristic_rank(notes)
-        body = json.dumps({'results': results, 'mode': mode}, ensure_ascii=False).encode('utf-8')
+                results = heuristic_rank(combined_notes)
+        body = json.dumps({'results': results, 'mode': mode, 'file_notices': file_notices}, ensure_ascii=False).encode('utf-8')
         self._send(200, body=body)
 
 
