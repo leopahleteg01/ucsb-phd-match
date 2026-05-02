@@ -13,6 +13,7 @@ PORT = int(os.environ.get('PORT', '10000'))
 OPENCLAW_API_URL = os.environ.get('OPENCLAW_API_URL', '').strip()
 OPENCLAW_GATEWAY_TOKEN = os.environ.get('OPENCLAW_GATEWAY_TOKEN', '').strip()
 OPENCLAW_BACKEND_MODEL = os.environ.get('OPENCLAW_BACKEND_MODEL', 'openai-codex/gpt-5.4').strip()
+PUBLIC_BACKEND_MODE = os.environ.get('PUBLIC_BACKEND_MODE', 'heuristic').strip().lower()
 
 rows = list(csv.DictReader(CSV_PATH.open()))
 for r in rows:
@@ -147,12 +148,16 @@ class Handler(BaseHTTPRequestHandler):
         if not notes.strip():
             self._send(400, body=b'{"error":"notes required"}')
             return
-        mode = 'ai'
-        try:
-            if not OPENCLAW_API_URL or not OPENCLAW_GATEWAY_TOKEN:
-                raise RuntimeError('backend env missing')
-            results = ai_rank(notes)
-        except Exception as e:
+        if PUBLIC_BACKEND_MODE == 'ai':
+            mode = 'ai'
+            try:
+                if not OPENCLAW_API_URL or not OPENCLAW_GATEWAY_TOKEN:
+                    raise RuntimeError('backend env missing')
+                results = ai_rank(notes)
+            except Exception:
+                mode = 'heuristic'
+                results = heuristic_rank(notes)
+        else:
             mode = 'heuristic'
             results = heuristic_rank(notes)
         body = json.dumps({'results': results, 'mode': mode}, ensure_ascii=False).encode('utf-8')
