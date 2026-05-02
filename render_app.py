@@ -79,8 +79,16 @@ def _extract_account_id_from_jwt(token):
     return account_id
 
 
-def _build_shortlist():
-    shortlist = sorted(rows, key=lambda r: (-r['_base_fit'], r['name']))[:25]
+def _build_shortlist(notes=''):
+    note_words = [w for w in re.split(r'[^a-z0-9]+', (notes or '').lower()) if len(w) > 2]
+    boosted = []
+    for r in rows:
+        blob = r['_blob']
+        keyword_hits = sum(1 for w in note_words if w in blob)
+        shortlist_score = r['_base_fit'] + keyword_hits * 5
+        boosted.append((shortlist_score, r['name'], r))
+    boosted.sort(key=lambda x: (-x[0], x[1]))
+    shortlist = [r for _, _, r in boosted[:40]]
     payload_rows = []
     for r in shortlist:
         payload_rows.append({
@@ -89,6 +97,7 @@ def _build_shortlist():
             'primary_areas': r.get('primary_areas',''),
             'comparison_summary': r.get('comparison_summary',''),
             'notes': r.get('notes',''),
+            'research_guess': r.get('research_guess',''),
             'ucsb_profile_url': r.get('ucsb_profile_url',''),
             'website_guess': r.get('website_guess',''),
             'base_fit': r['_base_fit'],
@@ -179,7 +188,7 @@ def _collect_uploaded_text(payload):
 
 
 def ai_rank_openclaw(notes):
-    shortlist, payload_rows = _build_shortlist()
+    shortlist, payload_rows = _build_shortlist(notes)
     prompt = (
         'You are ranking UCSB professors for a PhD applicant. '
         'Use the applicant notes and the professor dataset. '
@@ -208,7 +217,7 @@ def ai_rank_openclaw(notes):
 
 
 def ai_rank_direct_codex(notes):
-    shortlist, payload_rows = _build_shortlist()
+    shortlist, payload_rows = _build_shortlist(notes)
     prompt = (
         'You are ranking UCSB professors for a PhD applicant. '
         'Use the applicant notes and the professor dataset. '
