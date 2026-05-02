@@ -1,3 +1,4 @@
+import base64
 import csv
 import json
 import os
@@ -14,6 +15,9 @@ OPENCLAW_API_URL = os.environ.get('OPENCLAW_API_URL', '').strip()
 OPENCLAW_GATEWAY_TOKEN = os.environ.get('OPENCLAW_GATEWAY_TOKEN', '').strip()
 OPENCLAW_BACKEND_MODEL = os.environ.get('OPENCLAW_BACKEND_MODEL', 'openai-codex/gpt-5.4').strip()
 PUBLIC_BACKEND_MODE = os.environ.get('PUBLIC_BACKEND_MODE', 'heuristic').strip().lower()
+CODEX_ACCESS_TOKEN = os.environ.get('CODEX_ACCESS_TOKEN', '').strip()
+CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
+CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 
 rows = list(csv.DictReader(CSV_PATH.open()))
 for r in rows:
@@ -57,7 +61,18 @@ def heuristic_rank(notes):
     return ranked[:25]
 
 
-def ai_rank(notes):
+def _extract_account_id_from_jwt(token):
+    parts = token.split('.')
+    if len(parts) != 3:
+        raise RuntimeError('invalid codex token format')
+    payload = json.loads(base64.urlsafe_b64decode(parts[1] + '=' * (-len(parts[1]) % 4)).decode())
+    account_id = payload.get('https://api.openai.com/auth', {}).get('chatgpt_account_id')
+    if not account_id:
+        raise RuntimeError('missing chatgpt_account_id in token')
+    return account_id
+
+
+def _build_shortlist():
     shortlist = sorted(rows, key=lambda r: (-r['_base_fit'], r['name']))[:25]
     payload_rows = []
     for r in shortlist:
@@ -71,6 +86,31 @@ def ai_rank(notes):
             'website_guess': r.get('website_guess',''),
             'base_fit': r['_base_fit'],
         })
+    return shortlist, payload_rows
+
+
+def _merge_scored(shortlist, parsed):
+    scored = {x['name']: x for x in parsed.get('results', [])}
+    merged = []
+    for r in shortlist:
+        s = scored.get(r['name'])
+        merged.append({
+            'name': r['name'],
+            'department': r['department'],
+            'score': s['score'] if s else r['_base_fit'],
+            'why': s['why'] if s else 'Fallback to base fit, no AI explanation returned.',
+            'primary_areas': r.get('primary_areas',''),
+            'comparison_summary': r.get('comparison_summary',''),
+            'notes': r.get('notes',''),
+            'ucsb_profile_url': r.get('ucsb_profile_url',''),
+            'website_guess': r.get('website_guess',''),
+        })
+    merged.sort(key=lambda x: (-x['score'], x['name']))
+    return merged
+
+
+def ai_rank_openclaw(notes):
+    shortlist, payload_rows = _build_shortlist()
     prompt = (
         'You are ranking UCSB professors for a PhD applicant. '
         'Use the applicant notes and the professor dataset. '
@@ -95,23 +135,74 @@ def ai_rank(notes):
     text = outer['choices'][0]['message']['content']
     m = re.search(r'\{.*\}', text, re.S)
     parsed = json.loads(m.group(0) if m else text)
-    scored = {x['name']: x for x in parsed.get('results', [])}
-    merged = []
-    for r in shortlist:
-        s = scored.get(r['name'])
-        merged.append({
-            'name': r['name'],
-            'department': r['department'],
-            'score': s['score'] if s else r['_base_fit'],
-            'why': s['why'] if s else 'Fallback to base fit, no AI explanation returned.',
-            'primary_areas': r.get('primary_areas',''),
-            'comparison_summary': r.get('comparison_summary',''),
-            'notes': r.get('notes',''),
-            'ucsb_profile_url': r.get('ucsb_profile_url',''),
-            'website_guess': r.get('website_guess',''),
-        })
-    merged.sort(key=lambda x: (-x['score'], x['name']))
-    return merged
+    return _merge_scored(shortlist, parsed)
+
+
+def ai_rank_direct_codex(notes):
+    shortlist, payload_rows = _build_shortlist()
+    prompt = (
+        'You are ranking UCSB professors for a PhD applicant. '
+        'Use the applicant notes and the professor dataset. '
+        'Return strict JSON only with this schema: '
+        '{"results":[{"name":string,"score":number,"why":string}]}. '
+        'Scores should be 0-100 and reflect fit to the applicant notes. '
+        'Be decisive and concise. Applicant notes:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
+    )
+    access = CODEX_ACCESS_TOKEN
+    if not access:
+        raise RuntimeError('missing CODEX_ACCESS_TOKEN')
+    account_id = CODEX_ACCOUNT_ID or _extract_account_id_from_jwt(access)
+    body = json.dumps({
+        'model': CODEX_MODEL,
+        'store': False,
+        'stream': True,
+        'instructions': 'Return only strict JSON. No markdown fences. No extra commentary.',
+        'input': [
+            {
+                'role': 'user',
+                'content': [
+                    {'type': 'input_text', 'text': prompt}
+                ]
+            }
+        ],
+        'text': {'verbosity': 'low'},
+        'include': ['reasoning.encrypted_content']
+    }).encode('utf-8')
+    req = Request('https://chatgpt.com/backend-api/codex/responses', data=body, headers={
+        'Authorization': f'Bearer {access}',
+        'chatgpt-account-id': account_id,
+        'originator': 'pi',
+        'OpenAI-Beta': 'responses=experimental',
+        'accept': 'text/event-stream',
+        'content-type': 'application/json',
+        'User-Agent': 'pi (render backend)'
+    }, method='POST')
+    text_parts = []
+    with urlopen(req, timeout=180) as resp:
+        for raw_line in resp:
+            line = raw_line.decode('utf-8', 'ignore').strip()
+            if not line.startswith('data:'):
+                continue
+            data = line[5:].strip()
+            if not data or data == '[DONE]':
+                continue
+            evt = json.loads(data)
+            t = evt.get('type', '')
+            if t == 'response.output_text.delta':
+                text_parts.append(evt.get('delta', ''))
+            elif t == 'response.output_text.done' and evt.get('text'):
+                final_text = ''.join(text_parts) or evt.get('text', '')
+                m = re.search(r'\{.*\}', final_text, re.S)
+                parsed = json.loads(m.group(0) if m else final_text)
+                return _merge_scored(shortlist, parsed)
+            elif t in ('response.failed', 'error'):
+                raise RuntimeError(json.dumps(evt))
+    final_text = ''.join(text_parts)
+    if not final_text:
+        raise RuntimeError('no codex output received')
+    m = re.search(r'\{.*\}', final_text, re.S)
+    parsed = json.loads(m.group(0) if m else final_text)
+    return _merge_scored(shortlist, parsed)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -148,18 +239,19 @@ class Handler(BaseHTTPRequestHandler):
         if not notes.strip():
             self._send(400, body=b'{"error":"notes required"}')
             return
+        mode = 'heuristic'
+        results = heuristic_rank(notes)
         if PUBLIC_BACKEND_MODE == 'ai':
-            mode = 'ai'
             try:
-                if not OPENCLAW_API_URL or not OPENCLAW_GATEWAY_TOKEN:
-                    raise RuntimeError('backend env missing')
-                results = ai_rank(notes)
+                if CODEX_ACCESS_TOKEN:
+                    results = ai_rank_direct_codex(notes)
+                    mode = 'ai-direct-codex'
+                elif OPENCLAW_API_URL and OPENCLAW_GATEWAY_TOKEN:
+                    results = ai_rank_openclaw(notes)
+                    mode = 'ai-openclaw'
             except Exception:
                 mode = 'heuristic'
                 results = heuristic_rank(notes)
-        else:
-            mode = 'heuristic'
-            results = heuristic_rank(notes)
         body = json.dumps({'results': results, 'mode': mode}, ensure_ascii=False).encode('utf-8')
         self._send(200, body=body)
 
