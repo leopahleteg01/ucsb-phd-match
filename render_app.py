@@ -90,16 +90,17 @@ def _merge_scored(pool, parsed):
     score_map = {x['name']: x for x in parsed.get('results', []) if isinstance(x, dict) and x.get('name')}
     merged = []
     for p in pool:
-        s = score_map.get(p['name'])
-        if not s:
-            continue
+        s = score_map.get(p['name']) or {}
+        ai_why = s.get('why', '')
+        if not ai_why:
+            ai_why = 'The AI did not surface this professor explicitly, so this entry was retained with a low score to keep the ranking complete.'
         merged.append({
             'name': p.get('name',''),
             'department': p.get('department',''),
             'score': s.get('score', 0),
-            'why': s.get('why', 'AI did not return an explanation.'),
-            'detailed_fit': s.get('detailed_fit', s.get('why', 'AI did not return a detailed fit explanation.')),
-            'professor_focus': s.get('professor_focus', p.get('research_summary_long','')),
+            'why': ai_why,
+            'detailed_fit': s.get('detailed_fit', ai_why),
+            'professor_focus': s.get('professor_focus', p.get('professor_focus_detailed','') or p.get('research_summary_long','') or p.get('research_summary_short','')),
             'primary_areas': p.get('research_summary_short',''),
             'comparison_summary': p.get('research_summary_long',''),
             'notes': ', '.join(p.get('research_keywords', [])[:12]),
@@ -199,7 +200,7 @@ def heuristic_rank(notes):
             'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
         })
     ranked.sort(key=lambda x: (-x['score'], x['name']))
-    return ranked[:25]
+    return ranked
 
 
 def _prompt_for_notes(notes, payload_rows):
@@ -209,6 +210,7 @@ def _prompt_for_notes(notes, payload_rows):
         'Compare all provided professors for this run and rank them relative to the user input. '
         'Return strict JSON only with this schema: '
         '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string}]}. '
+        'You must return one result entry for every professor provided, not just the top matches. '
         'Scores should be 0-100, relative to the current user input only. '
         'Be willing to give low scores when fit is weak. '
         'The field professor_focus should explain clearly what the professor actually works on. '
