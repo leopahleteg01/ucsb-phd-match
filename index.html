@@ -103,7 +103,8 @@ document.getElementById('runBtn').addEventListener('click', async ()=>{
       const ranked=(data.results||[]).filter(x=>allowed.has(x.name));
       render(ranked);
       const notices = (data.file_notices||[]).length ? (' File notes: ' + data.file_notices.join(' | ')) : '';
-      updateMeta(`Showing ${ranked.length} freshly generated results out of ${professors.length} loaded. Mode: ${data.mode || 'unknown'}.${notices}`);
+      const deepCount = ranked.filter(x => x.analysis_stage === 'deep').length;
+      updateMeta(`Showing ${ranked.length} ranked results out of ${professors.length} loaded. Deep AI analysis was applied to ${deepCount}. Mode: ${data.mode || 'unknown'}.${notices}`);
       return;
     }catch(err){
       updateMeta('Live AI backend failed, falling back to lightweight browser keyword view.');

@@ -24,7 +24,7 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 92
+AI_CANDIDATE_COUNT = 20
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
 professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
@@ -56,8 +56,44 @@ def _candidate_pool(notes=''):
     return list(professors)
 
 
+def _coarse_rank_all(notes):
+    words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
+    ranked = []
+    for p in professors:
+        hits = []
+        for w in words:
+            if w in p['_blob'] and w not in hits:
+                hits.append(w)
+        coarse_score = len(hits) * 10
+        ranked.append({
+            'name': p.get('name',''),
+            'department': p.get('department',''),
+            'score': coarse_score,
+            'why': ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Low-signal coarse ranking only.',
+            'detailed_fit': 'Coarse pass only before deep analysis.',
+            'professor_focus': p.get('professor_focus_detailed','') or p.get('research_summary_long','') or p.get('research_summary_short',''),
+            'methods_match': ', '.join(p.get('methods_keywords', [])[:8]),
+            'application_match': ', '.join(p.get('application_keywords', [])[:8]),
+            'strengths_for_you': '',
+            'possible_gaps': '',
+            'why_not_higher': '',
+            'primary_areas': p.get('research_summary_short',''),
+            'comparison_summary': p.get('research_summary_long',''),
+            'notes': ', '.join(p.get('research_keywords', [])[:12]),
+            'email': p.get('email',''),
+            'ucsb_profile_url': p.get('ucsb_profile_url',''),
+            'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
+            'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
+            '_coarse_hits': hits,
+        })
+    ranked.sort(key=lambda x: (-x['score'], x['name']))
+    return ranked
+
+
 def _candidate_payload(notes=''):
-    pool = _candidate_pool(notes)
+    coarse_ranked = _coarse_rank_all(notes)
+    top_names = {r['name'] for r in coarse_ranked[:AI_CANDIDATE_COUNT]}
+    pool = [p for p in professors if p.get('name','') in top_names]
     payload_rows = []
     for p in pool:
         prof = profiles_by_name.get(p.get('name',''), {})
@@ -86,15 +122,13 @@ def _candidate_payload(notes=''):
     return pool, payload_rows
 
 
-def _merge_scored(pool, parsed):
+def _merge_scored(pool, parsed, coarse_ranked):
     score_map = {x['name']: x for x in parsed.get('results', []) if isinstance(x, dict) and x.get('name')}
-    merged = []
+    deep_map = {}
     for p in pool:
         s = score_map.get(p['name']) or {}
-        ai_why = s.get('why', '')
-        if not ai_why:
-            ai_why = 'The AI did not surface this professor explicitly, so this entry was retained with a low score to keep the ranking complete.'
-        merged.append({
+        ai_why = s.get('why', '') or 'Deep analysis did not return a specific explanation.'
+        deep_map[p['name']] = {
             'name': p.get('name',''),
             'department': p.get('department',''),
             'score': s.get('score', 0),
@@ -113,7 +147,17 @@ def _merge_scored(pool, parsed):
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
             'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
             'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
-        })
+            'analysis_stage': 'deep',
+        }
+    merged = []
+    for item in coarse_ranked:
+        if item['name'] in deep_map:
+            merged.append(deep_map[item['name']])
+        else:
+            fallback = dict(item)
+            fallback['analysis_stage'] = 'coarse'
+            fallback['why_not_higher'] = fallback.get('why_not_higher','') or 'This professor stayed in the full ranking but was not selected for deep AI analysis in this run.'
+            merged.append(fallback)
     merged.sort(key=lambda x: (-float(x.get('score', 0) or 0), x['name']))
     return merged
 
@@ -181,30 +225,11 @@ def _collect_uploaded_text(payload):
 
 
 def heuristic_rank(notes):
-    words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
-    ranked = []
-    for p in _candidate_pool(notes):
-        hits = []
-        for w in words:
-            if w in p['_blob'] and w not in hits:
-                hits.append(w)
-        why = ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Lightweight keyword fallback only.'
-        ranked.append({
-            'name': p.get('name',''),
-            'department': p.get('department',''),
-            'score': len(hits) * 10,
-            'why': why,
-            'detailed_fit': why + ' This fallback mode uses keyword overlap only, so it is less nuanced than the AI mode.',
-            'professor_focus': p.get('research_summary_long','') or p.get('research_summary_short',''),
-            'primary_areas': p.get('research_summary_short',''),
-            'comparison_summary': p.get('research_summary_long',''),
-            'notes': ', '.join(p.get('research_keywords', [])[:12]),
-            'email': p.get('email',''),
-            'ucsb_profile_url': p.get('ucsb_profile_url',''),
-            'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
-            'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
-        })
-    ranked.sort(key=lambda x: (-x['score'], x['name']))
+    ranked = _coarse_rank_all(notes)
+    for item in ranked:
+        item['detailed_fit'] = item.get('why','') + ' This fallback mode uses only a coarse structured ranking, not deep AI analysis.'
+        item['analysis_stage'] = 'coarse'
+        item['why_not_higher'] = item.get('why_not_higher','') or 'Browser/backend fallback mode did not run the deep analysis stage.'
     return ranked
 
 
@@ -215,7 +240,7 @@ def _prompt_for_notes(notes, payload_rows):
         'Compare all provided professors for this run and rank them relative to the user input. '
         'Return strict JSON only with this schema: '
         '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string,"methods_match":string,"application_match":string,"strengths_for_you":string,"possible_gaps":string,"why_not_higher":string}]}. '
-        'You must return one result entry for every professor provided, not just the top matches. '
+        'Return results only for the provided top candidates in this deep-analysis stage. '
         'Scores should be 0-100, relative to the current user input only. '
         'Be willing to give low scores when fit is weak. '
         'The field professor_focus should explain clearly what the professor actually works on. '
@@ -230,6 +255,7 @@ def _prompt_for_notes(notes, payload_rows):
 
 
 def ai_rank_openclaw(notes):
+    coarse_ranked = _coarse_rank_all(notes)
     pool, payload_rows = _candidate_payload(notes)
     prompt = _prompt_for_notes(notes, payload_rows)
     body = json.dumps({
@@ -248,10 +274,11 @@ def ai_rank_openclaw(notes):
     text = outer['choices'][0]['message']['content']
     m = re.search(r'\{.*\}', text, re.S)
     parsed = json.loads(m.group(0) if m else text)
-    return _merge_scored(pool, parsed)
+    return _merge_scored(pool, parsed, coarse_ranked)
 
 
 def ai_rank_direct_codex(notes):
+    coarse_ranked = _coarse_rank_all(notes)
     pool, payload_rows = _candidate_payload(notes)
     prompt = _prompt_for_notes(notes, payload_rows)
     access = CODEX_ACCESS_TOKEN
@@ -300,7 +327,7 @@ def ai_rank_direct_codex(notes):
                 final_text = ''.join(text_parts) or evt.get('text', '')
                 m = re.search(r'\{.*\}', final_text, re.S)
                 parsed = json.loads(m.group(0) if m else final_text)
-                return _merge_scored(pool, parsed)
+                return _merge_scored(pool, parsed, coarse_ranked)
             elif t in ('response.failed', 'error'):
                 raise RuntimeError(json.dumps(evt))
     final_text = ''.join(text_parts)
@@ -308,7 +335,7 @@ def ai_rank_direct_codex(notes):
         raise RuntimeError('no codex output received')
     m = re.search(r'\{.*\}', final_text, re.S)
     parsed = json.loads(m.group(0) if m else final_text)
-    return _merge_scored(pool, parsed)
+    return _merge_scored(pool, parsed, coarse_ranked)
 
 
 class Handler(BaseHTTPRequestHandler):
