@@ -41,7 +41,7 @@ def load_master():
 
 def save_master(master):
     MASTER_JSON.write_text(json.dumps(master, ensure_ascii=False, indent=2))
-    fieldnames = list(master[0].keys()) if master else []
+    fieldnames = sorted({k for rec in master for k in rec.keys()}) if master else []
     with MASTER_CSV.open('w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
         w.writeheader()
