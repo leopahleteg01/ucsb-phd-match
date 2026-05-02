@@ -24,8 +24,8 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 36
-AI_DEEP_ANALYSIS_COUNT = 12
+AI_CANDIDATE_COUNT = 30
+AI_DEEP_ANALYSIS_COUNT = 5
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
 professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
@@ -300,6 +300,7 @@ def heuristic_rank(notes):
 
 
 def _prompt_for_notes(notes, payload_rows):
+    primary_text, supporting_text = _split_primary_and_supporting_text(notes)
     return (
         'You are evaluating UCSB professors for a user based only on the current user input and the professor information provided. '
         'Do not use any hidden prior ranking or base score. Generate scores fresh for this run. '
@@ -309,25 +310,37 @@ def _prompt_for_notes(notes, payload_rows):
         'Return results only for the provided professors in this deep-analysis stage. '
         'Scores should be 0-100, relative to the current user input only. '
         'Be willing to give low scores when fit is weak. '
-        'The field professor_focus should explain clearly what the professor actually works on. '
-        'The field detailed_fit should explain in more detail why that professor could fit or not fit the user. '
+        'Use the user-written text as the primary signal. Treat attached-file content only as supporting context. '
+        'Write rich, specific, textually detailed explanations. Avoid generic one-liners. '
+        'The field professor_focus should clearly explain what the professor actually works on, with real methodological and domain detail. '
+        'The field detailed_fit should explain in detail why that professor could fit or not fit the user. '
         'The field methods_match should describe method-level overlap, such as control, optimization, learning, simulation, or systems work. '
         'The field application_match should describe domain overlap, such as robotics, autonomy, VR/AR, cybersecurity, communications, or other application areas. '
-        'The field strengths_for_you should say what makes the match compelling. '
-        'The field possible_gaps should say what may be missing or less aligned. '
+        'The field strengths_for_you should say concretely what makes the match compelling. '
+        'The field possible_gaps should say concretely what may be missing or less aligned. '
         'The field why_not_higher should explain the main reason the score is not even higher when relevant. '
-        'User input:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
+        'Primary user text:\n' + primary_text + '\n\nSupporting attachment context:\n' + supporting_text + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
 
 
+def _split_primary_and_supporting_text(notes):
+    marker = '\n\n[File:'
+    if marker in notes:
+        primary, supporting = notes.split(marker, 1)
+        return primary.strip(), ('[File:' + supporting).strip()
+    return notes.strip(), ''
+
+
 def _shortlist_prompt(notes, payload_rows):
+    primary_text, supporting_text = _split_primary_and_supporting_text(notes)
     return (
         'You are selecting the strongest UCSB professor candidates for deeper evaluation. '
+        'Base the shortlist primarily on the user-written text. Treat attached-file content only as supporting background context, not as the main driver. '
         'Based on the user input and the provided shortlist candidates, return strict JSON only with schema '
         '{"selected_names":[string],"why_this_shortlist":string}. '
         f'Select exactly {AI_DEEP_ANALYSIS_COUNT} names, prioritizing recall so relevant professors are not missed. '
         'Choose based on actual content fit, not just surface word overlap. '
-        'User input:\n' + notes + '\n\nShortlist candidates:\n' + json.dumps(payload_rows, ensure_ascii=False)
+        'Primary user text:\n' + primary_text + '\n\nSupporting attachment context:\n' + supporting_text + '\n\nShortlist candidates:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
 
 
