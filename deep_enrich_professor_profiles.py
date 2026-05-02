@@ -90,13 +90,21 @@ def save_publish(master):
             'notes': ', '.join(p.get('research_keywords', [])[:20]),
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
             'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
+            'personal_website_url': p.get('personal_website_url',''),
+            'lab_website_url': p.get('lab_website_url',''),
+            'website_status': p.get('website_status',''),
+            'website_domain': p.get('website_domain',''),
             'google_scholar_query': p.get('google_scholar_query',''),
+            'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
+            'scholar_status': p.get('scholar_status',''),
             'google_query_official': p.get('google_query_official',''),
             'google_query_personal': p.get('google_query_personal',''),
+            'deep_profile_text': p.get('deep_profile_text',''),
             '_blob': ' | '.join([
                 p.get('name',''), p.get('department',''), p.get('title',''), p.get('email',''),
                 p.get('research_summary_short',''), p.get('research_summary_long',''),
-                ' '.join(p.get('research_keywords', []) or [])
+                p.get('personal_website_url',''), p.get('lab_website_url',''),
+                p.get('google_scholar_query',''), ' '.join(p.get('research_keywords', []) or [])
             ]).lower()
         })
     PUBLISH_JSON.write_text(json.dumps(rows, ensure_ascii=False))

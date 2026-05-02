@@ -152,6 +152,12 @@ def enrich_master(master):
                     if g in me_emails:
                         rec['email'] = g
                         break
+        official_url = rec.get('ucsb_profile_url','')
+        website_url = rec.get('personal_website_url','') or rec.get('lab_website_url','')
+        rec['website_status'] = 'present' if website_url else 'missing'
+        rec['scholar_status'] = 'query_ready'
+        rec['website_domain'] = re.sub(r'^https?://([^/]+)/?.*$', r'\1', website_url) if website_url else ''
+        rec['ucsb_domain'] = re.sub(r'^https?://([^/]+)/?.*$', r'\1', official_url) if official_url else ''
         if not rec.get('google_query_official'):
             rec['google_query_official'] = f"{name} UCSB official page"
         if not rec.get('google_scholar_query'):
@@ -160,6 +166,8 @@ def enrich_master(master):
             rec['google_query_personal'] = f"{name} UCSB personal website"
         if not rec.get('google_query_lab'):
             rec['google_query_lab'] = f"{name} UCSB lab website"
+        if not rec.get('google_scholar_url_guess'):
+            rec['google_scholar_url_guess'] = f"https://scholar.google.com/scholar?q={name.replace(' ', '+')}+UCSB"
         rec['source_quality'] = 'medium_high' if rec.get('email') and rec.get('ucsb_profile_url') else rec.get('source_quality','medium')
     return master
 
