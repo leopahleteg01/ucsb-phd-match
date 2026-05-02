@@ -24,7 +24,7 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 20
+AI_CANDIDATE_COUNT = 24
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
 professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
@@ -58,11 +58,23 @@ def _candidate_pool(notes=''):
 
 def _coarse_rank_all(notes):
     words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
-    phrases = []
     lowered = notes.lower()
-    for phrase in ['robotics', 'autonomy', 'control', 'planning', 'optimization', 'learning', 'machine learning', 'reinforcement learning', 'simulation', 'modeling', 'digital twins', 'matlab', 'simulink', 'systems engineering', 'physical ai', 'vision', 'virtual reality', 'augmented reality', 'security', 'cybersecurity', 'communications']:
-        if phrase in lowered:
-            phrases.append(phrase)
+    phrase_groups = {
+        'robotics': ['robotics', 'robot', 'locomotion', 'manipulation'],
+        'autonomy': ['autonomy', 'autonomous', 'planning', 'trajectory'],
+        'control': ['control', 'controls', 'adaptive control', 'feedback', 'dynamical'],
+        'optimization': ['optimization', 'optimal', 'convex'],
+        'learning': ['learning', 'machine learning', 'reinforcement learning', 'neural'],
+        'simulation': ['simulation', 'simulink', 'matlab', 'modeling', 'models'],
+        'digital_twins': ['digital twin', 'digital twins', 'modeling', 'simulation'],
+        'systems': ['systems engineering', 'systems', 'cyber-physical', 'dynamics'],
+        'physical_ai': ['physical ai', 'robotics', 'autonomy', 'control'],
+        'vision': ['vision', 'perception', 'imaging'],
+        'vr_ar': ['virtual reality', 'augmented reality', 'vr', 'ar'],
+        'security': ['security', 'cybersecurity', 'privacy'],
+        'communications': ['communications', 'wireless', 'networking']
+    }
+    active_groups = [label for label, terms in phrase_groups.items() if any(term in lowered for term in terms)]
     ranked = []
     for p in professors:
         blob = p.get('_blob','')
@@ -73,16 +85,31 @@ def _coarse_rank_all(notes):
         methods = p.get('methods_keywords', []) or []
         applications = p.get('application_keywords', []) or []
         research_keywords = p.get('research_keywords', []) or []
-        phrase_hits = [ph for ph in phrases if ph in blob]
+        phrase_hits = []
+        for label in active_groups:
+            if any(term in blob for term in phrase_groups[label]):
+                phrase_hits.append(label)
         method_overlap = [w for w in words if any(w in m for m in methods)]
         application_overlap = [w for w in words if any(w in a for a in applications)]
         keyword_overlap = [w for w in words if any(w in k for k in research_keywords)]
+        promotion_bonus = 0
+        if len(set(method_overlap)) >= 2:
+            promotion_bonus += 8
+        if len(set(application_overlap)) >= 2:
+            promotion_bonus += 8
+        if len(set(phrase_hits)) >= 2:
+            promotion_bonus += 6
+        if 'control' in phrase_hits and 'robotics' in phrase_hits:
+            promotion_bonus += 10
+        if 'autonomy' in phrase_hits and 'planning' in blob:
+            promotion_bonus += 6
         coarse_score = (
             len(hits) * 4
-            + len(set(phrase_hits)) * 8
-            + len(set(method_overlap)) * 7
-            + len(set(application_overlap)) * 7
+            + len(set(phrase_hits)) * 9
+            + len(set(method_overlap)) * 8
+            + len(set(application_overlap)) * 8
             + len(set(keyword_overlap)) * 5
+            + promotion_bonus
         )
         ranked.append({
             'name': p.get('name',''),
@@ -108,6 +135,7 @@ def _coarse_rank_all(notes):
             '_method_overlap': method_overlap,
             '_application_overlap': application_overlap,
             '_keyword_overlap': keyword_overlap,
+            '_promotion_bonus': promotion_bonus,
         })
     ranked.sort(key=lambda x: (-x['score'], x['name']))
     return ranked
