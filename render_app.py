@@ -3,6 +3,7 @@ import io
 import json
 import os
 import re
+import time
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -388,56 +389,65 @@ def ai_rank_openclaw(notes):
     return _merge_scored(pool, parsed, selected_names)
 
 
-def _codex_json_request(access, account_id, prompt):
-    body = json.dumps({
-        'model': CODEX_MODEL,
-        'store': False,
-        'stream': True,
-        'instructions': 'Return only strict JSON. No markdown fences. No extra commentary.',
-        'input': [
-            {
-                'role': 'user',
-                'content': [
-                    {'type': 'input_text', 'text': prompt}
-                ]
-            }
-        ],
-        'text': {'verbosity': 'low'},
-        'include': ['reasoning.encrypted_content']
-    }).encode('utf-8')
-    req = Request('https://chatgpt.com/backend-api/codex/responses', data=body, headers={
-        'Authorization': f'Bearer {access}',
-        'chatgpt-account-id': account_id,
-        'originator': 'pi',
-        'OpenAI-Beta': 'responses=experimental',
-        'accept': 'text/event-stream',
-        'content-type': 'application/json',
-        'User-Agent': 'pi (render backend)'
-    }, method='POST')
-    text_parts = []
-    with urlopen(req, timeout=180) as resp:
-        for raw_line in resp:
-            line = raw_line.decode('utf-8', 'ignore').strip()
-            if not line.startswith('data:'):
+def _codex_json_request(access, account_id, prompt, attempts=3):
+    last_error = None
+    for attempt in range(attempts):
+        try:
+            body = json.dumps({
+                'model': CODEX_MODEL,
+                'store': False,
+                'stream': True,
+                'instructions': 'Return only strict JSON. No markdown fences. No extra commentary.',
+                'input': [
+                    {
+                        'role': 'user',
+                        'content': [
+                            {'type': 'input_text', 'text': prompt}
+                        ]
+                    }
+                ],
+                'text': {'verbosity': 'low'},
+                'include': ['reasoning.encrypted_content']
+            }).encode('utf-8')
+            req = Request('https://chatgpt.com/backend-api/codex/responses', data=body, headers={
+                'Authorization': f'Bearer {access}',
+                'chatgpt-account-id': account_id,
+                'originator': 'pi',
+                'OpenAI-Beta': 'responses=experimental',
+                'accept': 'text/event-stream',
+                'content-type': 'application/json',
+                'User-Agent': 'pi (render backend)'
+            }, method='POST')
+            text_parts = []
+            with urlopen(req, timeout=180) as resp:
+                for raw_line in resp:
+                    line = raw_line.decode('utf-8', 'ignore').strip()
+                    if not line.startswith('data:'):
+                        continue
+                    data = line[5:].strip()
+                    if not data or data == '[DONE]':
+                        continue
+                    evt = json.loads(data)
+                    t = evt.get('type', '')
+                    if t == 'response.output_text.delta':
+                        text_parts.append(evt.get('delta', ''))
+                    elif t == 'response.output_text.done' and evt.get('text'):
+                        final_text = ''.join(text_parts) or evt.get('text', '')
+                        m = re.search(r'\{.*\}', final_text, re.S)
+                        return json.loads(m.group(0) if m else final_text)
+                    elif t in ('response.failed', 'error'):
+                        raise RuntimeError(json.dumps(evt))
+            final_text = ''.join(text_parts)
+            if not final_text:
+                raise RuntimeError('no codex output received')
+            m = re.search(r'\{.*\}', final_text, re.S)
+            return json.loads(m.group(0) if m else final_text)
+        except Exception as e:
+            last_error = e
+            if attempt < attempts - 1:
+                time.sleep(1.5 * (attempt + 1))
                 continue
-            data = line[5:].strip()
-            if not data or data == '[DONE]':
-                continue
-            evt = json.loads(data)
-            t = evt.get('type', '')
-            if t == 'response.output_text.delta':
-                text_parts.append(evt.get('delta', ''))
-            elif t == 'response.output_text.done' and evt.get('text'):
-                final_text = ''.join(text_parts) or evt.get('text', '')
-                m = re.search(r'\{.*\}', final_text, re.S)
-                return json.loads(m.group(0) if m else final_text)
-            elif t in ('response.failed', 'error'):
-                raise RuntimeError(json.dumps(evt))
-    final_text = ''.join(text_parts)
-    if not final_text:
-        raise RuntimeError('no codex output received')
-    m = re.search(r'\{.*\}', final_text, re.S)
-    return json.loads(m.group(0) if m else final_text)
+    raise last_error
 
 
 def ai_rank_direct_codex(notes):
@@ -447,12 +457,42 @@ def ai_rank_direct_codex(notes):
     if not access:
         raise RuntimeError('missing CODEX_ACCESS_TOKEN')
     account_id = CODEX_ACCOUNT_ID or _extract_account_id_from_jwt(access)
-    shortlist = _codex_json_request(access, account_id, shortlist_prompt)
-    selected_names = shortlist.get('selected_names') or [x['name'] for x in coarse_ranked[:AI_DEEP_ANALYSIS_COUNT]]
+    try:
+        shortlist = _codex_json_request(access, account_id, shortlist_prompt)
+        selected_names = shortlist.get('selected_names') or [x['name'] for x in coarse_ranked[:AI_DEEP_ANALYSIS_COUNT]]
+    except Exception:
+        selected_names = [x['name'] for x in coarse_ranked[:AI_DEEP_ANALYSIS_COUNT]]
     pool, payload_rows = _deep_payload_from_names(selected_names)
-    prompt = _prompt_for_notes(notes, payload_rows)
-    parsed = _codex_json_request(access, account_id, prompt)
-    return _merge_scored(pool, parsed, selected_names)
+    try:
+        prompt = _prompt_for_notes(notes, payload_rows)
+        parsed = _codex_json_request(access, account_id, prompt)
+        return _merge_scored(pool, parsed, selected_names)
+    except Exception:
+        fallback = []
+        for p in pool:
+            fallback.append({
+                'name': p.get('name',''),
+                'department': p.get('department',''),
+                'score': next((x.get('score', 0) for x in coarse_ranked if x['name'] == p.get('name','')), 0),
+                'why': 'Deep AI analysis was temporarily unavailable, so this result is based on the strongest shortlist available.',
+                'detailed_fit': p.get('research_summary_long','') or p.get('research_summary_short',''),
+                'professor_focus': p.get('professor_focus_detailed','') or p.get('research_summary_long','') or p.get('research_summary_short',''),
+                'methods_match': ', '.join(p.get('methods_keywords', [])[:8]),
+                'application_match': ', '.join(p.get('application_keywords', [])[:8]),
+                'strengths_for_you': 'Selected into the high-relevance shortlist before the provider failed.',
+                'possible_gaps': 'This entry is missing the full AI-written explanation because the provider had a temporary failure.',
+                'why_not_higher': 'Temporary provider failure prevented the full deep writeup.',
+                'primary_areas': p.get('research_summary_short',''),
+                'comparison_summary': p.get('research_summary_long',''),
+                'notes': ', '.join(p.get('research_keywords', [])[:12]),
+                'email': p.get('email',''),
+                'ucsb_profile_url': p.get('ucsb_profile_url',''),
+                'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
+                'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
+                'analysis_stage': 'deep',
+            })
+        fallback.sort(key=lambda x: (-float(x.get('score', 0) or 0), x['name']))
+        return fallback
 
 
 class Handler(BaseHTTPRequestHandler):
