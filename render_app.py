@@ -24,7 +24,8 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 24
+AI_CANDIDATE_COUNT = 36
+AI_DEEP_ANALYSIS_COUNT = 12
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
 professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
@@ -141,10 +142,27 @@ def _coarse_rank_all(notes):
     return ranked
 
 
-def _candidate_payload(notes=''):
+def _shortlist_payload(notes=''):
     coarse_ranked = _coarse_rank_all(notes)
     top_names = {r['name'] for r in coarse_ranked[:AI_CANDIDATE_COUNT]}
     pool = [p for p in professors if p.get('name','') in top_names]
+    payload_rows = []
+    for p in pool:
+        payload_rows.append({
+            'name': p.get('name',''),
+            'department': p.get('department',''),
+            'primary_areas': p.get('research_summary_short',''),
+            'methods_keywords': p.get('methods_keywords', []),
+            'application_keywords': p.get('application_keywords', []),
+            'research_keywords': p.get('research_keywords', []),
+            'coarse_score': next((x.get('score', 0) for x in coarse_ranked if x['name'] == p.get('name','')), 0),
+        })
+    return coarse_ranked, pool, payload_rows
+
+
+def _deep_payload_from_names(names):
+    name_set = set(names)
+    pool = [p for p in professors if p.get('name','') in name_set]
     payload_rows = []
     for p in pool:
         prof = profiles_by_name.get(p.get('name',''), {})
@@ -158,6 +176,8 @@ def _candidate_payload(notes=''):
             'research_summary_long': p.get('research_summary_long',''),
             'research_areas_raw': p.get('research_areas_raw',''),
             'research_keywords': p.get('research_keywords', []),
+            'methods_keywords': p.get('methods_keywords', []),
+            'application_keywords': p.get('application_keywords', []),
             'topic_clusters': p.get('topic_clusters', []),
             'deep_profile_text': p.get('deep_profile_text',''),
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
@@ -173,7 +193,7 @@ def _candidate_payload(notes=''):
     return pool, payload_rows
 
 
-def _merge_scored(pool, parsed, coarse_ranked):
+def _merge_scored(pool, parsed, selected_names):
     score_map = {x['name']: x for x in parsed.get('results', []) if isinstance(x, dict) and x.get('name')}
     deep_map = {}
     for p in pool:
@@ -201,9 +221,9 @@ def _merge_scored(pool, parsed, coarse_ranked):
             'analysis_stage': 'deep',
         }
     merged = []
-    for item in coarse_ranked:
-        if item['name'] in deep_map:
-            merged.append(deep_map[item['name']])
+    for name in selected_names:
+        if name in deep_map:
+            merged.append(deep_map[name])
     merged.sort(key=lambda x: (-float(x.get('score', 0) or 0), x['name']))
     return merged
 
@@ -286,7 +306,7 @@ def _prompt_for_notes(notes, payload_rows):
         'Compare all provided professors for this run and rank them relative to the user input. '
         'Return strict JSON only with this schema: '
         '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string,"methods_match":string,"application_match":string,"strengths_for_you":string,"possible_gaps":string,"why_not_higher":string}]}. '
-        'Return results only for the provided top candidates in this deep-analysis stage. '
+        'Return results only for the provided professors in this deep-analysis stage. '
         'Scores should be 0-100, relative to the current user input only. '
         'Be willing to give low scores when fit is weak. '
         'The field professor_focus should explain clearly what the professor actually works on. '
@@ -300,9 +320,38 @@ def _prompt_for_notes(notes, payload_rows):
     )
 
 
+def _shortlist_prompt(notes, payload_rows):
+    return (
+        'You are selecting the strongest UCSB professor candidates for deeper evaluation. '
+        'Based on the user input and the provided shortlist candidates, return strict JSON only with schema '
+        '{"selected_names":[string],"why_this_shortlist":string}. '
+        f'Select exactly {AI_DEEP_ANALYSIS_COUNT} names, prioritizing recall so relevant professors are not missed. '
+        'Choose based on actual content fit, not just surface word overlap. '
+        'User input:\n' + notes + '\n\nShortlist candidates:\n' + json.dumps(payload_rows, ensure_ascii=False)
+    )
+
+
 def ai_rank_openclaw(notes):
-    coarse_ranked = _coarse_rank_all(notes)
-    pool, payload_rows = _candidate_payload(notes)
+    coarse_ranked, shortlist_pool, shortlist_rows = _shortlist_payload(notes)
+    shortlist_prompt = _shortlist_prompt(notes, shortlist_rows)
+    body = json.dumps({
+        'model': 'openclaw/default',
+        'messages': [{'role': 'user', 'content': shortlist_prompt}],
+        'stream': False,
+    }).encode('utf-8')
+    req = Request(OPENCLAW_API_URL, data=body, headers={
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + OPENCLAW_GATEWAY_TOKEN,
+        'x-openclaw-model': OPENCLAW_BACKEND_MODEL,
+    })
+    with urlopen(req, timeout=120) as resp:
+        raw = resp.read().decode('utf-8', 'ignore')
+    outer = json.loads(raw)
+    text = outer['choices'][0]['message']['content']
+    m = re.search(r'\{.*\}', text, re.S)
+    shortlist = json.loads(m.group(0) if m else text)
+    selected_names = shortlist.get('selected_names') or [x['name'] for x in coarse_ranked[:AI_DEEP_ANALYSIS_COUNT]]
+    pool, payload_rows = _deep_payload_from_names(selected_names)
     prompt = _prompt_for_notes(notes, payload_rows)
     body = json.dumps({
         'model': 'openclaw/default',
@@ -320,17 +369,10 @@ def ai_rank_openclaw(notes):
     text = outer['choices'][0]['message']['content']
     m = re.search(r'\{.*\}', text, re.S)
     parsed = json.loads(m.group(0) if m else text)
-    return _merge_scored(pool, parsed, coarse_ranked)
+    return _merge_scored(pool, parsed, selected_names)
 
 
-def ai_rank_direct_codex(notes):
-    coarse_ranked = _coarse_rank_all(notes)
-    pool, payload_rows = _candidate_payload(notes)
-    prompt = _prompt_for_notes(notes, payload_rows)
-    access = CODEX_ACCESS_TOKEN
-    if not access:
-        raise RuntimeError('missing CODEX_ACCESS_TOKEN')
-    account_id = CODEX_ACCOUNT_ID or _extract_account_id_from_jwt(access)
+def _codex_json_request(access, account_id, prompt):
     body = json.dumps({
         'model': CODEX_MODEL,
         'store': False,
@@ -372,16 +414,29 @@ def ai_rank_direct_codex(notes):
             elif t == 'response.output_text.done' and evt.get('text'):
                 final_text = ''.join(text_parts) or evt.get('text', '')
                 m = re.search(r'\{.*\}', final_text, re.S)
-                parsed = json.loads(m.group(0) if m else final_text)
-                return _merge_scored(pool, parsed, coarse_ranked)
+                return json.loads(m.group(0) if m else final_text)
             elif t in ('response.failed', 'error'):
                 raise RuntimeError(json.dumps(evt))
     final_text = ''.join(text_parts)
     if not final_text:
         raise RuntimeError('no codex output received')
     m = re.search(r'\{.*\}', final_text, re.S)
-    parsed = json.loads(m.group(0) if m else final_text)
-    return _merge_scored(pool, parsed, coarse_ranked)
+    return json.loads(m.group(0) if m else final_text)
+
+
+def ai_rank_direct_codex(notes):
+    coarse_ranked, shortlist_pool, shortlist_rows = _shortlist_payload(notes)
+    shortlist_prompt = _shortlist_prompt(notes, shortlist_rows)
+    access = CODEX_ACCESS_TOKEN
+    if not access:
+        raise RuntimeError('missing CODEX_ACCESS_TOKEN')
+    account_id = CODEX_ACCOUNT_ID or _extract_account_id_from_jwt(access)
+    shortlist = _codex_json_request(access, account_id, shortlist_prompt)
+    selected_names = shortlist.get('selected_names') or [x['name'] for x in coarse_ranked[:AI_DEEP_ANALYSIS_COUNT]]
+    pool, payload_rows = _deep_payload_from_names(selected_names)
+    prompt = _prompt_for_notes(notes, payload_rows)
+    parsed = _codex_json_request(access, account_id, prompt)
+    return _merge_scored(pool, parsed, selected_names)
 
 
 class Handler(BaseHTTPRequestHandler):
