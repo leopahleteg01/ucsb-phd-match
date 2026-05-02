@@ -25,7 +25,7 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 30
+AI_CANDIDATE_COUNT = 24
 AI_DEEP_ANALYSIS_COUNT = 5
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
@@ -166,30 +166,22 @@ def _deep_payload_from_names(names):
     pool = [p for p in professors if p.get('name','') in name_set]
     payload_rows = []
     for p in pool:
-        prof = profiles_by_name.get(p.get('name',''), {})
         payload_rows.append({
             'name': p.get('name',''),
             'department': p.get('department',''),
-            'affiliations': p.get('affiliations', []),
             'title': p.get('title',''),
             'email': p.get('email',''),
-            'research_summary_short': p.get('research_summary_short',''),
-            'research_summary_long': p.get('research_summary_long',''),
-            'research_areas_raw': p.get('research_areas_raw',''),
-            'research_keywords': p.get('research_keywords', []),
-            'methods_keywords': p.get('methods_keywords', []),
-            'application_keywords': p.get('application_keywords', []),
-            'topic_clusters': p.get('topic_clusters', []),
-            'deep_profile_text': p.get('deep_profile_text',''),
+            'research_summary_short': p.get('research_summary_short','')[:220],
+            'research_summary_long': p.get('research_summary_long','')[:420],
+            'professor_focus_detailed': p.get('professor_focus_detailed','')[:520],
+            'research_keywords': p.get('research_keywords', [])[:10],
+            'methods_keywords': p.get('methods_keywords', [])[:10],
+            'application_keywords': p.get('application_keywords', [])[:10],
+            'selected_publication_mentions': p.get('selected_publication_mentions', [])[:3],
+            'honors_highlights': p.get('honors_highlights', [])[:2],
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
-            'personal_website_url': p.get('personal_website_url',''),
-            'lab_website_url': p.get('lab_website_url',''),
-            'google_scholar_query': p.get('google_scholar_query',''),
+            'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
             'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
-            'google_query_official': p.get('google_query_official',''),
-            'google_query_personal': p.get('google_query_personal',''),
-            'google_query_lab': p.get('google_query_lab',''),
-            'canonical_profile': prof,
         })
     return pool, payload_rows
 
@@ -303,25 +295,13 @@ def heuristic_rank(notes):
 def _prompt_for_notes(notes, payload_rows):
     primary_text, supporting_text = _split_primary_and_supporting_text(notes)
     return (
-        'You are evaluating UCSB professors for a user based only on the current user input and the professor information provided. '
-        'Do not use any hidden prior ranking or base score. Generate scores fresh for this run. '
-        'Compare all provided professors for this run and rank them relative to the user input. '
-        'Do not default to recurring obvious favorites unless they truly fit this exact prompt better than the alternatives. '
-        'Return strict JSON only with this schema: '
+        'Evaluate the provided UCSB professors for this user. Fresh run only, no hidden priors. '
+        'Return strict JSON with schema '
         '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string,"methods_match":string,"application_match":string,"strengths_for_you":string,"possible_gaps":string,"why_not_higher":string}]}. '
-        'Return results only for the provided professors in this deep-analysis stage. '
-        'Scores should be 0-100, relative to the current user input only. '
-        'Be willing to give low scores when fit is weak. '
-        'Use the user-written text as the primary signal. Treat attached-file content only as supporting context. '
-        'Write rich, specific, textually detailed explanations. Avoid generic one-liners. '
-        'The field professor_focus should clearly explain what the professor actually works on, with real methodological and domain detail. '
-        'The field detailed_fit should explain in detail why that professor could fit or not fit the user. '
-        'The field methods_match should describe method-level overlap, such as control, optimization, learning, simulation, or systems work. '
-        'The field application_match should describe domain overlap, such as robotics, autonomy, VR/AR, cybersecurity, communications, or other application areas. '
-        'The field strengths_for_you should say concretely what makes the match compelling. '
-        'The field possible_gaps should say concretely what may be missing or less aligned. '
-        'The field why_not_higher should explain the main reason the score is not even higher when relevant. '
-        'Primary user text:\n' + primary_text + '\n\nSupporting attachment context:\n' + supporting_text + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
+        'Use the user-written text as the main signal, and attachments only as supporting context. '
+        'Do not default to recurring obvious favorites unless they truly fit this exact prompt best. '
+        'Be concise but specific and concrete. '
+        'Primary user text:\n' + primary_text + '\n\nSupporting attachment context:\n' + supporting_text[:1200] + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
 
 
@@ -336,15 +316,12 @@ def _split_primary_and_supporting_text(notes):
 def _shortlist_prompt(notes, payload_rows):
     primary_text, supporting_text = _split_primary_and_supporting_text(notes)
     return (
-        'You are selecting the strongest UCSB professor candidates for deeper evaluation. '
-        'Base the shortlist primarily on the user-written text. Treat attached-file content only as supporting background context, not as the main driver. '
-        'Do not mechanically favor recurring obvious robotics/control names unless they are genuinely the best fit for this exact prompt. '
-        'Re-evaluate from scratch for this specific input and consider strong alternatives if the prompt emphasis changes. '
-        'Based on the user input and the provided shortlist candidates, return strict JSON only with schema '
-        '{"selected_names":[string],"why_this_shortlist":string}. '
+        'Select the strongest UCSB professors for deeper evaluation. '
+        'Use the user-written text as the primary signal and attachments only as supporting context. '
+        'Do not mechanically favor recurring obvious robotics/control names unless they truly fit this exact prompt best. '
+        'Return strict JSON only with schema {"selected_names":[string],"why_this_shortlist":string}. '
         f'Select exactly {AI_DEEP_ANALYSIS_COUNT} names, prioritizing recall so relevant professors are not missed. '
-        'Choose based on actual content fit, not just surface word overlap. '
-        'Primary user text:\n' + primary_text + '\n\nSupporting attachment context:\n' + supporting_text + '\n\nShortlist candidates:\n' + json.dumps(payload_rows, ensure_ascii=False)
+        'Primary user text:\n' + primary_text + '\n\nSupporting attachment context:\n' + supporting_text[:800] + '\n\nShortlist candidates:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
 
 
