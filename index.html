@@ -10,12 +10,12 @@ button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);backg
 .score{font-weight:800;color:#aaf0c4}.body{margin-top:12px;display:grid;gap:8px}.label{color:var(--muted);font-weight:600}.small{font-size:13px}
 </style></head><body><div class="wrap">
 <h1>UCSB PhD Match</h1>
-<div class="sub">No ranking is shown by default. First upload or paste your own information, then run the evaluation.</div>
-<div class="panel"><strong>What are you looking for?</strong><br><textarea id="notes" placeholder="Describe your PhD interests, your background, your wishes, and any notes."></textarea></div>
+<div class="sub">Every evaluation is generated fresh from your current notes, files, and the neutral professor dataset. There is no default ranking and no fixed base score.</div>
+<div class="panel"><strong>What are you looking for?</strong><br><textarea id="notes" placeholder="Describe your interests, background, goals, constraints, and anything else you want the evaluation to use."></textarea></div>
 <div class="panel"><strong>Attach files</strong><br><input id="files" type="file" multiple accept=".txt,.md,.csv,.pdf,.doc,.docx"><div id="fileInfo" class="muted small" style="margin-top:10px">Backend-supported uploads: TXT, MD, CSV, PDF, DOCX. Legacy DOC is not supported yet. Image OCR is not wired yet.</div></div>
 <div class="panel"><strong>Filter</strong><br><select id="dept"><option value="All">All departments</option><option value="CS">CS</option><option value="ECE">ECE</option><option value="ME">ME</option><option value="Other">Other</option></select></div>
-<div class="panel"><strong>AI backend URL</strong><br><input id="backendUrl" value="https://ucsb-phd-match.onrender.com" placeholder="https://your-public-backend.example.com"><div class="muted small" style="margin-top:10px">The app will try the live backend at /evaluate first. If that fails, it falls back to browser-only ranking.</div><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div></div>
-<div id="resultsMeta" class="muted" style="margin-bottom:12px">Loaded 92 professors. Ranking will start only after you provide your own input.</div>
+<div class="panel"><strong>AI backend URL</strong><br><input id="backendUrl" value="https://ucsb-phd-match.onrender.com" placeholder="https://your-public-backend.example.com"><div class="muted small" style="margin-top:10px">The app tries the live backend at /evaluate first. If that fails, it falls back to a lightweight browser keyword view.</div><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div></div>
+<div id="resultsMeta" class="muted" style="margin-bottom:12px">Loaded 92 professors. No ranking is shown until you run a fresh evaluation.</div>
 <div id="results" class="grid"></div>
 </div>
 <script>
@@ -32,10 +32,11 @@ function deptGroup(p){
 }
 
 function scoreProfessor(p, words){
-  const blob=(p._blob||'').toLowerCase();
+  const parts = [p.name||'', p.department||'', p.primary_areas||'', p.comparison_summary||'', p.notes||''];
+  const blob=parts.join(' | ').toLowerCase();
   let hits=[];
   words.forEach(w=>{if(w.length>2&&blob.includes(w)&&!hits.includes(w))hits.push(w)});
-  return {score:(p._base_fit||20)+hits.length*3, hits};
+  return {score:hits.length*10, hits};
 }
 
 function updateMeta(text){
@@ -48,7 +49,7 @@ function render(items){
   items.forEach(item=>{
     const d=document.createElement('div');
     d.className='card';
-    d.innerHTML=`<div class="name">${item.name}</div><div class="dept">${item.department}</div><div class="score">Score: ${item.score}</div><div class="body"><div><span class="label">Why:</span> ${item.why}</div><div><span class="label">Professor does:</span> ${item.primary_areas||''}</div><div><span class="label">PhD could look like:</span> ${item.comparison_summary||''}</div><div><span class="label">Fit to your path:</span> ${item.notes||''}</div><div><span class="label">UCSB profile:</span> ${item.ucsb_profile_url||'n/a'}</div><div><span class="label">Website:</span> ${item.website_guess||'n/a'}</div></div>`;
+    d.innerHTML=`<div class="name">${item.name}</div><div class="dept">${item.department}</div><div class="score">Score: ${item.score}</div><div class="body"><div><span class="label">Why:</span> ${item.why}</div><div><span class="label">Professor does:</span> ${item.primary_areas||''}</div><div><span class="label">Summary:</span> ${item.comparison_summary||''}</div><div><span class="label">Keywords / notes:</span> ${item.notes||''}</div><div><span class="label">UCSB profile:</span> ${item.ucsb_profile_url||'n/a'}</div><div><span class="label">Website:</span> ${item.website_guess||'n/a'}</div></div>`;
     results.appendChild(d);
   });
 }
@@ -64,7 +65,7 @@ async function fileToBase64(file){
   return btoa(binary);
 }
 
-fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{ professors=data; updateMeta(`Loaded ${data.length} professors. Ranking will start only after you provide your own input.`); }).catch(err=>{ updateMeta('Failed to load professor dataset: '+err); });
+fetch('./ucsb_professor_screening.json').then(r=>r.json()).then(data=>{ professors=data; updateMeta(`Loaded ${data.length} professors. No ranking is shown until you run a fresh evaluation.`); }).catch(err=>{ updateMeta('Failed to load professor dataset: '+err); });
 
 document.getElementById('files').addEventListener('change', async (e)=>{
   const files=Array.from(e.target.files||[]);
@@ -94,7 +95,7 @@ document.getElementById('runBtn').addEventListener('click', async ()=>{
   const filtered=professors.filter(p=>dept==='All'||deptGroup(p)===dept);
   if(backendUrl){
     try{
-      updateMeta('Trying live AI backend...');
+      updateMeta('Running fresh AI evaluation...');
       const res=await fetch(backendUrl + '/evaluate', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:userText, files: attachedFiles})});
       if(!res.ok) throw new Error('HTTP '+res.status);
       const data=await res.json();
@@ -102,15 +103,15 @@ document.getElementById('runBtn').addEventListener('click', async ()=>{
       const ranked=(data.results||[]).filter(x=>allowed.has(x.name));
       render(ranked);
       const notices = (data.file_notices||[]).length ? (' File notes: ' + data.file_notices.join(' | ')) : '';
-      updateMeta(`Showing ${ranked.length} AI-ranked professors out of ${professors.length} loaded. Mode: ${data.mode || 'unknown'}.${notices}`);
+      updateMeta(`Showing ${ranked.length} freshly generated results out of ${professors.length} loaded. Mode: ${data.mode || 'unknown'}.${notices}`);
       return;
     }catch(err){
-      updateMeta('Live AI backend failed, falling back to browser-only ranking.');
+      updateMeta('Live AI backend failed, falling back to lightweight browser keyword view.');
     }
   }
   const words=userText.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Little direct overlap from your text/files.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Lightweight browser fallback only.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
   render(ranked);
-  updateMeta(`Showing ${ranked.length} browser-ranked professors out of ${professors.length} loaded.`);
+  updateMeta(`Showing ${ranked.length} browser fallback results out of ${professors.length} loaded.`);
 });
 </script></body></html>

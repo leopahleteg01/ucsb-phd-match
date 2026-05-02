@@ -1,10 +1,8 @@
 import base64
-import csv
 import io
 import json
 import os
 import re
-import zipfile
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -13,7 +11,7 @@ from docx import Document
 from pypdf import PdfReader
 
 BASE = Path(__file__).resolve().parent
-CSV_PATH = BASE / 'ucsb_professor_screening.csv'
+MASTER_JSON_PATH = BASE / 'ucsb_professors_master.json'
 HOST = '0.0.0.0'
 PORT = int(os.environ.get('PORT', '10000'))
 OPENCLAW_API_URL = os.environ.get('OPENCLAW_API_URL', '').strip()
@@ -25,47 +23,19 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
+AI_CANDIDATE_COUNT = 50
 
-rows = list(csv.DictReader(CSV_PATH.open()))
-for r in rows:
-    s = (r.get('match_to_your_goal') or '').lower()
-    r['_base_fit'] = {
-        'extremely close':98,'very close':92,'close on controls':84,'close':82,
-        'moderately close':72,'partial match':58,'weak match for robotics':40,
-        'weak match for applied robotics':35,'weak for robotics jobs':35,
-        'not a fit':10,'needs deeper check':15
-    }.get(s, 20)
-    blob_parts = [
-        r.get('name',''), r.get('department',''), r.get('primary_areas',''),
-        r.get('comparison_summary',''), r.get('notes',''), r.get('research_guess',''),
-        r.get('title_guess',''), r.get('match_to_your_goal','')
+professors = json.loads(MASTER_JSON_PATH.read_text())
+for p in professors:
+    parts = [
+        p.get('name',''), p.get('department',''), p.get('title',''),
+        p.get('research_summary_short',''), p.get('research_summary_long',''),
+        p.get('research_areas_raw',''), ' '.join(p.get('research_keywords', []) or []),
+        p.get('personal_website_url',''), p.get('lab_website_url','')
     ]
-    r['_blob'] = ' | '.join(blob_parts).lower()
+    p['_blob'] = ' | '.join(parts).lower()
 
 INDEX = b'{"ok":true,"service":"ucsb-phd-match-backend"}'
-
-
-def heuristic_rank(notes):
-    words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
-    ranked = []
-    for r in rows:
-        hits = []
-        for w in words:
-            if w in r['_blob'] and w not in hits:
-                hits.append(w)
-        ranked.append({
-            'name': r['name'],
-            'department': r['department'],
-            'score': r['_base_fit'] + len(hits) * 3,
-            'why': ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Fallback heuristic match from your text.',
-            'primary_areas': r.get('primary_areas',''),
-            'comparison_summary': r.get('comparison_summary',''),
-            'notes': r.get('notes',''),
-            'ucsb_profile_url': r.get('ucsb_profile_url',''),
-            'website_guess': r.get('website_guess',''),
-        })
-    ranked.sort(key=lambda x: (-x['score'], x['name']))
-    return ranked[:25]
 
 
 def _extract_account_id_from_jwt(token):
@@ -79,49 +49,69 @@ def _extract_account_id_from_jwt(token):
     return account_id
 
 
-def _build_shortlist(notes=''):
+def _candidate_pool(notes=''):
     note_words = [w for w in re.split(r'[^a-z0-9]+', (notes or '').lower()) if len(w) > 2]
-    boosted = []
-    for r in rows:
-        blob = r['_blob']
-        keyword_hits = sum(1 for w in note_words if w in blob)
-        shortlist_score = r['_base_fit'] + keyword_hits * 5
-        boosted.append((shortlist_score, r['name'], r))
-    boosted.sort(key=lambda x: (-x[0], x[1]))
-    shortlist = [r for _, _, r in boosted[:40]]
+    if not note_words:
+        return professors[:AI_CANDIDATE_COUNT]
+    scored = []
+    for p in professors:
+        hits = sum(1 for w in note_words if w in p['_blob'])
+        scored.append((hits, p['name'], p))
+    scored.sort(key=lambda x: (-x[0], x[1]))
+    top = [p for _, _, p in scored[:AI_CANDIDATE_COUNT]]
+    if len(top) < min(AI_CANDIDATE_COUNT, len(professors)):
+        seen = {p['name'] for p in top}
+        for p in professors:
+            if p['name'] not in seen:
+                top.append(p)
+            if len(top) >= min(AI_CANDIDATE_COUNT, len(professors)):
+                break
+    return top
+
+
+def _candidate_payload(notes=''):
+    pool = _candidate_pool(notes)
     payload_rows = []
-    for r in shortlist:
+    for p in pool:
         payload_rows.append({
-            'name': r['name'],
-            'department': r['department'],
-            'primary_areas': r.get('primary_areas',''),
-            'comparison_summary': r.get('comparison_summary',''),
-            'notes': r.get('notes',''),
-            'research_guess': r.get('research_guess',''),
-            'ucsb_profile_url': r.get('ucsb_profile_url',''),
-            'website_guess': r.get('website_guess',''),
-            'base_fit': r['_base_fit'],
+            'name': p.get('name',''),
+            'department': p.get('department',''),
+            'affiliations': p.get('affiliations', []),
+            'title': p.get('title',''),
+            'research_summary_short': p.get('research_summary_short',''),
+            'research_summary_long': p.get('research_summary_long',''),
+            'research_areas_raw': p.get('research_areas_raw',''),
+            'research_keywords': p.get('research_keywords', []),
+            'topic_clusters': p.get('topic_clusters', []),
+            'ucsb_profile_url': p.get('ucsb_profile_url',''),
+            'personal_website_url': p.get('personal_website_url',''),
+            'lab_website_url': p.get('lab_website_url',''),
+            'google_scholar_query': p.get('google_scholar_query',''),
+            'google_query_official': p.get('google_query_official',''),
+            'google_query_personal': p.get('google_query_personal',''),
         })
-    return shortlist, payload_rows
+    return pool, payload_rows
 
 
-def _merge_scored(shortlist, parsed):
-    scored = {x['name']: x for x in parsed.get('results', [])}
+def _merge_scored(pool, parsed):
+    score_map = {x['name']: x for x in parsed.get('results', []) if isinstance(x, dict) and x.get('name')}
     merged = []
-    for r in shortlist:
-        s = scored.get(r['name'])
+    for p in pool:
+        s = score_map.get(p['name'])
+        if not s:
+            continue
         merged.append({
-            'name': r['name'],
-            'department': r['department'],
-            'score': s['score'] if s else r['_base_fit'],
-            'why': s['why'] if s else 'Fallback to base fit, no AI explanation returned.',
-            'primary_areas': r.get('primary_areas',''),
-            'comparison_summary': r.get('comparison_summary',''),
-            'notes': r.get('notes',''),
-            'ucsb_profile_url': r.get('ucsb_profile_url',''),
-            'website_guess': r.get('website_guess',''),
+            'name': p.get('name',''),
+            'department': p.get('department',''),
+            'score': s.get('score', 0),
+            'why': s.get('why', 'AI did not return an explanation.'),
+            'primary_areas': p.get('research_summary_short',''),
+            'comparison_summary': p.get('research_summary_long',''),
+            'notes': ', '.join(p.get('research_keywords', [])[:12]),
+            'ucsb_profile_url': p.get('ucsb_profile_url',''),
+            'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
         })
-    merged.sort(key=lambda x: (-x['score'], x['name']))
+    merged.sort(key=lambda x: (-float(x.get('score', 0) or 0), x['name']))
     return merged
 
 
@@ -187,16 +177,44 @@ def _collect_uploaded_text(payload):
     return ''.join(texts).strip(), notices
 
 
-def ai_rank_openclaw(notes):
-    shortlist, payload_rows = _build_shortlist(notes)
-    prompt = (
-        'You are ranking UCSB professors for a PhD applicant. '
-        'Use the applicant notes and the professor dataset. '
+def heuristic_rank(notes):
+    words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
+    ranked = []
+    for p in _candidate_pool(notes):
+        hits = []
+        for w in words:
+            if w in p['_blob'] and w not in hits:
+                hits.append(w)
+        ranked.append({
+            'name': p.get('name',''),
+            'department': p.get('department',''),
+            'score': len(hits) * 10,
+            'why': ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Lightweight keyword fallback only.',
+            'primary_areas': p.get('research_summary_short',''),
+            'comparison_summary': p.get('research_summary_long',''),
+            'notes': ', '.join(p.get('research_keywords', [])[:12]),
+            'ucsb_profile_url': p.get('ucsb_profile_url',''),
+            'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
+        })
+    ranked.sort(key=lambda x: (-x['score'], x['name']))
+    return ranked[:25]
+
+
+def _prompt_for_notes(notes, payload_rows):
+    return (
+        'You are evaluating UCSB professors for a user based only on the current user input and the professor information provided. '
+        'Do not use any hidden prior ranking or base score. Generate scores fresh for this run. '
         'Return strict JSON only with this schema: '
         '{"results":[{"name":string,"score":number,"why":string}]}. '
-        'Scores should be 0-100 and reflect fit to the applicant notes. '
-        'Applicant notes:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
+        'Scores should be 0-100, relative to the current user input only. '
+        'Be willing to give low scores when fit is weak. '
+        'User input:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
     )
+
+
+def ai_rank_openclaw(notes):
+    pool, payload_rows = _candidate_payload(notes)
+    prompt = _prompt_for_notes(notes, payload_rows)
     body = json.dumps({
         'model': 'openclaw/default',
         'messages': [{'role': 'user', 'content': prompt}],
@@ -213,19 +231,12 @@ def ai_rank_openclaw(notes):
     text = outer['choices'][0]['message']['content']
     m = re.search(r'\{.*\}', text, re.S)
     parsed = json.loads(m.group(0) if m else text)
-    return _merge_scored(shortlist, parsed)
+    return _merge_scored(pool, parsed)
 
 
 def ai_rank_direct_codex(notes):
-    shortlist, payload_rows = _build_shortlist(notes)
-    prompt = (
-        'You are ranking UCSB professors for a PhD applicant. '
-        'Use the applicant notes and the professor dataset. '
-        'Return strict JSON only with this schema: '
-        '{"results":[{"name":string,"score":number,"why":string}]}. '
-        'Scores should be 0-100 and reflect fit to the applicant notes. '
-        'Be decisive and concise. Applicant notes:\n' + notes + '\n\nProfessor data:\n' + json.dumps(payload_rows, ensure_ascii=False)
-    )
+    pool, payload_rows = _candidate_payload(notes)
+    prompt = _prompt_for_notes(notes, payload_rows)
     access = CODEX_ACCESS_TOKEN
     if not access:
         raise RuntimeError('missing CODEX_ACCESS_TOKEN')
@@ -272,7 +283,7 @@ def ai_rank_direct_codex(notes):
                 final_text = ''.join(text_parts) or evt.get('text', '')
                 m = re.search(r'\{.*\}', final_text, re.S)
                 parsed = json.loads(m.group(0) if m else final_text)
-                return _merge_scored(shortlist, parsed)
+                return _merge_scored(pool, parsed)
             elif t in ('response.failed', 'error'):
                 raise RuntimeError(json.dumps(evt))
     final_text = ''.join(text_parts)
@@ -280,7 +291,7 @@ def ai_rank_direct_codex(notes):
         raise RuntimeError('no codex output received')
     m = re.search(r'\{.*\}', final_text, re.S)
     parsed = json.loads(m.group(0) if m else final_text)
-    return _merge_scored(shortlist, parsed)
+    return _merge_scored(pool, parsed)
 
 
 class Handler(BaseHTTPRequestHandler):
