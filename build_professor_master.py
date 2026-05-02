@@ -12,7 +12,26 @@ GRAPH_JSON = BASE / 'ucsb_professor_connections.json'
 
 STOP = {
     'and','the','for','with','from','into','through','using','based','their','this','that','than','less','more','very','best','good',
-    'strong','option','route','work','works','useful','interesting','direct','general','systems','system','engineering','research'
+    'strong','option','route','work','works','useful','interesting','direct','general','systems','system','engineering','research',
+    'overview','graduate','undergraduate','admissions','how to apply','courses','people','student life','resources','facilities'
+}
+BAD_PHRASES = [
+    'overview bioengineering', 'graduate overview', 'undergraduate overview', 'admissions how to apply',
+    'student life & resources', 'transfer credit guidelines', 'academic advising', 'academic conduct policy',
+    'facilities fellowship opportunities', 'first and second years', 'third years', 'fourth years',
+    'best if you want', 'extremely strong fit', 'strong cs-side', 'probably one of the strongest',
+    'excellent controls/autonomy systems fit', 'useful if pursuing', 'more visual computing than robotics core',
+    'relevant but not top fit', 'good ai prestige', 'far less aligned with your', 'for your profile',
+    'industry relevance', 'robotics careers', 'your path', 'your profile', 'top picks',
+    '& systems biology computational science & engineering solid mechanics',
+    'materials & structures thermal science & fluid mechanics micro & nano technology dynamic systems',
+    'control & robotics graduate ms requirements phd requirements courses choosing an area & advisor research & thesis work tuition & financial support graduate student resources under change of major freshman preparation transfer preparation academics bs requirements capstone projects honors program bs/ms program undergraduate faq',
+    'graduate students and recent alumni academic & learning support engineering student organizations study abroad physical and mental health resources people'
+]
+GENERIC_RESEARCH_GUESS = {
+    'graduate undergraduate',
+    'overview research centers tech reports laboratories pi resources',
+    'graduate undergraduate people',
 }
 
 
@@ -20,37 +39,71 @@ def slugify(text):
     return re.sub(r'[^a-z0-9]+', '-', (text or '').lower()).strip('-')
 
 
+def clean_text(text):
+    return re.sub(r'\s+', ' ', (text or '')).strip()
+
+
+def clean_research_text(text):
+    text = clean_text(text)
+    lower = text.lower()
+    if lower in GENERIC_RESEARCH_GUESS:
+        return ''
+    for bad in BAD_PHRASES:
+        text = re.sub(re.escape(bad), '', text, flags=re.I)
+    text = re.sub(r'\s+', ' ', text).strip(' ,;.-')
+    if len(text) > 220 and ('admissions' in text.lower() or 'student resources' in text.lower() or 'academic' in text.lower()):
+        return ''
+    return text
+
+
 def split_keywords(*parts):
-    raw = ' ; '.join([p for p in parts if p])
+    raw = ' ; '.join([clean_research_text(p) for p in parts if p])
     toks = [t.strip().lower() for t in re.split(r'[;,|/\n]+', raw) if t.strip()]
     out = []
     for t in toks:
         if len(t) < 3 or t in STOP:
+            continue
+        if any(bad in t for bad in ['overview', 'admissions', 'undergraduate', 'graduate student', 'student life']):
             continue
         if t not in out:
             out.append(t)
     return out
 
 
-def clean_text(text):
-    return re.sub(r'\s+', ' ', (text or '')).strip()
+def derive_theory_application_spectrum(keywords):
+    theory_terms = {'optimization', 'control', 'game theory', 'dynamical systems', 'formal methods', 'estimation', 'information theory'}
+    applied_terms = {'robotics', 'vision', 'graphics', 'virtual reality', 'augmented reality', 'sensing', 'systems', 'machine learning'}
+    kset = set(keywords)
+    theory_hits = sum(1 for t in theory_terms if t in kset)
+    applied_hits = sum(1 for t in applied_terms if t in kset)
+    if theory_hits > applied_hits + 1:
+        return 'more_theoretical'
+    if applied_hits > theory_hits + 1:
+        return 'more_applied'
+    return 'mixed'
+
 
 rows = list(csv.DictReader(INPUT.open()))
 master = []
 for r in rows:
-    name = r['name'].strip()
-    keywords = split_keywords(r.get('primary_areas',''), r.get('research_guess',''))
-    research_short = clean_text(r.get('primary_areas',''))
-    research_long = clean_text(' '.join(filter(None, [r.get('research_guess',''), r.get('comparison_summary',''), r.get('notes','')])))
+    name = clean_text(r['name'])
+    primary = clean_research_text(r.get('primary_areas',''))
+    research_guess = clean_research_text(r.get('research_guess',''))
+    title = clean_text(r.get('title_guess',''))
     dept = clean_text(r.get('department',''))
     affiliations = [x.strip() for x in re.split(r'/', dept) if x.strip()] if dept else []
     personal_site = clean_text(r.get('website_guess',''))
+    summary_parts = [primary, research_guess]
+    summary_parts = [p for p in summary_parts if p]
+    research_short = primary
+    research_long = '. '.join(summary_parts[:2]).strip('. ')
+    keywords = split_keywords(primary, research_guess)
     record = {
         'professor_id': slugify(name),
         'name': name,
         'department': dept,
         'affiliations': affiliations,
-        'title': clean_text(r.get('title_guess','')),
+        'title': title,
         'email': clean_text(r.get('email','')),
         'ucsb_profile_url': clean_text(r.get('ucsb_profile_url','')),
         'personal_website_url': personal_site,
@@ -64,11 +117,11 @@ for r in rows:
         'source_quality': 'medium',
         'research_summary_short': research_short,
         'research_summary_long': research_long,
-        'research_areas_raw': clean_text(r.get('primary_areas','')),
+        'research_areas_raw': primary,
         'research_keywords': keywords,
         'methods_keywords': [],
         'application_keywords': [],
-        'theory_to_application_spectrum': '',
+        'theory_to_application_spectrum': derive_theory_application_spectrum(keywords),
         'publication_signal_notes': '',
         'lab_signal_notes': '',
         'student_signal_notes': '',
@@ -86,7 +139,7 @@ for r in rows:
         'scholar_source': clean_text(r.get('google_query_scholar','')),
         'notes_source': 'legacy ucsb_professor_screening.csv import',
         'scrape_timestamp': '',
-        'extraction_notes': 'Imported from legacy robotics-biased screening dataset; needs neutral enrichment pass.'
+        'extraction_notes': 'Neutralized from legacy import; still needs richer source-backed enrichment.'
     }
     master.append(record)
 
