@@ -13,7 +13,8 @@ button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);backg
 <div class="sub">No ranking is shown by default. First upload or paste your own information, then run the evaluation.</div>
 <div class="panel"><strong>What are you looking for?</strong><br><textarea id="notes" placeholder="Describe your PhD interests, your background, your wishes, and any notes."></textarea></div>
 <div class="panel"><strong>Attach files</strong><br><input id="files" type="file" multiple><div id="fileInfo" class="muted small" style="margin-top:10px">Current browser-only support: text-like files such as TXT, MD, CSV. PDF, DOC, DOCX, and image CVs still need backend support.</div></div>
-<div class="panel"><strong>Filter</strong><br><select id="dept"><option value="All">All departments</option><option value="CS">CS</option><option value="ECE">ECE</option><option value="ME">ME</option><option value="Other">Other</option></select><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div></div>
+<div class="panel"><strong>Filter</strong><br><select id="dept"><option value="All">All departments</option><option value="CS">CS</option><option value="ECE">ECE</option><option value="ME">ME</option><option value="Other">Other</option></select></div>
+<div class="panel"><strong>AI backend URL (optional)</strong><br><input id="backendUrl" placeholder="https://your-public-backend.example.com"><div class="muted small" style="margin-top:10px">If provided, the app will try the live AI backend at /evaluate first. If that fails, it falls back to browser-only ranking.</div><div style="margin-top:10px"><button id="runBtn">Evaluate match</button></div></div>
 <div id="resultsMeta" class="muted" style="margin-bottom:12px">Loaded 92 professors. Ranking will start only after you provide your own input.</div>
 <div id="results" class="grid"></div>
 </div>
@@ -68,14 +69,30 @@ document.getElementById('files').addEventListener('change', async (e)=>{
   document.getElementById('fileInfo').textContent = files.length ? (`Attached ${files.length} file(s). Parsed ${parsedCount} supported text-like file(s). PDF/image/doc parsing is not wired yet in this browser-only version.`) : 'No files attached.';
 });
 
-document.getElementById('runBtn').addEventListener('click',()=>{
+document.getElementById('runBtn').addEventListener('click', async ()=>{
   const dept=document.getElementById('dept').value;
+  const backendUrl=(document.getElementById('backendUrl').value||'').trim().replace(/\/$/,'');
   const userText=((document.getElementById('notes').value||'')+' '+attachedText).trim();
   if(!userText){ updateMeta('Please add notes or files first, then evaluate.'); return; }
-  const words=userText.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
   const filtered=professors.filter(p=>dept==='All'||deptGroup(p)===dept);
+  if(backendUrl){
+    try{
+      updateMeta('Trying live AI backend...');
+      const res=await fetch(backendUrl + '/evaluate', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({notes:userText})});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const data=await res.json();
+      const allowed=new Set(filtered.map(p=>p.name));
+      const ranked=(data.results||[]).filter(x=>allowed.has(x.name));
+      render(ranked);
+      updateMeta(`Showing ${ranked.length} AI-ranked professors out of ${professors.length} loaded.`);
+      return;
+    }catch(err){
+      updateMeta('Live AI backend failed, falling back to browser-only ranking.');
+    }
+  }
+  const words=userText.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
   const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Little direct overlap from your text/files.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
   render(ranked);
-  updateMeta(`Showing ${ranked.length} ranked professors out of ${professors.length} loaded.`);
+  updateMeta(`Showing ${ranked.length} browser-ranked professors out of ${professors.length} loaded.`);
 });
 </script></body></html>
