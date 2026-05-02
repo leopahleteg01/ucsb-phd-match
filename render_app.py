@@ -101,9 +101,9 @@ def _coarse_rank_all(notes):
         if len(set(phrase_hits)) >= 2:
             promotion_bonus += 6
         if 'control' in phrase_hits and 'robotics' in phrase_hits:
-            promotion_bonus += 10
+            promotion_bonus += 5
         if 'autonomy' in phrase_hits and 'planning' in blob:
-            promotion_bonus += 6
+            promotion_bonus += 4
         coarse_score = (
             len(hits) * 4
             + len(set(phrase_hits)) * 9
@@ -305,6 +305,7 @@ def _prompt_for_notes(notes, payload_rows):
         'You are evaluating UCSB professors for a user based only on the current user input and the professor information provided. '
         'Do not use any hidden prior ranking or base score. Generate scores fresh for this run. '
         'Compare all provided professors for this run and rank them relative to the user input. '
+        'Do not default to recurring obvious favorites unless they truly fit this exact prompt better than the alternatives. '
         'Return strict JSON only with this schema: '
         '{"results":[{"name":string,"score":number,"why":string,"detailed_fit":string,"professor_focus":string,"methods_match":string,"application_match":string,"strengths_for_you":string,"possible_gaps":string,"why_not_higher":string}]}. '
         'Return results only for the provided professors in this deep-analysis stage. '
@@ -336,6 +337,8 @@ def _shortlist_prompt(notes, payload_rows):
     return (
         'You are selecting the strongest UCSB professor candidates for deeper evaluation. '
         'Base the shortlist primarily on the user-written text. Treat attached-file content only as supporting background context, not as the main driver. '
+        'Do not mechanically favor recurring obvious robotics/control names unless they are genuinely the best fit for this exact prompt. '
+        'Re-evaluate from scratch for this specific input and consider strong alternatives if the prompt emphasis changes. '
         'Based on the user input and the provided shortlist candidates, return strict JSON only with schema '
         '{"selected_names":[string],"why_this_shortlist":string}. '
         f'Select exactly {AI_DEEP_ANALYSIS_COUNT} names, prioritizing recall so relevant professors are not missed. '
