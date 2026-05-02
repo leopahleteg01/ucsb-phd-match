@@ -49,7 +49,7 @@ function render(items){
   items.forEach(item=>{
     const d=document.createElement('div');
     d.className='card';
-    d.innerHTML=`<div class="name">${item.name}</div><div class="dept">${item.department}</div><div class="score">Score: ${item.score}</div><div class="body"><div><span class="label">Why:</span> ${item.why}</div><div><span class="label">Professor does:</span> ${item.primary_areas||''}</div><div><span class="label">Summary:</span> ${item.comparison_summary||''}</div><div><span class="label">Keywords / notes:</span> ${item.notes||''}</div><div><span class="label">UCSB profile:</span> ${item.ucsb_profile_url||'n/a'}</div><div><span class="label">Website:</span> ${item.website_guess||'n/a'}</div></div>`;
+    d.innerHTML=`<div class="name">${item.name}</div><div class="dept">${item.department}</div><div class="score">Score: ${item.score}</div><div class="body"><div><span class="label">Why:</span> ${item.why||''}</div><div><span class="label">Detailed fit:</span> ${item.detailed_fit||item.why||''}</div><div><span class="label">Professor focus:</span> ${item.professor_focus||item.primary_areas||''}</div><div><span class="label">Primary areas:</span> ${item.primary_areas||''}</div><div><span class="label">Summary:</span> ${item.comparison_summary||''}</div><div><span class="label">Keywords / notes:</span> ${item.notes||''}</div><div><span class="label">Email:</span> ${item.email||'n/a'}</div><div><span class="label">UCSB profile:</span> ${item.ucsb_profile_url||'n/a'}</div><div><span class="label">Website:</span> ${item.website_guess||'n/a'}</div><div><span class="label">Google Scholar:</span> ${item.google_scholar_url_guess||'n/a'}</div></div>`;
     results.appendChild(d);
   });
 }
@@ -110,7 +110,7 @@ document.getElementById('runBtn').addEventListener('click', async ()=>{
     }
   }
   const words=userText.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
-  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); return {...p, score:s.score, why:s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Lightweight browser fallback only.'};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
+  const ranked=filtered.map(p=>{const s=scoreProfessor(p,words); const why=s.hits.length?('Matched on: '+s.hits.slice(0,10).join(', ')):'Lightweight browser fallback only.'; return {...p, score:s.score, why, detailed_fit: why + ' This browser fallback is simpler than live AI mode.', professor_focus: p.comparison_summary||p.primary_areas||'', google_scholar_url_guess: p.google_scholar_url_guess||''};}).sort((a,b)=>b.score-a.score||a.name.localeCompare(b.name));
   render(ranked);
   updateMeta(`Showing ${ranked.length} browser fallback results out of ${professors.length} loaded.`);
 });

@@ -198,16 +198,21 @@ def heuristic_rank(notes):
         for w in words:
             if w in p['_blob'] and w not in hits:
                 hits.append(w)
+        why = ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Lightweight keyword fallback only.'
         ranked.append({
             'name': p.get('name',''),
             'department': p.get('department',''),
             'score': len(hits) * 10,
-            'why': ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Lightweight keyword fallback only.',
+            'why': why,
+            'detailed_fit': why + ' This fallback mode uses keyword overlap only, so it is less nuanced than the AI mode.',
+            'professor_focus': p.get('research_summary_long','') or p.get('research_summary_short',''),
             'primary_areas': p.get('research_summary_short',''),
             'comparison_summary': p.get('research_summary_long',''),
             'notes': ', '.join(p.get('research_keywords', [])[:12]),
+            'email': p.get('email',''),
             'ucsb_profile_url': p.get('ucsb_profile_url',''),
             'website_guess': p.get('personal_website_url','') or p.get('lab_website_url',''),
+            'google_scholar_url_guess': p.get('google_scholar_url_guess',''),
         })
     ranked.sort(key=lambda x: (-x['score'], x['name']))
     return ranked[:25]
