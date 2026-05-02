@@ -24,7 +24,7 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 50
+AI_CANDIDATE_COUNT = 92
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
 professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
@@ -53,23 +53,7 @@ def _extract_account_id_from_jwt(token):
 
 
 def _candidate_pool(notes=''):
-    note_words = [w for w in re.split(r'[^a-z0-9]+', (notes or '').lower()) if len(w) > 2]
-    if not note_words:
-        return professors[:AI_CANDIDATE_COUNT]
-    scored = []
-    for p in professors:
-        hits = sum(1 for w in note_words if w in p['_blob'])
-        scored.append((hits, p['name'], p))
-    scored.sort(key=lambda x: (-x[0], x[1]))
-    top = [p for _, _, p in scored[:AI_CANDIDATE_COUNT]]
-    if len(top) < min(AI_CANDIDATE_COUNT, len(professors)):
-        seen = {p['name'] for p in top}
-        for p in professors:
-            if p['name'] not in seen:
-                top.append(p)
-            if len(top) >= min(AI_CANDIDATE_COUNT, len(professors)):
-                break
-    return top
+    return list(professors)
 
 
 def _candidate_payload(notes=''):

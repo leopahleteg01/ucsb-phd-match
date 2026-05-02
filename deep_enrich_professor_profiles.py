@@ -14,6 +14,7 @@ BAD_CONTENT_BITS = [
     'ucsb publications', 'awards', 'phone', 'personal website', 'education', 'affiliations affiliations',
     'me research areas', 'research areas', 'people faculty'
 ]
+PUBLICATION_WORDS = ['publication', 'publications', 'paper', 'papers', 'journal', 'conference', 'proceedings', 'scholar']
 
 
 def fetch(url):
@@ -55,6 +56,24 @@ def extract_main_text(html):
 def sentence_chunks(text):
     parts = re.split(r'(?<=[.!?])\s+', text)
     return [p.strip() for p in parts if len(p.strip()) > 20]
+
+
+def extract_publication_signals(text):
+    parts = sentence_chunks(text)
+    hits = [p for p in parts if any(w in p.lower() for w in PUBLICATION_WORDS)]
+    return hits[:5]
+
+
+def extract_focus_sentences(text):
+    parts = sentence_chunks(text)
+    focus = []
+    for p in parts:
+        pl = p.lower()
+        if any(x in pl for x in ['research interests', 'research focuses', 'work focuses', 'my work focuses', 'research lies', 'focus on', 'works on']):
+            focus.append(p)
+    if not focus:
+        focus = parts[:3]
+    return focus[:4]
 
 
 def load_master():
@@ -122,8 +141,16 @@ def enrich(master):
                 continue
             rec['deep_profile_text'] = text[:4000]
             sentences = sentence_chunks(text)
-            if sentences:
+            focus_sentences = extract_focus_sentences(text)
+            pub_signals = extract_publication_signals(text)
+            if focus_sentences:
+                rec['research_summary_long'] = ' '.join(focus_sentences)[:900]
+                rec['professor_focus_detailed'] = ' '.join(focus_sentences)[:1400]
+            elif sentences:
                 rec['research_summary_long'] = ' '.join(sentences[:3])[:900]
+                rec['professor_focus_detailed'] = ' '.join(sentences[:4])[:1400]
+            rec['publication_signal_notes'] = ' | '.join(pub_signals)
+            rec['selected_publication_mentions'] = pub_signals
             rec['extraction_notes'] = 'Deep-enriched from individual UCSB profile page plus prior neutral master data.'
             rec['source_quality'] = 'high' if rec.get('email') and rec.get('ucsb_profile_url') and rec.get('research_summary_long') else rec.get('source_quality','medium_high')
         except Exception as e:
