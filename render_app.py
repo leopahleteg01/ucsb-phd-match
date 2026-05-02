@@ -23,8 +23,37 @@ for r in rows:
         'weak match for applied robotics':35,'weak for robotics jobs':35,
         'not a fit':10,'needs deeper check':15
     }.get(s, 20)
+    blob_parts = [
+        r.get('name',''), r.get('department',''), r.get('primary_areas',''),
+        r.get('comparison_summary',''), r.get('notes',''), r.get('research_guess',''),
+        r.get('title_guess',''), r.get('match_to_your_goal','')
+    ]
+    r['_blob'] = ' | '.join(blob_parts).lower()
 
 INDEX = b'{"ok":true,"service":"ucsb-phd-match-backend"}'
+
+
+def heuristic_rank(notes):
+    words = [w for w in re.split(r'[^a-z0-9]+', notes.lower()) if len(w) > 2]
+    ranked = []
+    for r in rows:
+        hits = []
+        for w in words:
+            if w in r['_blob'] and w not in hits:
+                hits.append(w)
+        ranked.append({
+            'name': r['name'],
+            'department': r['department'],
+            'score': r['_base_fit'] + len(hits) * 3,
+            'why': ('Matched on: ' + ', '.join(hits[:10])) if hits else 'Fallback heuristic match from your text.',
+            'primary_areas': r.get('primary_areas',''),
+            'comparison_summary': r.get('comparison_summary',''),
+            'notes': r.get('notes',''),
+            'ucsb_profile_url': r.get('ucsb_profile_url',''),
+            'website_guess': r.get('website_guess',''),
+        })
+    ranked.sort(key=lambda x: (-x['score'], x['name']))
+    return ranked[:25]
 
 
 def ai_rank(notes):
@@ -118,16 +147,16 @@ class Handler(BaseHTTPRequestHandler):
         if not notes.strip():
             self._send(400, body=b'{"error":"notes required"}')
             return
-        if not OPENCLAW_API_URL or not OPENCLAW_GATEWAY_TOKEN:
-            self._send(500, body=b'{"error":"backend env missing"}')
-            return
+        mode = 'ai'
         try:
+            if not OPENCLAW_API_URL or not OPENCLAW_GATEWAY_TOKEN:
+                raise RuntimeError('backend env missing')
             results = ai_rank(notes)
-            body = json.dumps({'results': results}, ensure_ascii=False).encode('utf-8')
-            self._send(200, body=body)
         except Exception as e:
-            body = json.dumps({'error': 'backend evaluation failed', 'detail': str(e)}).encode('utf-8')
-            self._send(500, body=body)
+            mode = 'heuristic'
+            results = heuristic_rank(notes)
+        body = json.dumps({'results': results, 'mode': mode}, ensure_ascii=False).encode('utf-8')
+        self._send(200, body=body)
 
 
 if __name__ == '__main__':
