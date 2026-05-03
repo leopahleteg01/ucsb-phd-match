@@ -3,6 +3,7 @@ import re
 import urllib.request
 from html import unescape
 from pathlib import Path
+from urllib.parse import urlparse
 
 BASE = Path(__file__).resolve().parent
 MASTER_JSON = BASE / 'ucsb_professors_master.json'
@@ -19,6 +20,11 @@ METHOD_TERMS = ['control', 'optimization', 'learning', 'reinforcement learning',
 APPLICATION_TERMS = ['robotics', 'autonomy', 'digital twins', 'cybersecurity', 'virtual reality', 'augmented reality', 'communications', 'power systems', 'manufacturing', 'human-computer interaction', 'medical', 'wireless', 'sensing', 'mobility']
 HONOR_WORDS = ['award', 'honor', 'fellow', 'career', 'best paper', 'distinguished']
 CENTER_WORDS = ['center', 'institute', 'laboratory', 'lab', 'program', 'project']
+SOURCE_LABELS = [
+    ('ucsb_profile_url', 'ucsb_profile'),
+    ('personal_website_url', 'personal_website'),
+    ('lab_website_url', 'lab_website'),
+]
 
 
 def fetch(url):
@@ -73,11 +79,11 @@ def extract_focus_sentences(text):
     focus = []
     for p in parts:
         pl = p.lower()
-        if any(x in pl for x in ['research interests', 'research focuses', 'work focuses', 'my work focuses', 'research lies', 'focus on', 'works on']):
+        if any(x in pl for x in ['research interests', 'research focuses', 'work focuses', 'my work focuses', 'research lies', 'focus on', 'works on', 'research includes', 'studies', 'develops']):
             focus.append(p)
     if not focus:
         focus = parts[:3]
-    return focus[:4]
+    return focus[:5]
 
 
 def extract_term_hits(text, terms):
@@ -97,6 +103,55 @@ def extract_affiliation_signals(text):
 
 def load_master():
     return json.loads(MASTER_JSON.read_text())
+
+
+def merge_unique(items, limit=None):
+    out = []
+    seen = set()
+    for item in items:
+        if not item:
+            continue
+        key = item.strip() if isinstance(item, str) else json.dumps(item, sort_keys=True, ensure_ascii=False)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        out.append(item)
+        if limit and len(out) >= limit:
+            break
+    return out
+
+
+def source_domain(url):
+    try:
+        return urlparse(url).netloc.lower()
+    except Exception:
+        return ''
+
+
+def collect_source_payload(rec):
+    sources = []
+    for field, label in SOURCE_LABELS:
+        url = (rec.get(field) or '').strip()
+        if not url:
+            continue
+        try:
+            html = fetch(url)
+            text = extract_main_text(html)
+            if text:
+                sources.append({
+                    'label': label,
+                    'url': url,
+                    'domain': source_domain(url),
+                    'text': text[:5000],
+                })
+        except Exception as e:
+            sources.append({
+                'label': label,
+                'url': url,
+                'domain': source_domain(url),
+                'error': str(e),
+            })
+    return sources
 
 
 def save_master(master):
@@ -150,44 +205,52 @@ def save_publish(master):
 
 def enrich(master):
     for rec in master:
-        url = rec.get('ucsb_profile_url','').strip()
-        if not url:
+        sources = collect_source_payload(rec)
+        usable_sources = [s for s in sources if s.get('text')]
+        if not usable_sources:
             continue
-        try:
-            html = fetch(url)
-            text = extract_main_text(html)
-            if not text:
-                continue
-            rec['deep_profile_text'] = text[:4000]
-            sentences = sentence_chunks(text)
-            focus_sentences = extract_focus_sentences(text)
-            pub_signals = extract_publication_signals(text)
-            if focus_sentences:
-                rec['research_summary_long'] = ' '.join(focus_sentences)[:900]
-                rec['professor_focus_detailed'] = ' '.join(focus_sentences)[:1400]
-            elif sentences:
-                rec['research_summary_long'] = ' '.join(sentences[:3])[:900]
-                rec['professor_focus_detailed'] = ' '.join(sentences[:4])[:1400]
-            method_hits = extract_term_hits(text, METHOD_TERMS)
-            application_hits = extract_term_hits(text, APPLICATION_TERMS)
-            honor_signals = extract_honor_sentences(text)
-            affiliation_signals = extract_affiliation_signals(text)
-            rec['publication_signal_notes'] = ' | '.join(pub_signals)
-            rec['selected_publication_mentions'] = pub_signals
-            rec['methods_keywords'] = method_hits[:12]
-            rec['application_keywords'] = application_hits[:12]
-            rec['honors_highlights'] = honor_signals
-            rec['affiliation_signal_sentences'] = affiliation_signals
-            rec['fit_signal_summary'] = {
-                'methods': method_hits[:12],
-                'applications': application_hits[:12],
-                'honors_count': len(honor_signals),
-                'publication_signal_count': len(pub_signals)
-            }
-            rec['extraction_notes'] = 'Deep-enriched from individual UCSB profile page plus prior neutral master data.'
-            rec['source_quality'] = 'high' if rec.get('email') and rec.get('ucsb_profile_url') and rec.get('research_summary_long') else rec.get('source_quality','medium_high')
-        except Exception as e:
-            rec['deep_profile_error'] = str(e)
+        combined_text = ' '.join(s.get('text', '') for s in usable_sources).strip()
+        if not combined_text:
+            continue
+        rec['profile_source_records'] = [{
+            'label': s.get('label', ''),
+            'url': s.get('url', ''),
+            'domain': s.get('domain', ''),
+            'text_excerpt': s.get('text', '')[:500],
+            'error': s.get('error', ''),
+        } for s in sources]
+        rec['source_domains'] = merge_unique([s.get('domain', '') for s in usable_sources], limit=10)
+        rec['deep_profile_text'] = combined_text[:6000]
+        sentences = sentence_chunks(combined_text)
+        focus_sentences = extract_focus_sentences(combined_text)
+        pub_signals = extract_publication_signals(combined_text)
+        method_hits = extract_term_hits(combined_text, METHOD_TERMS)
+        application_hits = extract_term_hits(combined_text, APPLICATION_TERMS)
+        honor_signals = extract_honor_sentences(combined_text)
+        affiliation_signals = extract_affiliation_signals(combined_text)
+        if focus_sentences:
+            rec['research_summary_long'] = ' '.join(focus_sentences)[:1200]
+            rec['professor_focus_detailed'] = ' '.join(focus_sentences)[:1800]
+        elif sentences:
+            rec['research_summary_long'] = ' '.join(sentences[:4])[:1200]
+            rec['professor_focus_detailed'] = ' '.join(sentences[:5])[:1800]
+        rec['selected_publication_mentions'] = merge_unique(pub_signals, limit=8)
+        rec['publication_signal_notes'] = ' | '.join(rec['selected_publication_mentions'][:6])
+        rec['methods_keywords'] = merge_unique((rec.get('methods_keywords', []) or []) + method_hits, limit=16)
+        rec['application_keywords'] = merge_unique((rec.get('application_keywords', []) or []) + application_hits, limit=16)
+        rec['honors_highlights'] = merge_unique(honor_signals, limit=8)
+        rec['affiliation_signal_sentences'] = merge_unique(affiliation_signals, limit=8)
+        rec['rich_evidence_snippets'] = merge_unique(focus_sentences + pub_signals + honor_signals + affiliation_signals, limit=18)
+        rec['fit_signal_summary'] = {
+            'methods': rec['methods_keywords'][:16],
+            'applications': rec['application_keywords'][:16],
+            'honors_count': len(rec['honors_highlights']),
+            'publication_signal_count': len(rec['selected_publication_mentions']),
+            'source_domains': rec.get('source_domains', []),
+            'source_count': len(usable_sources),
+        }
+        rec['extraction_notes'] = 'Deep-enriched from multiple sources including UCSB profile and linked personal/lab pages when available.'
+        rec['source_quality'] = 'high' if len(usable_sources) >= 2 and rec.get('research_summary_long') else ('medium_high' if rec.get('research_summary_long') else rec.get('source_quality','medium'))
     return master
 
 

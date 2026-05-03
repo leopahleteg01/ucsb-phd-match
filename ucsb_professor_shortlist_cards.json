@@ -33,7 +33,7 @@
       "Topics: robot locomotion, manipulation, machine learning"
     ],
     "summary_short": "robot locomotion; manipulation; machine learning; autonomous systems; dynamics and control",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/katie-byl",
       "personal_website": "http://robotics.ece.ucsb.edu",
@@ -61,7 +61,9 @@
       "learning",
       "reinforcement learning",
       "machine learning",
-      "planning"
+      "planning",
+      "vision",
+      "estimation"
     ],
     "applications": [
       "robotics",
@@ -140,7 +142,7 @@
       "Topics: rf sensing and learning, communication-aware robotics, vision"
     ],
     "summary_short": "RF sensing and learning; communication-aware robotics; vision; robotics",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/yasamin-mostofi",
       "personal_website": "",
@@ -231,7 +233,7 @@
       "Topics: robotics, motion planning, optimal control"
     ],
     "summary_short": "robotics; motion planning; optimal control; optimization",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/tobia-marcucci",
       "personal_website": "",
@@ -273,7 +275,7 @@
       "Topics: dynamical systems, control, robotics-related systems"
     ],
     "summary_short": "dynamical systems; control; robotics-related systems",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/francesco-bullo",
       "personal_website": "http://motion.me.ucsb.edu/",
@@ -294,9 +296,16 @@
     "name": "B.S. Manjunath",
     "department": "ECE / CS affiliate",
     "title": "",
-    "focus": "Department of Electrical and Computer Engineering The Robert Mehrabian College of Engineering • UC Santa Barbara 2026 © Regents of the University of California",
-    "methods": [],
-    "applications": [],
+    "focus": "Department of Electrical and Computer Engineering The Robert Mehrabian College of Engineering • UC Santa Barbara 2026 © Regents of the University of California Vision Research Lab UC Santa Barbara Our Research Contact Us ↓ Vision Research Lab At the Vision Res",
+    "methods": [
+      "learning",
+      "machine learning",
+      "vision",
+      "planning"
+    ],
+    "applications": [
+      "medical"
+    ],
     "research_keywords": [
       "image informatics",
       "computer vision",
@@ -314,6 +323,8 @@
       "visual data analysis"
     ],
     "strength_lines": [
+      "Methods: learning, machine learning, vision, planning",
+      "Applications: medical",
       "Topics: image informatics, computer vision, image processing"
     ],
     "summary_short": "image informatics; computer vision; image processing; big data",
@@ -359,7 +370,7 @@
       "Topics: computer graphics, imaging, computer vision"
     ],
     "summary_short": "computer graphics; imaging; computer vision",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/pradeep-sen",
       "personal_website": "",
@@ -406,7 +417,7 @@
       "Topics: bionic vision, machine learning, computer vision"
     ],
     "summary_short": "bionic vision; machine learning; computer vision; XR; multimodal tracking",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/michael-beyeler",
       "personal_website": "",
@@ -480,7 +491,7 @@
     "name": "William Wang",
     "department": "CS",
     "title": "Professor",
-    "focus": "William Wang Professor Mellichamp Endowed Chair in Mind and Machine Intelligence He/Him/His 2005 Henley Hall William Wang homepage PhD, Carnegie Mellon University William Wang Publications CVPR Best Student Paper Award, 2019 IBM Faculty Award, 2019 Facebook Re",
+    "focus": "To build intelligent machines that can tackle challenging reasoning problems under uncertainty, I have pursued answers via studies of Machine Learning, Natural Language Processing, and Interdisciplinary Data Science.",
     "methods": [
       "learning",
       "machine learning",
@@ -505,7 +516,7 @@
       "Publication signals: William Wang Professor Mellichamp Endowed Chair in Mind and Machine Intelligence He/Him/His 2005 Henley Hall William Wan | He has published more than 80 papers at leading NLP/AI/ML conferences and journals, and received best paper (or nominati"
     ],
     "summary_short": "machine learning; NLP; reasoning; knowledge graphs",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/william-wang",
       "personal_website": "",
@@ -546,7 +557,7 @@
       "Topics: cyber-physical systems, learning, optimization"
     ],
     "summary_short": "cyber-physical systems; learning; optimization; signal processing",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/mahnoosh-alizadeh",
       "personal_website": "",
@@ -582,7 +593,7 @@
       "Topics: feedback control algorithms, nonlinear and hybrid dynamical systems"
     ],
     "summary_short": "feedback control algorithms; nonlinear and hybrid dynamical systems",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/andrew-teel",
       "personal_website": "",
@@ -615,7 +626,7 @@
       "Topics: coordination of large scale distributed systems, game theoretic methods"
     ],
     "summary_short": "coordination of large scale distributed systems; game theoretic methods",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/jason-marden",
       "personal_website": "",
@@ -656,7 +667,7 @@
       "Topics: machine learning, information theory, human-cyber-physical systems"
     ],
     "summary_short": "machine learning; information theory; human-cyber-physical systems; stochastic networks",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/ramtin-pedarsani",
       "personal_website": "",
@@ -699,7 +710,7 @@
       "Topics: pattern recognition, machine learning, optimization"
     ],
     "summary_short": "pattern recognition; machine learning; optimization; signal processing",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/kenneth-rose",
       "personal_website": "",
@@ -738,7 +749,7 @@
       "Topics: information theory, machine learning theory, distributed computing"
     ],
     "summary_short": "information theory; machine learning theory; distributed computing",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/qian-yu",
       "personal_website": "",
@@ -777,7 +788,7 @@
       "Topics: brain-inspired computing, applied machine learning, hardware ml systems"
     ],
     "summary_short": "brain-inspired computing; applied machine learning; hardware ML systems",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/peng-li",
       "personal_website": "",
@@ -816,7 +827,7 @@
       "Topics: ai for design and test, data analysis, machine learning"
     ],
     "summary_short": "AI for design and test; data analysis; machine learning",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/li-c-wang",
       "personal_website": "",
@@ -855,7 +866,7 @@
       "Topics: design automation, mathematical data science, tensor-based machine learning"
     ],
     "summary_short": "design automation; mathematical data science; tensor-based machine learning",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/zheng-zhang",
       "personal_website": "",
@@ -890,7 +901,7 @@
       "Topics: mixed-signal circuits, photonics, optoelectronic interfaces"
     ],
     "summary_short": "mixed-signal circuits; RF; photonics; optoelectronic interfaces",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/james-buckwalter",
       "personal_website": "",
@@ -931,7 +942,7 @@
       "Topics: machine learning, ethical ai, responsible computing"
     ],
     "summary_short": "machine learning; ethical AI; responsible computing; distributed computing",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/haewon-jeong",
       "personal_website": "",
@@ -974,7 +985,7 @@
       "Topics: machine learning, computer vision, multi-modality"
     ],
     "summary_short": "machine learning; computer vision; multi-modality; robustness in healthcare",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://www.ece.ucsb.edu/people/faculty/yao-qin",
       "personal_website": "",
@@ -992,7 +1003,7 @@
     "name": "Murphy Niu",
     "department": "CS",
     "title": "Assistant Professor",
-    "focus": "Her recent research focus on developing scalable analog quantum control and algorithms for emerging quantum architectures with superconducting, ion trap, photonic, and neutral atom qubits.",
+    "focus": "Murphy Niu Assistant Professor Stansbury Chair in Computer Science 2013 Henley Hall Google Scholar Ph.D., Physics, MIT B.A., Physics, Peking University Off- Adjunct Assistant Professor in the University of Maryland, College Park, and the University of Maryland",
     "methods": [
       "control",
       "optimization",
@@ -1015,7 +1026,7 @@
       "Publication signals: Murphy Niu Assistant Professor Stansbury Chair in Computer Science 2013 Henley Hall Google Scholar Ph.D., Physics, MIT B | Visit Niu’s academic publications on Google Scholar here"
     ],
     "summary_short": "unknown from quick scrape; CS faculty",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/murphy-niu",
       "personal_website": "",
@@ -1033,7 +1044,7 @@
     "name": "Xin (Eric) Wang",
     "department": "CS",
     "title": "Assistant Professor",
-    "focus": "His research interests include Natural Language Processing, Computer Vision, and Machine Learning, with an emphasis on Multimodal and Embodied AI Agents.",
+    "focus": "His research interests include Natural Language Processing, Computer Vision, and Machine Learning, with an emphasis on Multimodal and Embodied AI Agents. Drawing on methodologies from machine learning, computer vision, natural language processing, and robotics",
     "methods": [
       "learning",
       "machine learning",
@@ -1105,7 +1116,7 @@
       "Publication signals: She has published at the most selective HCI, VR, and machine learning venues such as CHI, UIST, VR, EMNLP and CVPR where"
     ],
     "summary_short": "human-AI experience; interfaces",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/misha-sra",
       "personal_website": "",
@@ -1140,7 +1151,7 @@
       "Publication signals: Computer Science, SUNY at Stony Brook BE (Hons) Electrical Engineering, BITS, India 1995-1996 Vice-chair, Graduate Counc | During his professional career, Professor Agrawal has served on numerous Program Committees of International Conferences"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/divyakant-agrawal",
       "personal_website": "",
@@ -1174,7 +1185,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/prabhanjan-ananth",
       "personal_website": "",
@@ -1205,7 +1216,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/jonathan-balkind",
       "personal_website": "",
@@ -1245,7 +1256,7 @@
       "Publication signals: The original AODV paper published in WMCSA'99 received the 2018 ACM SIGMOBILE Test of Time Award. | Belding is the author of over 150 technical papers on wireless networking and has served on over 80 conference technical"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/elizabeth-m-belding",
       "personal_website": "",
@@ -1281,7 +1292,7 @@
       "Publication signals: from the Department of Electronic Engineering at Tsinghua University Google Scholar 16th Abraham Wald Prize, Sequential "
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/yuheng-bu",
       "personal_website": "",
@@ -1299,7 +1310,7 @@
     "name": "Tevfik Bultan",
     "department": "CS",
     "title": "Professor",
-    "focus": "Bultan's research focuses on automated verification techniques and their application to software.",
+    "focus": "Bultan's research focuses on automated verification techniques and their application to software. Bultan's research group develops automated verification and analysis techniques that help developers in identifying and eliminating errors in software.",
     "methods": [
       "formal methods",
       "security"
@@ -1320,7 +1331,7 @@
       "Publication signals: Electrical and Electronics Engineering, Middle East Technical University, 1989 Verification Laboratory Computer Engineer | He has more than 100 refereed research publications and has served on more than 50 technical program committees of inter"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/tevfik-bultan",
       "personal_website": "",
@@ -1356,7 +1367,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/shiyu-chang",
       "personal_website": "",
@@ -1391,7 +1402,7 @@
       "Publication signals: He has served as a journal editor for several database journals, including, currently, The VLDB Journal and IEEE Transac | He has been Program Chair for multiple database and distributed systems conferences."
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/amr-el-abbadi",
       "personal_website": "",
@@ -1426,7 +1437,7 @@
       "Publication signals: Computer Science, Belhang University, Beijing, China B.S Civil Engineering, Central South University, Changsha, China Go"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/yu-feng",
       "personal_website": "",
@@ -1461,7 +1472,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/frederic-g-gibou",
       "personal_website": "",
@@ -1479,7 +1490,7 @@
     "name": "Wenbo Guo",
     "department": "CS",
     "title": "Assistant Professor",
-    "focus": "His research interests are cybersecurity and trustworthy machine learning.",
+    "focus": "His research interests are cybersecurity and trustworthy machine learning. His recent research includes designing foundation models for software and network security problems, building reinforcement learning-driven planning and scheduling systems for security ",
     "methods": [
       "learning",
       "reinforcement learning",
@@ -1503,7 +1514,7 @@
       "Publication signals: Fellowship Finalist (2020), and ACM CCS Outstanding Paper Award (2018)."
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/wenbo-guo",
       "personal_website": "",
@@ -1548,7 +1559,7 @@
       "Publication signals: Arpit Gupta Associate Professor He/Him/His 5163 PhD, Computer Science, Princeton University MS, Computer Science, NC Sta | Arpit’s work appears at top-tier networking and systems conferences, including ACM SIGCOMM and USENIX NSDI."
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/arpit-gupta",
       "personal_website": "",
@@ -1582,7 +1593,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/trinabh-gupta",
       "personal_website": "",
@@ -1618,7 +1629,7 @@
       "Publication signals: Ben Hardekopf Professor He/Him/His 1109 Ph.D., University of Texas at Austin, 2009 M.S., Computer Science, SUNY at Utica"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/ben-hardekopf",
       "personal_website": "",
@@ -1654,7 +1665,7 @@
       "Publication signals: Computer Science, California State Univ., Northridge, 1996 Co-Lead of the IEE Food-Energy-Water Initiative Associate Dea"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/chandra-krintz",
       "personal_website": "",
@@ -1690,7 +1701,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/sanjukta-krishnagopal",
       "personal_website": "",
@@ -1728,7 +1739,7 @@
       "Publication signals: I have published more than 100 conference and journal papers, and I am a recent recipient of the NSF CAREER Award, the M"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/christopher-kruegel",
       "personal_website": "",
@@ -1760,7 +1771,7 @@
       "Publication signals: Mathematics, University of Bergen, Norway Outstanding Young Researcher Meltzer Award, 2009 EATCS European Symposium on A"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/daniel-lokshtanov",
       "personal_website": "",
@@ -1796,7 +1807,7 @@
       "Publication signals: The Hebrew University of Jerusalem Google Scholar IEEE TCDP Outstanding Technical Achievement Award, 2021. | Associate editor of the Distributed Computing Journal, 2002-2018."
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/dahlia-malkhi",
       "personal_website": "",
@@ -1833,7 +1844,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/linda-petzold",
       "personal_website": "",
@@ -1870,7 +1881,7 @@
       "Publication signals: Member Editorial Board: IEEE Transactions on Knowledge & Data Engineering, BMC Journal of Clinical Bioinformatics, Journ | He has published 250 technical papers over his career."
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/ambuj-k-singh",
       "personal_website": "",
@@ -1905,7 +1916,7 @@
       "Publication signals: Computer Science, Fudan University Off- California Center for Service Science GoogleScholar Outstanding Faculty Award, C | Su served on program committees of many conferences in the databases (PODS, ICDT, VLDB, ICDE) and services computing/BPM"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/jianwen-su",
       "personal_website": "",
@@ -1943,7 +1954,7 @@
       "Publication signals: Electronics and Communication, IIT Roorkee, India, 1981 GoogleScholar Fellow of ACM, Fellow of AAAS, Fellow of IEEE, ACM"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/subhash-suri",
       "personal_website": "",
@@ -1982,7 +1993,7 @@
       "Publication signals: GoogleScholar Security and Cryptography Bio Giovanni Vigna is a Professor in the Department of Computer Science at the U"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/giovanni-vigna",
       "personal_website": "",
@@ -2013,7 +2024,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/eric-vigoda",
       "personal_website": "",
@@ -2044,7 +2055,7 @@
       "Topics: needs full topic scrape later"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/rich-wolski",
       "personal_website": "",
@@ -2081,7 +2092,7 @@
       "Publication signals: His works were extensively referenced, with over 9,000 citations per Google Scholar and thousands of software downloads. | He received NSF CAREER Award, IBM Invention Achievement Award, ACM-SIGMOD Dissertation Runner-Up Award, and IEEE ICDM 10"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/xifeng-yan",
       "personal_website": "",
@@ -2099,7 +2110,7 @@
     "name": "Tao Yang",
     "department": "CS",
     "title": "Professor",
-    "focus": "Tao Yang Professor He/Him/His 5113 Ph.D. Computer Science, Rutgers University, 1993 MS. Computer Science, Rutgers University, 1990 M.E.",
+    "focus": "His past research includes search engines, scalable web services and middleware, scheduling and runtime support for parallel irregular computation, and parallel sparse matrix algorithms.",
     "methods": [
       "vision"
     ],
@@ -2116,7 +2127,7 @@
       "Publication signals: His research has been in the areas of parallel and distributed systems, web search/mining, and high performance computin"
     ],
     "summary_short": "needs full topic scrape later",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://cs.ucsb.edu/index.php/people/faculty/tao-yang",
       "personal_website": "",
@@ -2157,10 +2168,11 @@
     ],
     "strength_lines": [
       "Methods: control, learning, machine learning",
-      "Topics: official ucsb me faculty page, title: professor, page: https:"
+      "Topics: official ucsb me faculty page, title: professor, page: https:",
+      "Publication signals: Please see our publications for details."
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/paul-atzberger",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/paul-atzberger",
       "personal_website": "https://web.math.ucsb.edu/~atzberg/",
@@ -2202,7 +2214,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/hector-ceniceros",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/hector-ceniceros",
       "personal_website": "https://web.math.ucsb.edu/~hdc/",
@@ -2252,7 +2264,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/joao-hespanha",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/joao-hespanha",
       "personal_website": "",
@@ -2270,7 +2282,7 @@
     "name": "Patricia Holden",
     "department": "ME",
     "title": "Professor",
-    "focus": "Patricia Holden Patricia Holden Headshot Professor Donald Bren School of Environmental Science and Management, Room 3508 Email Research Description Professor Holden studies the microbiology of engineered and natural systems. Two main environmental problems are",
+    "focus": "Patricia Holden Patricia Holden Headshot Professor Donald Bren School of Environmental Science and Management, Room 3508 Email Research Description Professor Holden studies the microbiology of engineered and natural systems.",
     "methods": [],
     "applications": [],
     "research_keywords": [
@@ -2291,7 +2303,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/patricia-holden",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/patricia-holden",
       "personal_website": "https://holdenlab.eri.ucsb.edu",
@@ -2333,7 +2345,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/arturo-keller",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/arturo-keller",
       "personal_website": "",
@@ -2352,7 +2364,9 @@
     "department": "ME",
     "title": "Professor",
     "focus": "Eric Masanet Eric Masanet Headshot Sustainable Manufacturing Professor Donald Bren School of Environmental Science and Management, Room 3510 Email Solid Mechanics, Materials & Structures Research Description Professor Masanet's research develops energy and mat",
-    "methods": [],
+    "methods": [
+      "vision"
+    ],
     "applications": [
       "manufacturing"
     ],
@@ -2371,11 +2385,13 @@
       "eric-masanet"
     ],
     "strength_lines": [
+      "Methods: vision",
       "Applications: manufacturing",
-      "Topics: official ucsb me faculty page, title: professor, page: https:"
+      "Topics: official ucsb me faculty page, title: professor, page: https:",
+      "Publication signals: He is also the former Editor in Chief of Resources, Conservation, and Recycling, the leading peer-reviewed journal on su"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/eric-masanet",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/eric-masanet",
       "personal_website": "https://bren.ucsb.edu/people/eric-masanet",
@@ -2396,7 +2412,7 @@
     "name": "Kevin Plaxco",
     "department": "ME",
     "title": "Professor",
-    "focus": "Kevin Plaxco Kevin Plaxco Headshot Folding-based sensors, Principles of protein folding, Terahertz absorption spectroscopy and the collective dynamics of water and biomolecules Professor Bioengineering, Room 3002 Email Bioengineering & Systems Biology Research",
+    "focus": "In related studies we are exploiting the extraordinary cooperativity of folding for the creation of adaptive, responsive surfaces and materials. Related theoretical and experimental projects include intensive studies of the structure and dynamics of the unfold",
     "methods": [],
     "applications": [],
     "research_keywords": [
@@ -2417,7 +2433,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/kevin-plaxco",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/kevin-plaxco",
       "personal_website": "",
@@ -2456,7 +2472,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/beth-pruitt",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/beth-pruitt",
       "personal_website": "http://pruittlab.engineering.ucsb.edu/",
@@ -2495,10 +2511,11 @@
       "alban-sauret"
     ],
     "strength_lines": [
-      "Topics: official ucsb me faculty page, title: research associate, page: https:"
+      "Topics: official ucsb me faculty page, title: research associate, page: https:",
+      "Publication signals: For our current research, publications, news, and open positions, please visit our new website: M&M Flow Lab – Universit | For our current research, publications, news, and open positions, please visit our new website: M&M Flow Lab – Universit"
     ],
     "summary_short": "official UCSB ME faculty page; title: Research Associate; page: https://me.ucsb.edu/people/alban-sauret",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/alban-sauret",
       "personal_website": "https://sauretlab.me.ucsb.edu/",
@@ -2521,7 +2538,9 @@
     "title": "Professor",
     "focus": "Bassam Bamieh Bassam Bamieh Headshot Dynamic Systems and Control, Fluid Mechanics and Thermal Sciences, Micro- and Nanoscale Engineering, Operating Systems and Distributed Systems Professor Professor Center for Control, Dynamical Systems and Computation Engine",
     "methods": [
-      "control"
+      "control",
+      "learning",
+      "machine learning"
     ],
     "applications": [
       "robotics"
@@ -2541,12 +2560,13 @@
       "bassam-bamieh"
     ],
     "strength_lines": [
-      "Methods: control",
+      "Methods: control, learning, machine learning",
       "Applications: robotics",
-      "Topics: official ucsb me faculty page, title: professor, page: https:"
+      "Topics: official ucsb me faculty page, title: professor, page: https:",
+      "Publication signals: News I was recently interviewed on the In-Control Podcast Poorva’s paper on localization phenomena in large-scale networ | arXiv version is here Pascal’s paper on “spurious modes” appeared in JCP , and arXiv Max’s paper on optimal control of c"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/bassam-bamieh",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/bassam-bamieh",
       "personal_website": "http://www.engineering.ucsb.edu/~bamieh/",
@@ -2588,7 +2608,7 @@
       "Topics: official ucsb me faculty page, title: distinguished professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Distinguished Professor; page: https://me.ucsb.edu/people/matthew-begley",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/matthew-begley",
       "personal_website": "https://sites.engineering.ucsb.edu/~begley/home.html",
@@ -2632,7 +2652,7 @@
       "Topics: official ucsb me faculty page, title: professor &amp, associate dean"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor &amp; Associate Dean; page: https://me.ucsb.edu/people/glenn-beltz",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/glenn-beltz",
       "personal_website": "https://engineering.ucsb.edu/people/glenn-beltz",
@@ -2674,7 +2694,7 @@
       "Topics: official ucsb me faculty page, title: associate professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor; page: https://me.ucsb.edu/people/ted-bennett",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/ted-bennett",
       "personal_website": "",
@@ -2720,7 +2740,7 @@
       "Topics: official ucsb me faculty page, title: distinguished professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Distinguished Professor; page: https://me.ucsb.edu/people/irene-j-beyerlein",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/irene-j-beyerlein",
       "personal_website": "https://labs.me.ucsb.edu/beyerlein/irene/",
@@ -2741,7 +2761,7 @@
     "name": "Samantha Daly",
     "department": "ME",
     "title": "Professor",
-    "focus": "Samantha Daly Samantha Daly Headshot Professor Professor Engineering II, Room 2347 Email Solid Mechanics, Materials & Structures External websites: Other External Website https://labs.me.ucsb.edu/daly/samantha/",
+    "focus": "The group investigates the mechanics of materials, fatigue, fracture, creep, composites, multi-functional materials, and advanced experimental techniques with a focus on novel approaches for small-scale characterization and the use of large data and statistica",
     "methods": [],
     "applications": [],
     "research_keywords": [
@@ -2762,7 +2782,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/samantha-daly",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/samantha-daly",
       "personal_website": "https://labs.me.ucsb.edu/daly/samantha/",
@@ -2783,9 +2803,11 @@
     "name": "Emilie Dressaire",
     "department": "ME",
     "title": "Assistant Professor",
-    "focus": "Emilie Dressaire Emilie Dressaire Headshot Assistant Professor Engineering Science Building, Room 2231C Email Bioengineering & Systems Biology Micro & Nano Technology Thermal Science & Fluid Mechanics Research Description Professor Dressaire's research aims at",
+    "focus": "We currently focus on three topics: (1) transport in soft materials, (2) fluid-structure interactions, and (3) drops on biological or bio-inspired systems. We currently focus on three topics: (1) transport in soft materials, (2) fluid-structure interactions, a",
     "methods": [
-      "control"
+      "control",
+      "learning",
+      "simulation"
     ],
     "applications": [],
     "research_keywords": [
@@ -2803,11 +2825,11 @@
       "emilie-dressaire"
     ],
     "strength_lines": [
-      "Methods: control",
+      "Methods: control, learning, simulation",
       "Topics: official ucsb me faculty page, title: assistant professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Assistant Professor; page: https://me.ucsb.edu/people/emilie-dressaire",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/emilie-dressaire",
       "personal_website": "http://www.dressairelab.com",
@@ -2860,7 +2882,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/frederic-gibou",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/frederic-gibou",
       "personal_website": "https://fgibou.github.io/",
@@ -2884,10 +2906,12 @@
     "focus": "Elliot Hawkes Elliot Hawkes Headshot Associate Professor Engineering II, Room 2332 | Lab:Engineering II, Room 2234 Email Dynamic Systems, Control & Robotics Micro & Nano Technology Solid Mechanics, Materials & Structures Research Description Elliot Hawkes’s re",
     "methods": [
       "control",
-      "vision"
+      "vision",
+      "modeling"
     ],
     "applications": [
-      "robotics"
+      "robotics",
+      "medical"
     ],
     "research_keywords": [
       "official ucsb me faculty page",
@@ -2904,12 +2928,13 @@
       "elliot-hawkes"
     ],
     "strength_lines": [
-      "Methods: control, vision",
-      "Applications: robotics",
-      "Topics: official ucsb me faculty page, title: associate professor, page: https:"
+      "Methods: control, vision, modeling",
+      "Applications: robotics, medical",
+      "Topics: official ucsb me faculty page, title: associate professor, page: https:",
+      "Publication signals: December 2023: Anna Alvarez and Charles Xiao are accepted to present their posters at the 2024 Gordon Research Conferenc"
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor; page: https://me.ucsb.edu/people/elliot-hawkes",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/elliot-hawkes",
       "personal_website": "http://www.hawkes-group.com/",
@@ -2933,7 +2958,9 @@
     "focus": "Ousmane Kodio Ousmane Kodio Headshot Assistant Professor Assistant Professor Engineering II, Room 2350 Email Bioengineering & Systems Biology Computational Science & Engineering Dynamic Systems, Control & Robotics Solid Mechanics, Materials & Structures Therma",
     "methods": [
       "control",
-      "simulation"
+      "simulation",
+      "learning",
+      "machine learning"
     ],
     "applications": [
       "robotics"
@@ -2953,12 +2980,13 @@
       "ousmane-kodio"
     ],
     "strength_lines": [
-      "Methods: control, simulation",
+      "Methods: control, simulation, learning, machine learning",
       "Applications: robotics",
-      "Topics: official ucsb me faculty page, title: assistant professor, page: https:"
+      "Topics: official ucsb me faculty page, title: assistant professor, page: https:",
+      "Publication signals: At Oxford, I was a student of Lincoln college and a Senior Scholar. | Bending the rules See an article by Philip Ball featuring our recent paper in PRL EurekAlert Carbon dioxide monitors cou"
     ],
     "summary_short": "official UCSB ME faculty page; title: Assistant Professor; page: https://me.ucsb.edu/people/ousmane-kodio",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/ousmane-kodio",
       "personal_website": "https://kodiolab.me.ucsb.edu/",
@@ -2979,11 +3007,13 @@
     "name": "Bolin Liao",
     "department": "ME",
     "title": "Associate Professor",
-    "focus": "Bolin Liao Bolin Liao Headshot Associate Professor Associate Professor and Vice-Chair Engineering Science Building, Room 3231E | Lab: ESB, Room 2323 Email Thermal Science & Fluid Mechanics Research Description Bolin Liao's main research interest is in nanoscal",
+    "focus": "We are also passionate about translating knowledge from these fundamental studies into more efficient and cost-effective sustainable energy technologies that help reduce carbon emission and secure our energy needs in the future. Applied Clean Energy Technologi",
     "methods": [
       "simulation"
     ],
-    "applications": [],
+    "applications": [
+      "communications"
+    ],
     "research_keywords": [
       "official ucsb me faculty page",
       "title: associate professor and vice-chair",
@@ -3000,10 +3030,12 @@
     ],
     "strength_lines": [
       "Methods: simulation",
-      "Topics: official ucsb me faculty page, title: associate professor and vice-chair, page: https:"
+      "Applications: communications",
+      "Topics: official ucsb me faculty page, title: associate professor and vice-chair, page: https:",
+      "Publication signals: Visiting scholars are welcome to contact Prof."
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor and Vice-Chair; page: https://me.ucsb.edu/people/bolin-liao",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/bolin-liao",
       "personal_website": "https://www.tealab-liao.com/",
@@ -3024,8 +3056,10 @@
     "name": "Paolo Luzzatto-Fegiz",
     "department": "ME",
     "title": "Associate Professor",
-    "focus": "Paolo Luzzatto-Fegiz Paolo Luzzatto-Fegiz Headshot Associate Professor Associate Professor Engineering II, Room 2328 Email Thermal Science & Fluid Mechanics External websites: Other External Website https://feslab.me.ucsb.edu",
-    "methods": [],
+    "focus": "We focus on fundamental problems that are motivated by strong practical applications in the field of energy production or conservation. We focus on fundamental problems that are motivated by strong practical applications in the field of energy production or co",
+    "methods": [
+      "modeling"
+    ],
     "applications": [],
     "research_keywords": [
       "official ucsb me faculty page",
@@ -3042,10 +3076,12 @@
       "paolo-luzzatto-fegiz"
     ],
     "strength_lines": [
-      "Topics: official ucsb me faculty page, title: associate professor, page: https:"
+      "Methods: modeling",
+      "Topics: official ucsb me faculty page, title: associate professor, page: https:",
+      "Publication signals: Paolo Luzzatto-Fegiz Paolo Luzzatto-Fegiz Headshot Associate Professor Associate Professor Engineering II, Room 2328 Ema | Through our research, we seek advances in fundamental understanding that have the potential to drive paradigm shifts, th"
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor; page: https://me.ucsb.edu/people/paolo-luzzatto-fegiz",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/paolo-luzzatto-fegiz",
       "personal_website": "https://feslab.me.ucsb.edu",
@@ -3066,7 +3102,7 @@
     "name": "Eric Matthys",
     "department": "ME",
     "title": "Professor",
-    "focus": "Eric Matthys Eric Matthys Headshot Professor Professor Engineering II, Room 2349 Email Thermal Science & Fluid Mechanics Research Description Professor Matthys' research is in the general area of Energetics and Fluid/Thermal Sciences, both experimental and num",
+    "focus": "Studies on implementation of drag-reducing fluids in industrial applications such as HVAC or fluid transport are conducted through laboratory and large-scale field tests.",
     "methods": [
       "control"
     ],
@@ -3093,7 +3129,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/eric-matthys",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/eric-matthys",
       "personal_website": "",
@@ -3132,7 +3168,7 @@
       "Topics: official ucsb me faculty page, title: distinguished professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Distinguished Professor; page: https://me.ucsb.edu/people/robert-mcmeeking",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/robert-mcmeeking",
       "personal_website": "",
@@ -3174,7 +3210,7 @@
       "Topics: official ucsb me faculty page, title: distinguished professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Distinguished Professor; page: https://me.ucsb.edu/people/eckart-meiburg",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/eckart-meiburg",
       "personal_website": "",
@@ -3216,7 +3252,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/carl-meinhart",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/carl-meinhart",
       "personal_website": "http://www.engineering.ucsb.edu/~microflu/index.html",
@@ -3262,10 +3298,10 @@
       "Methods: control",
       "Applications: robotics",
       "Topics: official ucsb me faculty page, title: distinguished professor, page: https:",
-      "Publication signals: Igor Mezic Igor Mezic Headshot Professor Distinguished Professor Journal of Applied Mechanics, Associate Editor Institut"
+      "Publication signals: Igor Mezic Igor Mezic Headshot Professor Distinguished Professor Journal of Applied Mechanics, Associate Editor Institut | December 12 - 15, 2022 – Igor Mezić will be co-chairing the 2022 International Symposium on Nonlinear Theory and Its App"
     ],
     "summary_short": "official UCSB ME faculty page; title: Distinguished Professor; page: https://me.ucsb.edu/people/igor-mezic",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/igor-mezic",
       "personal_website": "http://mgroup.me.ucsb.edu/",
@@ -3313,7 +3349,7 @@
       "Topics: official ucsb me faculty page, title: professor and chair, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor and Chair; page: https://me.ucsb.edu/people/jeff-moehlis",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/jeff-moehlis",
       "personal_website": "https://sites.me.ucsb.edu/~moehlis/",
@@ -3355,7 +3391,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/sumita-pennathur",
-    "source_quality": "high",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/sumita-pennathur",
       "personal_website": "",
@@ -3394,7 +3430,7 @@
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/jeff-sakamoto",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/jeff-sakamoto",
       "personal_website": "https://sakamoto.engin.umich.edu/",
@@ -3417,7 +3453,8 @@
     "title": "Assistant Professor",
     "focus": "Ryan Stowers Ryan Stowers Headshot Assistant Professor Assistant Professor Bioengineering, Room 3201C Email Bioengineering & Systems Biology Research Description Ryan Stowers’s research explores how cells interact with and are influenced by the mechanical prop",
     "methods": [
-      "control"
+      "control",
+      "vision"
     ],
     "applications": [],
     "research_keywords": [
@@ -3435,11 +3472,11 @@
       "ryan-stowers"
     ],
     "strength_lines": [
-      "Methods: control",
+      "Methods: control, vision",
       "Topics: official ucsb me faculty page, title: assistant professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Assistant Professor; page: https://me.ucsb.edu/people/ryan-stowers",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/ryan-stowers",
       "personal_website": "https://stowerslab.me.ucsb.edu/",
@@ -3481,7 +3518,7 @@
       "Topics: official ucsb me faculty page, title: teaching professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Teaching Professor; page: https://me.ucsb.edu/people/tyler-susko",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/tyler-susko",
       "personal_website": "http://designlab.me.ucsb.edu",
@@ -3545,7 +3582,9 @@
     "methods": [
       "control"
     ],
-    "applications": [],
+    "applications": [
+      "robotics"
+    ],
     "research_keywords": [
       "official ucsb me faculty page",
       "title: professor",
@@ -3562,10 +3601,11 @@
     ],
     "strength_lines": [
       "Methods: control",
+      "Applications: robotics",
       "Topics: official ucsb me faculty page, title: professor, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Professor; page: https://me.ucsb.edu/people/megan-valentine",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/megan-valentine",
       "personal_website": "https://valentine.me.ucsb.edu",
@@ -3652,7 +3692,8 @@
     "strength_lines": [
       "Methods: control",
       "Applications: robotics, virtual reality, communications, human-computer interaction",
-      "Topics: official ucsb me faculty page, title: associate professor, page: https:"
+      "Topics: official ucsb me faculty page, title: associate professor, page: https:",
+      "Publication signals: for the latest, and Publications for the goods Haptic Engineering - Neuroscience - Artificial Touch We study human hapti | for the latest, and Publications for the goods Haptic Engineering - Neuroscience - Artificial Touch We study human hapti"
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor; page: https://me.ucsb.edu/people/yon-visell",
     "source_quality": "high",
@@ -3704,7 +3745,7 @@
       "Topics: official ucsb me faculty page, title: distinguished professor and chancellor emeritus, page: https:"
     ],
     "summary_short": "official UCSB ME faculty page; title: Distinguished Professor and Chancellor Emeritus; page: https://me.ucsb.edu/people/henry-t-yang",
-    "source_quality": "medium",
+    "source_quality": "medium_high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/henry-t-yang",
       "personal_website": "",
@@ -3748,10 +3789,11 @@
     "strength_lines": [
       "Methods: control, learning, machine learning",
       "Applications: robotics",
-      "Topics: official ucsb me faculty page, title: associate professor, page: https:"
+      "Topics: official ucsb me faculty page, title: associate professor, page: https:",
+      "Publication signals: Taishi worked on multiple publications in our group, as a Postdoctoral Fellow of the Japanese Society for the Promotion  | She presented her work at a poster session at the 2025 SEED conference."
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor; page: https://me.ucsb.edu/people/enoch-yeung",
-    "source_quality": "medium",
+    "source_quality": "high",
     "links": {
       "ucsb_profile": "https://me.ucsb.edu/people/enoch-yeung",
       "personal_website": "https://yeung.me.ucsb.edu/",
@@ -3773,7 +3815,9 @@
     "department": "ME",
     "title": "Associate Professor",
     "focus": "Yangying Zhu Yangying Zhu Headshot Associate Professor Associate Professor ESB, Room 2231D Email Research Description Yangying Zhu's research focuses on using thermo-fluid engineering approaches for future electronics and sustainable energy solutions.",
-    "methods": [],
+    "methods": [
+      "vision"
+    ],
     "applications": [],
     "research_keywords": [
       "official ucsb me faculty page",
@@ -3790,7 +3834,9 @@
       "yangying-zhu"
     ],
     "strength_lines": [
-      "Topics: official ucsb me faculty page, title: associate professor, page: https:"
+      "Methods: vision",
+      "Topics: official ucsb me faculty page, title: associate professor, page: https:",
+      "Publication signals: Gallery News highlight Congratulations to Harsh Shah for winning the best poster award at the microFIP conference!"
     ],
     "summary_short": "official UCSB ME faculty page; title: Associate Professor; page: https://me.ucsb.edu/people/yangying-zhu",
     "source_quality": "high",
