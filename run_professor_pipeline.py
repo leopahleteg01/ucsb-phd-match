@@ -8,6 +8,7 @@ STEPS = [
     ('enrich faculty-page details', 'enrich_professor_master.py'),
     ('deep-enrich individual profile pages', 'deep_enrich_professor_profiles.py'),
     ('build canonical professor profiles json', 'build_professor_profiles_json.py'),
+    ('build compact shortlist cards json', 'build_professor_shortlist_cards.py'),
     ('publish frontend dataset', 'build_publish_json.py'),
 ]
 
@@ -30,6 +31,7 @@ def main():
     print('- ucsb_professor_connections.json')
     print('- ucsb_professor_screening.json')
     print('- ucsb_professor_profiles.json')
+    print('- ucsb_professor_shortlist_cards.json')
 
 
 if __name__ == '__main__':

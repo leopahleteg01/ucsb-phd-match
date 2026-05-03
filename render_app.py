@@ -14,6 +14,7 @@ from pypdf import PdfReader
 BASE = Path(__file__).resolve().parent
 MASTER_JSON_PATH = BASE / 'ucsb_professors_master.json'
 PROFILES_JSON_PATH = BASE / 'ucsb_professor_profiles.json'
+SHORTLIST_CARDS_JSON_PATH = BASE / 'ucsb_professor_shortlist_cards.json'
 HOST = '0.0.0.0'
 PORT = int(os.environ.get('PORT', '10000'))
 OPENCLAW_API_URL = os.environ.get('OPENCLAW_API_URL', '').strip()
@@ -25,12 +26,14 @@ CODEX_ACCOUNT_ID = os.environ.get('CODEX_ACCOUNT_ID', '').strip()
 CODEX_MODEL = os.environ.get('CODEX_MODEL', 'gpt-5.4').strip()
 MAX_FILE_CHARS = 20000
 MAX_TOTAL_FILE_CHARS = 50000
-AI_CANDIDATE_COUNT = 24
+AI_CANDIDATE_COUNT = 92
 AI_DEEP_ANALYSIS_COUNT = 5
 
 professors = json.loads(MASTER_JSON_PATH.read_text())
 professor_profiles = json.loads(PROFILES_JSON_PATH.read_text()) if PROFILES_JSON_PATH.exists() else []
+shortlist_cards = json.loads(SHORTLIST_CARDS_JSON_PATH.read_text()) if SHORTLIST_CARDS_JSON_PATH.exists() else []
 profiles_by_name = {p.get('name',''): p for p in professor_profiles}
+shortlist_cards_by_name = {p.get('name',''): p for p in shortlist_cards}
 for p in professors:
     parts = [
         p.get('name',''), p.get('department',''), p.get('title',''),
@@ -145,20 +148,24 @@ def _coarse_rank_all(notes):
 
 def _shortlist_payload(notes=''):
     coarse_ranked = _coarse_rank_all(notes)
-    top_names = {r['name'] for r in coarse_ranked[:AI_CANDIDATE_COUNT]}
-    pool = [p for p in professors if p.get('name','') in top_names]
+    coarse_score_by_name = {x['name']: x.get('score', 0) for x in coarse_ranked}
     payload_rows = []
-    for p in pool:
+    for card in shortlist_cards:
         payload_rows.append({
-            'name': p.get('name',''),
-            'department': p.get('department',''),
-            'primary_areas': p.get('research_summary_short',''),
-            'methods_keywords': p.get('methods_keywords', []),
-            'application_keywords': p.get('application_keywords', []),
-            'research_keywords': p.get('research_keywords', []),
-            'coarse_score': next((x.get('score', 0) for x in coarse_ranked if x['name'] == p.get('name','')), 0),
+            'name': card.get('name',''),
+            'department': card.get('department',''),
+            'title': card.get('title',''),
+            'focus': card.get('focus',''),
+            'methods': card.get('methods', []),
+            'applications': card.get('applications', []),
+            'research_keywords': card.get('research_keywords', []),
+            'topic_clusters': card.get('topic_clusters', []),
+            'strength_lines': card.get('strength_lines', []),
+            'summary_short': card.get('summary_short', ''),
+            'source_quality': card.get('source_quality', ''),
+            'coarse_score': coarse_score_by_name.get(card.get('name',''), 0),
         })
-    return coarse_ranked, pool, payload_rows
+    return coarse_ranked, list(professors), payload_rows
 
 
 def _deep_payload_from_names(names):
