@@ -12,8 +12,8 @@ PUBLISH_JSON = BASE / 'ucsb_professor_screening.json'
 
 BAD_CONTENT_BITS = [
     'home people', 'contact address', 'harold frank hall', 'campus affiliations', 'external publications',
-    'ucsb publications', 'awards', 'phone', 'personal website', 'education', 'affiliations affiliations',
-    'me research areas', 'research areas', 'people faculty'
+    'ucsb publications', 'phone', 'personal website', 'education', 'affiliations affiliations',
+    'me research areas', 'research areas', 'people faculty', 'skip to main content'
 ]
 PUBLICATION_WORDS = ['publication', 'publications', 'paper', 'papers', 'journal', 'conference', 'proceedings', 'scholar']
 METHOD_TERMS = ['control', 'optimization', 'learning', 'reinforcement learning', 'machine learning', 'vision', 'simulation', 'modeling', 'planning', 'estimation', 'formal methods', 'graphics', 'hci', 'security', 'networking']
@@ -52,15 +52,24 @@ def clean_profile_text(text):
 
 
 def extract_main_text(html):
-    m = re.search(r'<main[^>]*>(.*?)</main>', html, re.S|re.I)
-    if m:
-        text = clean_profile_text(m.group(1))
-        if len(text) > 200:
-            return text
-    paras = re.findall(r'<p>(.*?)</p>', html, re.S|re.I)
+    candidates = []
+    for pattern in [r'<main[^>]*>(.*?)</main>', r'<article[^>]*>(.*?)</article>', r'<section[^>]*>(.*?)</section>']:
+        for chunk in re.findall(pattern, html, re.S|re.I):
+            text = clean_profile_text(chunk)
+            if len(text) > 200:
+                candidates.append(text)
+    paras = re.findall(r'<p[^>]*>(.*?)</p>', html, re.S|re.I)
     cleaned = [clean_profile_text(p) for p in paras]
     cleaned = [p for p in cleaned if len(p) > 40]
-    return ' '.join(cleaned[:8]).strip()
+    if cleaned:
+        candidates.append(' '.join(cleaned[:16]).strip())
+    div_blocks = re.findall(r'<div[^>]*>(.*?)</div>', html, re.S|re.I)
+    div_clean = [clean_profile_text(d) for d in div_blocks]
+    div_clean = [d for d in div_clean if len(d) > 120]
+    if div_clean:
+        candidates.append(' '.join(div_clean[:10]).strip())
+    candidates = sorted(candidates, key=len, reverse=True)
+    return candidates[0][:7000].strip() if candidates else ''
 
 
 def sentence_chunks(text):
@@ -71,7 +80,7 @@ def sentence_chunks(text):
 def extract_publication_signals(text):
     parts = sentence_chunks(text)
     hits = [p for p in parts if any(w in p.lower() for w in PUBLICATION_WORDS)]
-    return hits[:5]
+    return hits[:8]
 
 
 def extract_focus_sentences(text):
@@ -130,10 +139,12 @@ def source_domain(url):
 
 def collect_source_payload(rec):
     sources = []
+    seen_urls = set()
     for field, label in SOURCE_LABELS:
         url = (rec.get(field) or '').strip()
-        if not url:
+        if not url or url in seen_urls:
             continue
+        seen_urls.add(url)
         try:
             html = fetch(url)
             text = extract_main_text(html)
@@ -142,7 +153,14 @@ def collect_source_payload(rec):
                     'label': label,
                     'url': url,
                     'domain': source_domain(url),
-                    'text': text[:5000],
+                    'text': text[:6500],
+                })
+            else:
+                sources.append({
+                    'label': label,
+                    'url': url,
+                    'domain': source_domain(url),
+                    'error': 'no extractable text found',
                 })
         except Exception as e:
             sources.append({
@@ -250,7 +268,15 @@ def enrich(master):
             'source_count': len(usable_sources),
         }
         rec['extraction_notes'] = 'Deep-enriched from multiple sources including UCSB profile and linked personal/lab pages when available.'
-        rec['source_quality'] = 'high' if len(usable_sources) >= 2 and rec.get('research_summary_long') else ('medium_high' if rec.get('research_summary_long') else rec.get('source_quality','medium'))
+        deep_len = len(rec.get('deep_profile_text', ''))
+        if len(usable_sources) >= 2 and deep_len >= 1800:
+            rec['source_quality'] = 'high'
+        elif deep_len >= 900:
+            rec['source_quality'] = 'medium_high'
+        elif deep_len >= 250:
+            rec['source_quality'] = 'medium'
+        else:
+            rec['source_quality'] = rec.get('source_quality', 'low') or 'low'
     return master
 
 

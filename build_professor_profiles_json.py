@@ -47,6 +47,10 @@ for p in master:
             'fit_signal_summary': p.get('fit_signal_summary', {}),
             'theory_to_application_spectrum': p.get('theory_to_application_spectrum',''),
             'source_quality': p.get('source_quality',''),
+            'source_domains': p.get('source_domains', []),
+            'profile_source_records': p.get('profile_source_records', []),
+            'rich_evidence_snippets': p.get('rich_evidence_snippets', []),
+            'extraction_notes': p.get('extraction_notes', ''),
             'website_status': p.get('website_status',''),
             'scholar_status': p.get('scholar_status','')
         }
