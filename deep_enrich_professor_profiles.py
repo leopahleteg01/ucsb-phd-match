@@ -25,6 +25,9 @@ SOURCE_LABELS = [
     ('personal_website_url', 'personal_website'),
     ('lab_website_url', 'lab_website'),
 ]
+EXTRA_LINK_FIELDS = [
+    'other_personal_links',
+]
 
 
 def fetch(url):
@@ -140,8 +143,20 @@ def source_domain(url):
 def collect_source_payload(rec):
     sources = []
     seen_urls = set()
+    candidate_sources = []
     for field, label in SOURCE_LABELS:
         url = (rec.get(field) or '').strip()
+        if url:
+            candidate_sources.append((label, url))
+    for field in EXTRA_LINK_FIELDS:
+        vals = rec.get(field) or []
+        if isinstance(vals, str):
+            vals = [vals]
+        for url in vals:
+            url = (url or '').strip()
+            if url:
+                candidate_sources.append((field, url))
+    for label, url in candidate_sources:
         if not url or url in seen_urls:
             continue
         seen_urls.add(url)
